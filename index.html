@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Farm Ledger · शेत खातेवही</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f3ee;min-height:100vh;display:flex;justify-content:center;}
+#app{width:100%;max-width:430px;background:#fff;min-height:100vh;display:flex;flex-direction:column;position:relative;}
+/* SETUP SCREEN */
+.setup-screen{display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;flex:1;min-height:100vh;}
+.setup-screen.show{display:flex;}
+.setup-icon{font-size:48px;margin-bottom:12px;}
+.setup-title{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:4px;}
+.setup-sub{font-size:13px;color:#888;margin-bottom:28px;line-height:1.6;}
+.setup-field{width:100%;text-align:left;margin-bottom:14px;}
+.setup-field label{display:block;font-size:12px;color:#666;margin-bottom:5px;font-weight:500;}
+.setup-field input{width:100%;padding:12px 14px;border:1.5px solid #e0ddd8;border-radius:10px;font-size:13px;font-family:inherit;outline:none;}
+.setup-field input:focus{border-color:#3B6D11;}
+.setup-note{font-size:11px;color:#aaa;margin-bottom:20px;line-height:1.6;background:#f9f8f5;padding:10px 12px;border-radius:8px;text-align:left;}
+/* PIN SCREEN */
+.pin-screen{display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;flex:1;min-height:100vh;}
+.pin-screen.show{display:flex;}
+.pin-dots{display:flex;justify-content:center;gap:14px;margin:20px 0 28px;}
+.pin-dot{width:14px;height:14px;border-radius:50%;background:#e0ddd8;transition:background 0.12s;}
+.pin-dot.filled{background:#3B6D11;}.pin-dot.error{background:#E24B4A;}
+.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:250px;}
+.pin-btn{padding:17px;border-radius:11px;border:1.5px solid #e8e4de;background:#fff;font-size:20px;font-weight:600;cursor:pointer;font-family:inherit;color:#1a1a1a;transition:background 0.1s;}
+.pin-btn:active{background:#f5f3ee;}
+/* LOADING OVERLAY */
+.loading-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.85);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
+.loading-overlay.show{display:flex;}
+.spinner{width:36px;height:36px;border:3px solid #e0ddd8;border-top-color:#3B6D11;border-radius:50%;animation:spin 0.7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-text{font-size:13px;color:#888;}
+/* MAIN APP */
+.main-app{display:none;flex-direction:column;flex:1;}
+.main-app.show{display:flex;}
+.header{padding:14px 16px 10px;border-bottom:1px solid #e8e4de;display:flex;align-items:center;justify-content:space-between;background:#fff;flex-shrink:0;}
+.header-left{display:flex;align-items:center;gap:10px;}
+.header-icon{width:36px;height:36px;border-radius:9px;background:#EAF3DE;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.header-title{font-weight:600;font-size:15px;color:#1a1a1a;}
+.header-sub{font-size:11px;color:#888;}
+.header-right{display:flex;align-items:center;gap:6px;}
+.budget-badge{background:#FAEEDA;border-radius:6px;padding:3px 8px;font-size:11px;color:#854F0B;font-weight:600;}
+.sync-badge{background:#EAF3DE;border-radius:6px;padding:3px 8px;font-size:11px;color:#3B6D11;font-weight:500;}
+.sync-badge.err{background:#FCEBEB;color:#A32D2D;}
+.tabs{display:flex;border-bottom:1px solid #e8e4de;background:#faf9f7;flex-shrink:0;}
+.tab{flex:1;padding:9px 4px;border:none;background:none;border-bottom:2.5px solid transparent;cursor:pointer;font-size:12px;font-weight:500;color:#999;font-family:inherit;}
+.tab.active{border-bottom-color:#3B6D11;color:#3B6D11;}
+.tab span{display:block;font-size:10px;color:inherit;opacity:0.7;margin-top:1px;}
+.content{flex:1;padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+/* FORM */
+.toggle{display:grid;grid-template-columns:1fr 1fr;border-radius:10px;overflow:hidden;border:1px solid #e0ddd8;margin-bottom:16px;}
+.toggle-btn{padding:11px;border:none;background:#fff;cursor:pointer;font-size:13px;font-weight:500;font-family:inherit;}
+.toggle-btn.exp.active{background:#FAECE7;color:#993C1D;}
+.toggle-btn.inc.active{background:#EAF3DE;color:#3B6D11;}
+.toggle-btn:not(.active){color:#aaa;}
+.toggle-btn.inc{border-left:1px solid #e0ddd8;}
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:12px;color:#888;margin-bottom:5px;}
+.field input,.field select{width:100%;padding:10px 12px;border:1px solid #e0ddd8;border-radius:8px;font-size:14px;font-family:inherit;background:#fff;color:#1a1a1a;outline:none;}
+.field input:focus,.field select:focus{border-color:#3B6D11;}
+.field input.big{font-size:26px;font-weight:600;padding:8px 12px;}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cat-btn{padding:10px;border-radius:9px;border:1.5px solid #e0ddd8;background:#fff;cursor:pointer;text-align:left;font-family:inherit;}
+.cat-btn.sel{border-width:2px;}
+.cat-name{font-size:13px;font-weight:500;}
+.cat-m{font-size:11px;opacity:0.75;}
+.btn-main{width:100%;padding:14px;border-radius:10px;border:none;color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;}
+.btn-main:active{opacity:0.85;}
+.btn-exp{background:#993C1D;}.btn-inc{background:#3B6D11;}.btn-green{background:#3B6D11;}.btn-gray{background:#888;}
+/* RECORDS */
+.filters{display:flex;gap:8px;margin-bottom:12px;}
+.filters select{flex:1;font-size:12px;padding:7px 10px;background:#f5f3ee;border:1px solid #e8e4de;border-radius:8px;color:#555;font-family:inherit;outline:none;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.mini-card{border-radius:9px;padding:11px 13px;}
+.mini-lbl{font-size:10px;font-weight:500;margin-bottom:2px;}
+.mini-val{font-size:17px;font-weight:600;}
+.green-card{background:#EAF3DE;}.green-card .mini-lbl,.green-card .mini-val{color:#3B6D11;}
+.red-card{background:#FAECE7;}.red-card .mini-lbl,.red-card .mini-val{color:#993C1D;}
+.record-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #f0ece6;}
+.rec-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;font-weight:600;text-align:center;line-height:1.3;}
+.rec-info{flex:1;min-width:0;}
+.rec-main{font-size:13px;font-weight:500;color:#1a1a1a;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.rec-sub{font-size:11px;color:#aaa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.badge{font-size:10px;padding:1px 7px;border-radius:4px;}
+.badge-inc{background:#EAF3DE;color:#3B6D11;}.badge-exp{background:#FAECE7;color:#993C1D;}
+.rec-amt{text-align:right;flex-shrink:0;}
+.amt{font-size:15px;font-weight:600;}
+.inc-amt{color:#3B6D11;}.exp-amt{color:#993C1D;}
+.del-btn{font-size:10px;color:#ccc;background:none;border:none;cursor:pointer;padding:0;font-family:inherit;}
+.del-btn:hover{color:#E24B4A;}
+/* REPORT */
+.net-card{border-radius:10px;padding:15px 17px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
+.net-green{background:#EAF3DE;}.net-red{background:#FCEBEB;}
+.net-lbl{font-size:12px;margin-bottom:2px;}
+.net-amt{font-size:27px;font-weight:700;margin:3px 0;}
+.net-res{font-size:12px;font-weight:600;}
+.g{color:#3B6D11;}.r{color:#A32D2D;}
+.section-title{font-size:12px;font-weight:600;margin-bottom:10px;}
+.bar-row{margin-bottom:11px;}
+.bar-header{display:flex;justify-content:space-between;margin-bottom:4px;}
+.bar-track{height:5px;border-radius:3px;background:#f0ece6;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;}
+.bar-sub{font-size:11px;color:#aaa;margin-top:2px;}
+.budget-track{background:#f5f3ee;border-radius:10px;padding:13px 15px;margin-bottom:14px;}
+.budget-row{display:flex;justify-content:space-between;margin-bottom:7px;}
+.empty{text-align:center;padding:3rem 1rem;color:#bbb;font-size:13px;line-height:1.8;}
+/* SETTINGS */
+.set-section{margin-bottom:22px;}
+.set-title{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:3px;}
+.set-sub{font-size:12px;color:#aaa;margin-bottom:9px;}
+.set-section input{width:100%;padding:10px 12px;border:1px solid #e0ddd8;border-radius:8px;font-size:14px;font-family:inherit;background:#fff;color:#1a1a1a;outline:none;}
+.info-box{padding:13px 15px;border-radius:9px;background:#f5f3ee;font-size:12px;color:#888;line-height:1.8;}
+.gh-info{background:#EAF3DE;border-radius:9px;padding:12px 14px;margin-bottom:20px;font-size:12px;color:#3B6D11;line-height:1.7;}
+.danger-btn{width:100%;padding:12px;border-radius:10px;border:1px solid #e0ddd8;background:#fff;color:#A32D2D;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;margin-top:10px;}
+</style>
+</head>
+<body>
+<div id="app">
+  <!-- LOADING -->
+  <div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loading-text">Syncing with GitHub...</div>
+  </div>
+
+  <!-- SETUP SCREEN -->
+  <div class="setup-screen" id="setup-screen">
+    <div class="setup-icon">🌾</div>
+    <div class="setup-title">Farm Ledger Setup</div>
+    <div class="setup-sub">Enter your GitHub Personal Access Token to sync data safely to your GitHub repo.</div>
+    <div class="setup-field">
+      <label>GitHub Personal Access Token</label>
+      <input type="password" id="setup-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+    </div>
+    <div class="setup-note">
+      🔒 Your token is stored only on this device (localStorage). It is never sent anywhere except GitHub's official API.<br><br>
+      📁 Data will be saved to:<br>
+      <strong>kkaniruddha/Kshirsagar-farms → farm-data.json</strong>
+    </div>
+    <button class="btn-main btn-green" onclick="setupDone()" style="width:100%;margin-top:4px">Connect to GitHub →</button>
+  </div>
+
+  <!-- PIN SCREEN -->
+  <div class="pin-screen" id="pin-screen">
+    <div style="font-size:44px;margin-bottom:10px">🔒</div>
+    <div style="font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:2px">Enter PIN</div>
+    <div style="font-size:13px;color:#888">पिन टाका</div>
+    <div class="pin-dots">
+      <div class="pin-dot" id="pd0"></div><div class="pin-dot" id="pd1"></div>
+      <div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div>
+    </div>
+    <div class="pin-grid">
+      <button class="pin-btn" onclick="pinPress('1')">1</button><button class="pin-btn" onclick="pinPress('2')">2</button><button class="pin-btn" onclick="pinPress('3')">3</button>
+      <button class="pin-btn" onclick="pinPress('4')">4</button><button class="pin-btn" onclick="pinPress('5')">5</button><button class="pin-btn" onclick="pinPress('6')">6</button>
+      <button class="pin-btn" onclick="pinPress('7')">7</button><button class="pin-btn" onclick="pinPress('8')">8</button><button class="pin-btn" onclick="pinPress('9')">9</button>
+      <button class="pin-btn" style="visibility:hidden">-</button><button class="pin-btn" onclick="pinPress('0')">0</button><button class="pin-btn" onclick="pinBack()">⌫</button>
+    </div>
+    <div style="margin-top:14px;font-size:13px;color:#E24B4A;display:none" id="pin-err">Wrong PIN. Try again.</div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div class="main-app" id="main-app">
+    <div class="header">
+      <div class="header-left">
+        <div class="header-icon">🌾</div>
+        <div>
+          <div class="header-title">Farm Ledger · शेत खातेवही</div>
+          <div class="header-sub">Jama (जमा) + Kharch (खर्च)</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="budget-badge" id="budget-badge" style="display:none">⚠ Budget</div>
+        <div class="sync-badge" id="sync-badge">✓ GitHub</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('add')">Add<span>नोंद</span></button>
+      <button class="tab" onclick="switchTab('records')">Records<span>यादी</span></button>
+      <button class="tab" onclick="switchTab('report')">Report<span>अहवाल</span></button>
+      <button class="tab" onclick="switchTab('settings')">⚙<span>सेटिंग</span></button>
+    </div>
+
+    <!-- ADD -->
+    <div class="content" id="tab-add">
+      <div class="toggle">
+        <button class="toggle-btn exp active" id="btn-exp" onclick="setType('expense')">Expense · खर्च</button>
+        <button class="toggle-btn inc" id="btn-inc" onclick="setType('income')">Income · जमा</button>
+      </div>
+      <div class="field"><label>Date · तारीख</label><input type="date" id="form-date"></div>
+      <div class="field"><label>Amount (₹) · रक्कम</label><input type="number" class="big" id="form-amount" placeholder="0"></div>
+      <div class="field"><label id="cat-label">Category · प्रकार</label><div class="cats" id="cat-grid"></div></div>
+      <div class="field"><label>Note · नोंद (optional)</label><input type="text" id="form-note" placeholder="e.g. Nashik market"></div>
+      <button class="btn-main btn-exp" id="save-btn" onclick="saveRecord()">Save Expense · खर्च जतन करा</button>
+    </div>
+
+    <!-- RECORDS -->
+    <div class="content" id="tab-records" style="display:none">
+      <div class="filters">
+        <select id="rec-mf" onchange="renderRecords()"><option value="all">All months</option></select>
+        <select id="rec-tf" onchange="renderRecords()"><option value="all">All</option><option value="income">Jama (जमा)</option><option value="expense">Kharch (खर्च)</option></select>
+      </div>
+      <div class="row2" id="rec-totals"></div>
+      <div id="records-list"></div>
+    </div>
+
+    <!-- REPORT -->
+    <div class="content" id="tab-report" style="display:none">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
+        <select id="rep-mf" onchange="renderReport()" style="font-size:12px;padding:6px 10px;background:#f5f3ee;border:1px solid #e8e4de;border-radius:8px;color:#555;font-family:inherit;outline:none">
+          <option value="all">All time</option>
+        </select>
+      </div>
+      <div class="row2" id="rep-cards"></div>
+      <div id="rep-net"></div>
+      <div id="rep-budget"></div>
+      <div id="rep-inc"></div>
+      <div id="rep-exp"></div>
+      <button class="btn-main btn-green" id="share-btn" onclick="shareReport()">Share Report · अहवाल शेअर करा</button>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="content" id="tab-settings" style="display:none">
+      <div class="gh-info">
+        ☁️ GitHub Sync Active<br>
+        Repo: <strong>kkaniruddha/Kshirsagar-farms</strong><br>
+        File: <strong>farm-data.json</strong><br>
+        Every save → auto-commits to GitHub ✅
+      </div>
+      <div class="set-section">
+        <div class="set-title">PIN Lock · पिन लॉक 🔒</div>
+        <div class="set-sub">4-digit PIN to protect the app. Leave blank to disable.</div>
+        <input type="password" id="set-pin" maxlength="4" placeholder="4-digit PIN" style="text-align:center;letter-spacing:12px;font-size:22px">
+      </div>
+      <div class="set-section">
+        <div class="set-title">Monthly Budget · मासिक बजेट</div>
+        <div class="set-sub">Warning when expenses reach 80% of this amount.</div>
+        <input type="number" id="set-budget" placeholder="₹ e.g. 50000">
+      </div>
+      <button class="btn-main btn-green" onclick="saveSettings()" id="save-set-btn">Save Settings · सेटिंग जतन करा</button>
+      <button class="danger-btn" onclick="refreshFromGitHub()">↻ Refresh from GitHub</button>
+      <button class="danger-btn" onclick="resetToken()" style="margin-top:8px">🔑 Change GitHub Token</button>
+      <div class="info-box" style="margin-top:16px">
+        Built with love for your family farm 🌾<br>
+        Data saved to GitHub — never lost, accessible anywhere.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────
+const GH_OWNER = "kkaniruddha";
+const GH_REPO  = "Kshirsagar-farms";
+const GH_FILE  = "farm-data.json";
+const GH_API   = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`;
+const MONTHS   = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+const EC=[{id:"seeds",l:"Seeds",m:"बियाणे",c:"#3B6D11",b:"#EAF3DE"},{id:"fertilizer",l:"Fertilizer",m:"खत",c:"#854F0B",b:"#FAEEDA"},{id:"labour",l:"Labour",m:"मजुरी",c:"#185FA5",b:"#E6F1FB"},{id:"water",l:"Water",m:"पाणी",c:"#0F6E56",b:"#E1F5EE"},{id:"equipment",l:"Equipment",m:"यंत्र",c:"#993C1D",b:"#FAECE7"},{id:"other_e",l:"Other",m:"इतर",c:"#5F5E5A",b:"#F1EFE8"}];
+const IC=[{id:"wheat",l:"Wheat",m:"गहू",c:"#854F0B",b:"#FAEEDA"},{id:"rice",l:"Rice",m:"तांदूळ",c:"#3B6D11",b:"#EAF3DE"},{id:"veg",l:"Vegetables",m:"भाजीपाला",c:"#0F6E56",b:"#E1F5EE"},{id:"fruits",l:"Fruits",m:"फळे",c:"#993C1D",b:"#FAECE7"},{id:"cotton",l:"Cotton",m:"कापूस",c:"#185FA5",b:"#E6F1FB"},{id:"sugarcane",l:"Sugarcane",m:"ऊस",c:"#639922",b:"#EAF3DE"},{id:"other_i",l:"Other",m:"इतर",c:"#5F5E5A",b:"#F1EFE8"}];
+const CM = Object.fromEntries([...EC,...IC].map(c=>[c.id,c]));
+
+// ── STATE ────────────────────────────────────────────────
+let token="", ghSha=null, records=[], settings={pin:"",budget:""}, curType="expense", selCat="seeds", pinEntered="";
+
+// ── UTILS ────────────────────────────────────────────────
+function fa(n){return Number(n).toLocaleString("en-IN");}
+function td(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
+function fd(s){if(!s)return"";const[y,m,d]=s.split("-");return `${d} ${MONTHS[parseInt(m)-1]} ${y}`;}
+function b64e(str){return btoa(unescape(encodeURIComponent(str)));}
+function b64d(str){return decodeURIComponent(escape(atob(str)));}
+function showLoad(txt="Syncing with GitHub..."){document.getElementById("loading-text").textContent=txt;document.getElementById("loading").classList.add("show");}
+function hideLoad(){document.getElementById("loading").classList.remove("show");}
+function setSyncBadge(ok,txt){const b=document.getElementById("sync-badge");b.textContent=txt;b.className="sync-badge"+(ok?"":" err");}
+
+// ── GITHUB API ───────────────────────────────────────────
+async function ghLoad(){
+  const res=await fetch(GH_API,{headers:{"Authorization":`token ${token}`,"Accept":"application/vnd.github.v3+json"}});
+  if(res.status===404){ghSha=null;return null;}
+  if(!res.ok) throw new Error(`GitHub error: ${res.status}`);
+  const d=await res.json();
+  ghSha=d.sha;
+  return JSON.parse(b64d(d.content.replace(/\n/g,"")));
+}
+
+async function ghSave(data){
+  const content=b64e(JSON.stringify(data,null,2));
+  const body={message:`Farm update ${new Date().toLocaleDateString("en-IN")}`,content,...(ghSha&&{sha:ghSha})};
+  const res=await fetch(GH_API,{method:"PUT",headers:{"Authorization":`token ${token}`,"Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(!res.ok){const e=await res.json();throw new Error(e.message||"GitHub save failed");}
+  const d=await res.json();
+  ghSha=d.content.sha;
+}
+
+// ── INIT ─────────────────────────────────────────────────
+async function init(){
+  token=localStorage.getItem("fl-gh-token")||"";
+  if(!token){showSetup();return;}
+  showLoad("Loading from GitHub...");
+  try{
+    const data=await ghLoad();
+    if(data){records=data.records||[];settings=data.settings||{pin:"",budget:""};}
+    else{records=[];settings={pin:"",budget:""};}
+    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    hideLoad();
+    if(settings.pin){showPin();}else{showMain();}
+  }catch(e){
+    // Fallback to local cache
+    hideLoad();
+    const cache=localStorage.getItem("fl-cache");
+    if(cache){const d=JSON.parse(cache);records=d.records||[];settings=d.settings||{pin:"",budget:""};}
+    setSyncBadge(false,"✗ GitHub");
+    if(settings.pin){showPin();}else{showMain();}
+    alert("Could not connect to GitHub. Using local cache.\n\n"+e.message);
+  }
+}
+
+function showSetup(){document.getElementById("setup-screen").classList.add("show");}
+function showPin(){document.getElementById("pin-screen").classList.add("show");}
+function showMain(){
+  document.getElementById("main-app").classList.add("show");
+  document.getElementById("form-date").value=td();
+  document.getElementById("set-pin").value=settings.pin||"";
+  document.getElementById("set-budget").value=settings.budget||"";
+  setType("expense");
+  populateMonthFilters();
+  checkBudget();
+}
+
+async function setupDone(){
+  const t=document.getElementById("setup-token").value.trim();
+  if(!t||!t.startsWith("ghp_")){alert("Please enter a valid GitHub token (starts with ghp_)");return;}
+  token=t;
+  localStorage.setItem("fl-gh-token",t);
+  document.getElementById("setup-screen").classList.remove("show");
+  showLoad("Connecting to GitHub...");
+  try{
+    const data=await ghLoad();
+    if(data){records=data.records||[];settings=data.settings||{pin:"",budget:""};}
+    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    hideLoad();
+    if(settings.pin){showPin();}else{showMain();}
+  }catch(e){hideLoad();alert("Could not connect. Check your token.\n\n"+e.message);}
+}
+
+// ── PIN ──────────────────────────────────────────────────
+function pinPress(d){
+  pinEntered+=d;updatePinDots();
+  if(pinEntered.length===4){
+    if(pinEntered===settings.pin){
+      document.getElementById("pin-screen").classList.remove("show");
+      pinEntered="";showMain();
+    }else{
+      document.getElementById("pin-err").style.display="block";
+      document.querySelectorAll(".pin-dot").forEach(x=>x.classList.add("error"));
+      setTimeout(()=>{pinEntered="";document.getElementById("pin-err").style.display="none";document.querySelectorAll(".pin-dot").forEach(x=>{x.classList.remove("error","filled");});},900);
+    }
+  }
+}
+function pinBack(){pinEntered=pinEntered.slice(0,-1);updatePinDots();}
+function updatePinDots(){for(let i=0;i<4;i++){const d=document.getElementById("pd"+i);d.classList.toggle("filled",i<pinEntered.length);d.classList.remove("error");}}
+
+// ── TABS ─────────────────────────────────────────────────
+function switchTab(name){
+  ["add","records","report","settings"].forEach((t,i)=>{
+    document.getElementById("tab-"+t).style.display=t===name?"block":"none";
+    document.querySelectorAll(".tab")[i].classList.toggle("active",t===name);
+  });
+  if(name==="records")renderRecords();
+  if(name==="report")renderReport();
+}
+
+// ── TYPE TOGGLE ──────────────────────────────────────────
+function setType(type){
+  curType=type;
+  const cats=type==="expense"?EC:IC;
+  selCat=cats[0].id;
+  document.getElementById("btn-exp").classList.toggle("active",type==="expense");
+  document.getElementById("btn-inc").classList.toggle("active",type==="income");
+  document.getElementById("cat-label").textContent=type==="expense"?"Category · प्रकार":"Crop Sold · पीक";
+  document.getElementById("save-btn").textContent=type==="expense"?"Save Expense · खर्च जतन करा":"Save Income · जमा जतन करा";
+  document.getElementById("save-btn").className="btn-main "+(type==="expense"?"btn-exp":"btn-inc");
+  renderCats();
+}
+function renderCats(){
+  const cats=curType==="expense"?EC:IC;
+  document.getElementById("cat-grid").innerHTML=cats.map(c=>`
+    <button class="cat-btn${selCat===c.id?" sel":""}" onclick="selCatFn('${c.id}')"
+      style="border-color:${selCat===c.id?c.c:"#e0ddd8"};background:${selCat===c.id?c.b:"#fff"}">
+      <div class="cat-name" style="color:${c.c}">${c.l}</div>
+      <div class="cat-m" style="color:${c.c}">${c.m}</div>
+    </button>`).join("");
+}
+function selCatFn(id){selCat=id;renderCats();}
+
+// ── SAVE RECORD ──────────────────────────────────────────
+async function saveRecord(){
+  const amt=parseFloat(document.getElementById("form-amount").value);
+  if(!amt||isNaN(amt)){alert("Please enter an amount · रक्कम टाका");return;}
+  const rec={id:Date.now(),type:curType,date:document.getElementById("form-date").value,amount:amt,category:selCat,note:document.getElementById("form-note").value};
+  records.unshift(rec);
+  document.getElementById("form-amount").value="";
+  document.getElementById("form-note").value="";
+  populateMonthFilters();
+  checkBudget();
+  const btn=document.getElementById("save-btn");
+  btn.textContent="Saving to GitHub... ☁️";
+  btn.disabled=true;
+  try{
+    await ghSave({records,settings});
+    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    setSyncBadge(true,"✓ GitHub");
+    btn.textContent="✓ Saved to GitHub!";
+    setTimeout(()=>{btn.disabled=false;btn.textContent=curType==="expense"?"Save Expense · खर्च जतन करा":"Save Income · जमा जतन करा";},2000);
+  }catch(e){
+    setSyncBadge(false,"✗ Sync Failed");
+    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    btn.textContent="✓ Saved locally (GitHub failed)";
+    btn.disabled=false;
+    setTimeout(()=>{btn.textContent=curType==="expense"?"Save Expense · खर्च जतन करा":"Save Income · जमा जतन करा";},2500);
+  }
+}
+
+// ── DELETE ────────────────────────────────────────────────
+async function delRec(id){
+  if(!confirm("Delete this record? · ही नोंद मिटवायची का?"))return;
+  records=records.filter(r=>r.id!==id);
+  renderRecords();
+  showLoad("Updating GitHub...");
+  try{await ghSave({records,settings});localStorage.setItem("fl-cache",JSON.stringify({records,settings}));setSyncBadge(true,"✓ GitHub");}
+  catch{setSyncBadge(false,"✗ Sync Failed");localStorage.setItem("fl-cache",JSON.stringify({records,settings}));}
+  hideLoad();
+}
+
+// ── MONTH FILTERS ─────────────────────────────────────────
+function populateMonthFilters(){
+  const months=[...new Set(records.map(r=>r.date&&r.date.slice(0,7)).filter(Boolean))].sort().reverse();
+  ["rec-mf","rep-mf"].forEach(id=>{
+    const sel=document.getElementById(id);const cur=sel.value;
+    sel.innerHTML='<option value="all">'+(id==="rep-mf"?"All time":"All months")+"</option>"+months.map(m=>{const[y,mo]=m.split("-");return `<option value="${m}"${m===cur?" selected":""}>${MONTHS[parseInt(mo)-1]} ${y}</option>`;}).join("");
+  });
+}
+
+// ── BUDGET CHECK ──────────────────────────────────────────
+function checkBudget(){
+  const budget=parseFloat(settings.budget)||0;
+  const now=new Date();const cm=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
+  const curExp=records.filter(r=>r.type==="expense"&&r.date?.startsWith(cm)).reduce((s,r)=>s+r.amount,0);
+  document.getElementById("budget-badge").style.display=(budget>0&&curExp>=budget*0.8)?"block":"none";
+}
+
+// ── RECORDS ───────────────────────────────────────────────
+function renderRecords(){
+  const mf=document.getElementById("rec-mf").value;
+  const tf=document.getElementById("rec-tf").value;
+  const filt=records.filter(r=>(mf==="all"||r.date?.startsWith(mf))&&(tf==="all"||r.type===tf));
+  const totI=filt.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
+  const totE=filt.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+  document.getElementById("rec-totals").innerHTML=`
+    <div class="mini-card green-card"><div class="mini-lbl">Jama · जमा</div><div class="mini-val">₹${fa(totI)}</div></div>
+    <div class="mini-card red-card"><div class="mini-lbl">Kharch · खर्च</div><div class="mini-val">₹${fa(totE)}</div></div>`;
+  if(!filt.length){document.getElementById("records-list").innerHTML='<div class="empty">No records found.<br>अजून कोणतीही नोंद नाही.</div>';return;}
+  document.getElementById("records-list").innerHTML=filt.map(r=>{
+    const cat=CM[r.category]||EC[5];const isI=r.type==="income";
+    return `<div class="record-row">
+      <div class="rec-icon" style="background:${cat.b};color:${cat.c}">${cat.m}</div>
+      <div class="rec-info">
+        <div class="rec-main">${cat.l}<span class="badge ${isI?"badge-inc":"badge-exp"}">${isI?"जमा":"खर्च"}</span></div>
+        <div class="rec-sub">${fd(r.date)}${r.note?" · "+r.note:""}</div>
+      </div>
+      <div class="rec-amt">
+        <div class="amt ${isI?"inc-amt":"exp-amt"}">${isI?"+":"−"}₹${fa(r.amount)}</div>
+        <button class="del-btn" onclick="delRec(${r.id})">delete</button>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+// ── REPORT ────────────────────────────────────────────────
+function renderReport(){
+  const mf=document.getElementById("rep-mf").value;
+  const repR=mf==="all"?records:records.filter(r=>r.date?.startsWith(mf));
+  const totI=repR.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
+  const totE=repR.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+  const net=totI-totE;
+  document.getElementById("rep-cards").innerHTML=`
+    <div class="mini-card green-card"><div class="mini-lbl">Total Income · एकूण जमा</div><div class="mini-val">₹${fa(totI)}</div></div>
+    <div class="mini-card red-card"><div class="mini-lbl">Total Expense · एकूण खर्च</div><div class="mini-val">₹${fa(totE)}</div></div>`;
+  document.getElementById("rep-net").innerHTML=`
+    <div class="net-card ${net>=0?"net-green":"net-red"}">
+      <div><div class="net-lbl ${net>=0?"g":"r"}">Net Balance · शिल्लक</div><div class="net-amt ${net>=0?"g":"r"}">₹${fa(Math.abs(net))}</div><div class="net-res ${net>=0?"g":"r"}">${net>=0?"✅ PROFIT · फायदा":"❌ LOSS · नुकसान"}</div></div>
+      <div style="font-size:38px">${net>=0?"✅":"❌"}</div>
+    </div>`;
+  const budget=parseFloat(settings.budget)||0;
+  if(budget>0){
+    const now=new Date();const cm=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
+    const curExp=records.filter(r=>r.type==="expense"&&r.date?.startsWith(cm)).reduce((s,r)=>s+r.amount,0);
+    const pct=Math.min((curExp/budget)*100,100);
+    const warn=pct>=80;const bc=pct>90?"#E24B4A":pct>75?"#EF9F27":"#3B6D11";
+    document.getElementById("rep-budget").innerHTML=`
+      <div class="budget-track">
+        <div class="budget-row"><span style="font-size:12px;color:#888">Monthly Budget (this month)</span><span style="font-size:12px;font-weight:600;color:${warn?"#854F0B":"#333"}">₹${fa(curExp)} / ₹${fa(budget)}</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${bc}"></div></div>
+        ${warn?`<div style="font-size:11px;color:#854F0B;margin-top:5px">⚠ Nearing your monthly budget!</div>`:""}
+      </div>`;
+  }else{document.getElementById("rep-budget").innerHTML="";}
+  let iHtml="",eHtml="";
+  if(totI>0){
+    iHtml=`<div style="margin-bottom:14px"><div class="section-title g">Income Breakdown (जमा तपशील)</div>`;
+    IC.forEach(c=>{const t=repR.filter(r=>r.type==="income"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);if(!t)return;iHtml+=`<div class="bar-row"><div class="bar-header"><span style="font-size:12px;color:#1a1a1a">${c.l} <span style="color:#aaa;font-size:11px">(${c.m})</span></span><span style="font-size:12px;font-weight:600;color:#3B6D11">₹${fa(t)}</span></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totI*100).toFixed(1)}%;background:#3B6D11"></div></div><div class="bar-sub">${(t/totI*100).toFixed(0)}% of income</div></div>`;});
+    iHtml+="</div>";
+  }
+  if(totE>0){
+    eHtml=`<div style="margin-bottom:16px"><div class="section-title r">Expense Breakdown (खर्च तपशील)</div>`;
+    EC.forEach(c=>{const t=repR.filter(r=>r.type==="expense"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);if(!t)return;eHtml+=`<div class="bar-row"><div class="bar-header"><span style="font-size:12px;color:#1a1a1a">${c.l} <span style="color:#aaa;font-size:11px">(${c.m})</span></span><span style="font-size:12px;font-weight:600;color:#993C1D">₹${fa(t)}</span></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totE*100).toFixed(1)}%;background:#993C1D"></div></div><div class="bar-sub">${(t/totE*100).toFixed(0)}% of expense</div></div>`;});
+    eHtml+="</div>";
+  }
+  document.getElementById("rep-inc").innerHTML=iHtml;
+  document.getElementById("rep-exp").innerHTML=eHtml;
+}
+
+// ── SHARE ─────────────────────────────────────────────────
+function shareReport(){
+  const mf=document.getElementById("rep-mf").value;
+  const repR=mf==="all"?records:records.filter(r=>r.date?.startsWith(mf));
+  const totI=repR.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
+  const totE=repR.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+  const net=totI-totE;
+  const lb=mf==="all"?"All Time":`${MONTHS[parseInt(mf.split("-")[1])-1]} ${mf.split("-")[0]}`;
+  const il=IC.map(c=>{const t=repR.filter(r=>r.type==="income"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);return t>0?`  • ${c.l} (${c.m}): ₹${fa(t)}`:null;}).filter(Boolean).join("\n");
+  const el=EC.map(c=>{const t=repR.filter(r=>r.type==="expense"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);return t>0?`  • ${c.l} (${c.m}): ₹${fa(t)}`:null;}).filter(Boolean).join("\n");
+  const text=`🌾 Kshirsagar Farm — ${lb}\n================================\nINCOME  (जमा):   ₹${fa(totI)}\nEXPENSE (खर्च):  ₹${fa(totE)}\nNET     (शिल्लक): ₹${fa(Math.abs(net))} ${net>=0?"PROFIT ✅":"LOSS ❌"}\n================================\n${il?"INCOME:\n"+il+"\n\n":""}${el?"EXPENSE:\n"+el+"\n":""}================================\n🌾 Farm Ledger App`;
+  const btn=document.getElementById("share-btn");
+  if(navigator.share){navigator.share({text}).catch(()=>copyText(text,btn));}
+  else copyText(text,btn);
+}
+function copyText(text,btn){
+  navigator.clipboard.writeText(text).then(()=>{btn.textContent="✓ Copied! Paste in WhatsApp";setTimeout(()=>{btn.textContent="Share Report · अहवाल शेअर करा";},2500);}).catch(()=>alert(text));
+}
+
+// ── SETTINGS SAVE ─────────────────────────────────────────
+async function saveSettings(){
+  settings.pin=document.getElementById("set-pin").value.replace(/\D/g,"").slice(0,4);
+  settings.budget=document.getElementById("set-budget").value;
+  const btn=document.getElementById("save-set-btn");
+  btn.textContent="Saving to GitHub... ☁️";btn.disabled=true;
+  try{
+    await ghSave({records,settings});
+    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    setSyncBadge(true,"✓ GitHub");
+    btn.textContent="✓ Settings Saved!";
+    setTimeout(()=>{btn.textContent="Save Settings · सेटिंग जतन करा";btn.disabled=false;},2000);
+    checkBudget();
+  }catch(e){
+    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    btn.textContent="Saved locally (GitHub failed)";btn.disabled=false;
+  }
+}
+
+async function refreshFromGitHub(){
+  showLoad("Refreshing from GitHub...");
+  try{const data=await ghLoad();if(data){records=data.records||[];settings=data.settings||{pin:"",budget:""};localStorage.setItem("fl-cache",JSON.stringify({records,settings}));populateMonthFilters();checkBudget();setSyncBadge(true,"✓ GitHub");alert("Refreshed from GitHub! ✅");}hideLoad();}
+  catch(e){hideLoad();alert("Failed: "+e.message);}
+}
+
+function resetToken(){
+  if(!confirm("This will ask you to enter a new GitHub token on next launch. Continue?"))return;
+  localStorage.removeItem("fl-gh-token");
+  location.reload();
+}
+
+// ── START ─────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>
