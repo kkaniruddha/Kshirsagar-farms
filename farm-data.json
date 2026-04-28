@@ -1,14 +1,6 @@
 {
   "records": [
     {
-      "id": 1777306180405,
-      "type": "expense",
-      "date": "2026-04-27",
-      "amount": 33000,
-      "category": "other_e",
-      "note": "कांदा लेबर मजुरी"
-    },
-    {
       "id": 1777306117664,
       "type": "expense",
       "date": "2026-04-27",
