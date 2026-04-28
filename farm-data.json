@@ -1,14 +1,5 @@
 {
-  "records": [
-    {
-      "id": 1777306117664,
-      "type": "expense",
-      "date": "2026-04-27",
-      "amount": 380,
-      "category": "other_e",
-      "note": "डोंगळे औषध "
-    }
-  ],
+  "records": [],
   "settings": {
     "pin": "7614",
     "budget": ""
