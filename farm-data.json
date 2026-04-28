@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777354480888,
+      "type": "income",
+      "date": "2026-04-28",
+      "amount": 77000,
+      "category": "crop_sale",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "",
+      "note": ""
+    },
+    {
       "id": 1777354459569,
       "type": "expense",
       "date": "2026-04-28",
