@@ -1,14 +1,6 @@
 {
   "records": [
     {
-      "id": 1777306249559,
-      "type": "expense",
-      "date": "2026-04-27",
-      "amount": 11570,
-      "category": "other_e",
-      "note": "उसाचे पैसे दिले"
-    },
-    {
       "id": 1777306180405,
       "type": "expense",
       "date": "2026-04-27",
