@@ -1,16 +1,5 @@
 {
-  "records": [
-    {
-      "id": 1777354238457,
-      "type": "expense",
-      "date": "2026-04-27",
-      "amount": 800,
-      "category": "pesticides",
-      "crop": "Onion / कांदा",
-      "paidBy": "बाळू",
-      "note": "वरील आठशे रुपये हे कांद्याचे मजुरीसाठी भावड्याला पाठवले"
-    }
-  ],
+  "records": [],
   "settings": {
     "pin": "7614",
     "budget": "",
