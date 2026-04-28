@@ -12,7 +12,7 @@
   --r1:#B71C1C;--r2:#C62828;--r3:#E53935;--r5:#FFEBEE;
   --b1:#0D47A1;--b2:#1565C0;--b3:#1E88E5;--b5:#E3F2FD;
   --a1:#E65100;--a2:#F57C00;--a5:#FFF3E0;
-  --p1:#4A148C;--p2:#6B3FA0;--p5:#F3E5F5;
+  --p2:#6B3FA0;--p5:#F3E5F5;
   --text:#1A1A2E;--text2:#4A4A6A;--text3:#9090AA;
   --border:#E4E8F0;--bg:#F4F6FB;--card:#FFFFFF;
   --shadow-sm:0 2px 8px rgba(0,0,0,0.06);
@@ -23,19 +23,19 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);min-height:100vh;display:flex;justify-content:center;}
 #app{width:100%;max-width:430px;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;}
 
-/* ── SETUP ─────────────────────────────────── */
+/* ── SETUP ── */
 .setup-screen{display:none;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem 1.75rem;text-align:center;flex:1;min-height:100vh;background:linear-gradient(160deg,#E8F5E9 0%,#F4F6FB 60%,#E3F2FD 100%);}
 .setup-screen.show{display:flex;}
 .big-logo{width:80px;height:80px;border-radius:24px;background:linear-gradient(135deg,var(--g3),var(--g1));display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 20px;box-shadow:0 12px 32px rgba(45,122,24,0.35);}
 .setup-title{font-size:24px;font-weight:800;color:var(--g1);margin-bottom:4px;}
-.setup-sub{font-size:13px;color:var(--text2);margin-bottom:32px;line-height:1.7;}
+.setup-sub{font-size:13px;color:var(--text2);margin-bottom:28px;line-height:1.7;}
 .setup-card{background:#fff;border-radius:var(--radius);padding:22px;width:100%;box-shadow:var(--shadow-md);margin-bottom:16px;}
 .f-label{display:block;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:7px;}
 .f-input{width:100%;padding:13px 15px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;outline:none;background:#FAFBFF;color:var(--text);transition:all 0.2s;}
 .f-input:focus{border-color:var(--g3);background:#fff;box-shadow:0 0 0 4px rgba(76,175,80,0.10);}
 .setup-note{font-size:11px;color:var(--text2);line-height:1.7;background:#E8F5E9;padding:12px 14px;border-radius:var(--radius-sm);text-align:left;width:100%;border-left:3px solid var(--g3);margin-bottom:22px;}
 
-/* ── PIN ─────────────────────────────────── */
+/* ── PIN ── */
 .pin-screen{display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;flex:1;min-height:100vh;background:linear-gradient(160deg,#E8F5E9 0%,#F4F6FB 60%,#E3F2FD 100%);}
 .pin-screen.show{display:flex;}
 .pin-dots{display:flex;justify-content:center;gap:18px;margin:24px 0 34px;}
@@ -45,14 +45,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:270px;}
 .pin-btn{padding:18px;border-radius:14px;border:none;background:#fff;font-size:22px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--text);box-shadow:var(--shadow-sm);transition:all 0.15s;}
 .pin-btn:active{transform:scale(0.92);background:var(--g5);color:var(--g1);}
+.pin-hint{margin-top:20px;display:flex;gap:12px;justify-content:center;}
+.pin-role-chip{font-size:11px;padding:5px 12px;border-radius:20px;font-weight:600;}
 
-/* ── LOADING ─────────────────────────────── */
+/* ── LOADING ── */
 .loading-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(244,246,251,0.92);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:16px;backdrop-filter:blur(6px);}
 .loading-overlay.show{display:flex;}
 .spinner{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--g3);border-radius:50%;animation:spin 0.75s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
-/* ── HEADER ─────────────────────────────── */
+/* ── HEADER ── */
 .main-app{display:none;flex-direction:column;flex:1;}
 .main-app.show{display:flex;}
 .header{background:#fff;flex-shrink:0;box-shadow:var(--shadow-sm);}
@@ -61,23 +63,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .hlogo{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid rgba(255,255,255,0.25);}
 .htitle{font-weight:800;font-size:17px;color:#fff;}
 .hsub{font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px;}
-.hbadges{display:flex;gap:6px;align-items:center;}
+.hbadges{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
 .badge-budget{background:rgba(255,193,7,0.2);border:1px solid rgba(255,193,7,0.4);border-radius:20px;padding:4px 10px;font-size:11px;color:#FFD54F;font-weight:700;display:none;}
 .badge-sync{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,0.9);font-weight:600;}
 .badge-sync.err{background:rgba(229,57,53,0.2);border-color:rgba(229,57,53,0.4);color:#EF9A9A;}
+.role-badge{border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;}
+.role-admin{background:rgba(255,215,0,0.25);border:1px solid rgba(255,215,0,0.4);color:#FFD700;}
+.role-viewer{background:rgba(144,202,249,0.25);border:1px solid rgba(144,202,249,0.4);color:#90CAF9;}
 
-/* ── TABS ─────────────────────────────── */
+/* ── TABS ── */
 .tabs{display:flex;background:#fff;padding:0 8px;border-bottom:1px solid var(--border);}
 .tab{flex:1;padding:11px 4px 9px;border:none;background:none;border-bottom:2.5px solid transparent;cursor:pointer;font-size:12px;font-weight:700;color:var(--text3);font-family:inherit;transition:all 0.2s;}
 .tab.active{border-bottom-color:var(--g3);color:var(--g1);}
 .tab span{display:block;font-size:10px;font-weight:400;opacity:0.75;margin-top:1px;}
+.tab.hidden{display:none;}
 
-/* ── SLIDE ───────────────────────────── */
+/* ── SLIDE ── */
 .tab-wrap{flex:1;overflow:hidden;position:relative;}
 .tab-slider{display:flex;height:100%;transition:transform 0.32s cubic-bezier(0.4,0,0.2,1);}
 .tab-panel{min-width:100%;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px;}
 
-/* ── TYPE TOGGLE ─────────────────────── */
+/* ── TYPE TOGGLE ── */
 .type-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
 .type-btn{padding:13px 10px;border-radius:var(--radius);border:2px solid var(--border);background:#fff;cursor:pointer;font-family:inherit;transition:all 0.2s;text-align:center;box-shadow:var(--shadow-sm);}
 .type-btn .ti{font-size:20px;margin-bottom:4px;}
@@ -89,21 +95,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .type-btn.inc.on .tl{color:var(--g1);}
 .type-btn:not(.on) .tl{color:var(--text3);}
 
-/* ── FORM CARD ───────────────────────── */
+/* ── FORM ── */
 .form-card{background:#fff;border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow-sm);}
 .form-card-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:14px;}
-.field{margin-bottom:0;}
 .field label{display:block;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
 .field input,.field select{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;background:#FAFBFF;color:var(--text);outline:none;transition:all 0.2s;-webkit-appearance:none;appearance:none;}
 .field input:focus,.field select:focus{border-color:var(--g3);background:#fff;box-shadow:0 0 0 4px rgba(76,175,80,0.09);}
 .field input.big{font-size:30px;font-weight:800;padding:10px 14px;letter-spacing:-0.5px;}
 .row2f{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-/* dropdown arrow */
 .sel-wrap{position:relative;}
 .sel-wrap::after{content:"▾";position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;pointer-events:none;}
 .sel-wrap select{padding-right:32px;}
 
-/* ── CAT GRID ────────────────────────── */
+/* ── CATEGORY GRID ── */
 .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
 .cat-btn{padding:11px 10px;border-radius:var(--radius-sm);border:2px solid var(--border);background:#FAFBFF;cursor:pointer;text-align:left;font-family:inherit;transition:all 0.18s;}
 .cat-btn.sel{border-width:2px;box-shadow:0 3px 12px rgba(0,0,0,0.11);transform:translateY(-1px);}
@@ -111,8 +115,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .cat-name{font-size:12px;font-weight:700;display:block;}
 .cat-marathi{font-size:11px;opacity:0.7;display:block;margin-top:1px;}
 
-/* ── SAVE BTN + RIPPLE ───────────────── */
-.save-btn{width:100%;padding:16px;border-radius:var(--radius);border:none;color:#fff;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;position:relative;overflow:hidden;letter-spacing:0.3px;transition:transform 0.15s,box-shadow 0.15s;margin-top:4px;}
+/* ── SAVE BTN ── */
+.save-btn{width:100%;padding:16px;border-radius:var(--radius);border:none;color:#fff;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;position:relative;overflow:hidden;letter-spacing:0.3px;transition:transform 0.15s;margin-top:4px;}
 .save-btn.exp{background:linear-gradient(135deg,var(--r3),var(--r2));box-shadow:0 4px 16px rgba(229,57,53,0.3);}
 .save-btn.inc{background:linear-gradient(135deg,var(--g3),var(--g1));box-shadow:0 4px 16px rgba(45,122,24,0.3);}
 .save-btn:active{transform:scale(0.97);}
@@ -120,12 +124,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.38);transform:scale(0);animation:ripA 0.65s linear;pointer-events:none;}
 @keyframes ripA{to{transform:scale(4);opacity:0;}}
 
-/* ── FILTERS ─────────────────────────── */
+/* ── FILTERS ── */
 .filters{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
 .filters .sel-wrap{flex:1;min-width:90px;}
-.filters select{width:100%;font-size:12px;font-weight:600;padding:9px 30px 9px 12px;background:#fff;border:2px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-family:inherit;outline:none;box-shadow:var(--shadow-sm);}
+.filters select{width:100%;font-size:12px;font-weight:600;padding:9px 28px 9px 12px;background:#fff;border:2px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-family:inherit;outline:none;box-shadow:var(--shadow-sm);}
 
-/* ── SUM STRIP ───────────────────────── */
+/* ── SUM STRIP ── */
 .sum-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
 .sum-card{border-radius:var(--radius);padding:15px;box-shadow:var(--shadow-sm);}
 .sum-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;}
@@ -133,31 +137,36 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .sc-green{background:linear-gradient(135deg,#E8F5E9,#C8E6C9);}.sc-green .sum-lbl,.sc-green .sum-val{color:var(--g1);}
 .sc-red{background:linear-gradient(135deg,#FFEBEE,#FFCDD2);}.sc-red .sum-lbl,.sc-red .sum-val{color:var(--r1);}
 
-/* ── RECORD ROWS ─────────────────────── */
+/* ── RECORD ROWS ── */
 .rec-row{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#fff;border-radius:var(--radius);margin-bottom:10px;box-shadow:var(--shadow-sm);}
 .rec-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;}
 .rec-info{flex:1;min-width:0;}
 .rec-main{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
 .rec-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px;}
-.rec-date{font-size:11px;color:var(--text3);font-weight:500;}
+.rec-date{font-size:11px;color:var(--text3);}
 .chip{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:700;white-space:nowrap;}
 .chip-inc{background:var(--g5);color:var(--g1);}
 .chip-exp{background:var(--r5);color:var(--r2);}
 .chip-crop{background:var(--a5);color:var(--a1);}
 .chip-person{background:var(--b5);color:var(--b1);}
 .rec-right{text-align:right;flex-shrink:0;}
-.rec-amt{font-size:16px;font-weight:800;letter-spacing:-0.3px;}
+.rec-amt{font-size:16px;font-weight:800;}
 .amt-inc{color:var(--g1);}.amt-exp{color:var(--r2);}
 .del-btn{font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;padding:3px 0;font-family:inherit;display:block;margin-top:3px;}
 .del-btn:hover{color:var(--r3);}
 
-/* ── EMPTY STATE ─────────────────────── */
+/* ── VIEWER NOTICE ── */
+.viewer-notice{background:linear-gradient(135deg,var(--b5),#DDEEFF);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;border-left:4px solid var(--b3);}
+.viewer-notice-icon{font-size:24px;}
+.viewer-notice-text{font-size:12px;color:var(--b1);font-weight:600;line-height:1.5;}
+
+/* ── EMPTY STATE ── */
 .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;text-align:center;}
 .empty-illo{font-size:60px;margin-bottom:14px;opacity:0.55;}
 .empty-title{font-size:16px;font-weight:700;color:var(--text2);margin-bottom:6px;}
 .empty-sub{font-size:13px;color:var(--text3);line-height:1.6;}
 
-/* ── REPORT ──────────────────────────── */
+/* ── REPORT ── */
 .net-card{border-radius:var(--radius);padding:20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow-md);}
 .net-profit{background:linear-gradient(135deg,#E8F5E9,#C8E6C9);}
 .net-loss{background:linear-gradient(135deg,#FFEBEE,#FFCDD2);}
@@ -176,14 +185,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .bar-pct{font-size:10px;color:var(--text3);margin-top:3px;}
 .budget-box{background:linear-gradient(135deg,#FFF8E1,#FFF3E0);border-radius:var(--radius);padding:15px 17px;margin-bottom:16px;border-left:4px solid var(--a2);box-shadow:var(--shadow-sm);}
 .crop-card{display:flex;justify-content:space-between;align-items:center;padding:14px;background:#fff;border-radius:var(--radius-sm);margin-bottom:9px;box-shadow:var(--shadow-sm);border-left:3px solid var(--a2);}
-.crop-card-l{display:flex;align-items:center;gap:10px;}
-.crop-em-rep{font-size:22px;}
-.crop-name-rep{font-size:13px;font-weight:700;color:var(--text);}
-.crop-detail-rep{font-size:11px;color:var(--text3);margin-top:2px;}
 .person-card{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;background:#fff;border-radius:var(--radius-sm);margin-bottom:9px;box-shadow:var(--shadow-sm);}
 .avatar-sm{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;}
 
-/* ── SETTINGS ────────────────────────── */
+/* ── SETTINGS ── */
 .gh-banner{background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:var(--radius);padding:18px;margin-bottom:16px;box-shadow:var(--shadow-md);}
 .gh-banner-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
 .gh-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;}
@@ -192,13 +197,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .gh-detail{font-size:11px;color:rgba(255,255,255,0.75);line-height:1.8;background:rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;}
 .set-card{background:#fff;border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow-sm);}
 .set-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;}
-.set-sub{font-size:11px;color:var(--text3);margin-bottom:12px;line-height:1.5;}
-.set-card input{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;background:#FAFBFF;outline:none;color:var(--text);}
+.set-sub{font-size:11px;color:var(--text3);margin-bottom:14px;line-height:1.5;}
+.set-card input{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;background:#FAFBFF;outline:none;color:var(--text);transition:all 0.2s;}
 .set-card input:focus{border-color:var(--g3);box-shadow:0 0 0 4px rgba(76,175,80,0.09);}
+.pin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:0;}
+.pin-field label{display:block;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+.pin-field input{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:20px;font-family:inherit;background:#FAFBFF;outline:none;color:var(--text);text-align:center;letter-spacing:10px;font-weight:800;}
+.pin-field input:focus{border-color:var(--g3);box-shadow:0 0 0 4px rgba(76,175,80,0.09);}
+.pin-field.admin-field input:focus{border-color:#B8860B;}
+.pin-field.viewer-field input:focus{border-color:var(--b3);}
+.pin-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:700;margin-bottom:6px;}
+.tag-admin{background:#FFF8E1;color:#B8860B;border:1px solid #FFD54F;}
+.tag-viewer{background:var(--b5);color:var(--b2);border:1px solid var(--b3);}
 .btn-primary{width:100%;padding:15px;border-radius:var(--radius);border:none;background:linear-gradient(135deg,var(--g3),var(--g1));color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;margin-bottom:10px;box-shadow:0 4px 16px rgba(45,122,24,0.25);transition:all 0.2s;}
 .btn-primary:active{transform:scale(0.97);}
-.btn-outline{width:100%;padding:13px;border-radius:var(--radius);border:2px solid var(--border);background:#fff;color:var(--r2);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:8px;transition:all 0.2s;}
+.btn-outline{width:100%;padding:13px;border-radius:var(--radius);border:2px solid var(--border);background:#fff;color:var(--r2);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:8px;}
 .info-box{background:var(--g5);border-radius:var(--radius);padding:16px;font-size:12px;color:var(--g1);line-height:1.8;border-left:3px solid var(--g3);margin-top:4px;}
+.access-table{width:100%;border-collapse:collapse;margin-top:4px;}
+.access-table th{font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);padding:8px 10px;text-align:left;border-bottom:2px solid var(--border);}
+.access-table td{font-size:12px;padding:10px 10px;border-bottom:1px solid var(--border);color:var(--text2);}
+.access-table tr:last-child td{border-bottom:none;}
+.tick{color:var(--g2);font-weight:700;}
+.cross{color:var(--r3);font-weight:700;}
 </style>
 </head>
 <body>
@@ -220,17 +240,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <input class="f-input" type="password" id="setup-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
   </div>
   <div class="setup-note">
-    🔒 Stored only on this device · never shared<br>
+    🔒 Token stored only on this device · never shared<br>
     📁 Data → <strong>kkaniruddha / Kshirsagar-farms / farm-data.json</strong>
   </div>
   <button class="save-btn inc" style="width:100%;border-radius:16px;" onclick="setupDone()">Connect to GitHub →</button>
 </div>
 
-<!-- PIN -->
+<!-- PIN SCREEN -->
 <div class="pin-screen" id="pin-screen">
-  <div class="big-logo" style="margin-bottom:16px">🔒</div>
+  <div class="big-logo" style="margin-bottom:12px">🌾</div>
   <div style="font-size:20px;font-weight:800;color:var(--g1);margin-bottom:4px">Kshirsagar Farms</div>
-  <div style="font-size:13px;color:var(--text2);font-weight:500">Enter your PIN · पिन टाका</div>
+  <div style="font-size:13px;color:var(--text2);font-weight:500;margin-bottom:2px">Enter your PIN · पिन टाका</div>
+
+  <!-- Role chips hint -->
+  <div class="pin-hint">
+    <span class="pin-role-chip" style="background:#FFF8E1;color:#B8860B;border:1px solid #FFD54F">👑 Admin</span>
+    <span class="pin-role-chip" style="background:var(--b5);color:var(--b2);border:1px solid var(--b3)">👁 Viewer</span>
+  </div>
+
   <div class="pin-dots">
     <div class="pin-dot" id="pd0"></div><div class="pin-dot" id="pd1"></div>
     <div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div>
@@ -246,7 +273,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <!-- MAIN APP -->
 <div class="main-app" id="main-app">
-
   <div class="header">
     <div class="header-top">
       <div class="hbrand">
@@ -258,58 +284,42 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       </div>
       <div class="hbadges">
         <div class="badge-budget" id="budget-badge">⚠ Budget</div>
+        <div class="role-badge" id="role-badge">👑 Admin</div>
         <div class="badge-sync" id="sync-badge">✓ Synced</div>
       </div>
     </div>
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab(0)">Add<span>नोंद</span></button>
-      <button class="tab" onclick="switchTab(1)">Records<span>यादी</span></button>
-      <button class="tab" onclick="switchTab(2)">Report<span>अहवाल</span></button>
-      <button class="tab" onclick="switchTab(3)">⚙<span>सेटिंग</span></button>
+    <div class="tabs" id="tab-bar">
+      <button class="tab active" id="tab-btn-0" onclick="switchTab(0)">Add<span>नोंद</span></button>
+      <button class="tab" id="tab-btn-1" onclick="switchTab(1)">Records<span>यादी</span></button>
+      <button class="tab" id="tab-btn-2" onclick="switchTab(2)">Report<span>अहवाल</span></button>
+      <button class="tab" id="tab-btn-3" onclick="switchTab(3)">⚙<span>सेटिंग</span></button>
     </div>
   </div>
 
   <div class="tab-wrap">
     <div class="tab-slider" id="slider">
 
-      <!-- ══ ADD ══ -->
+      <!-- ══ TAB 0: ADD ══ -->
       <div class="tab-panel">
-
         <div class="type-toggle">
           <button class="type-btn exp on" id="btn-exp" onclick="setType('expense')">
-            <div class="ti">💸</div>
-            <span class="tl">Expense · खर्च</span>
-            <span class="ts">Record a payment</span>
+            <div class="ti">💸</div><span class="tl">Expense · खर्च</span><span class="ts">Record a payment</span>
           </button>
           <button class="type-btn inc" id="btn-inc" onclick="setType('income')">
-            <div class="ti">💰</div>
-            <span class="tl">Income · जमा</span>
-            <span class="ts">Record a receipt</span>
+            <div class="ti">💰</div><span class="tl">Income · जमा</span><span class="ts">Record a receipt</span>
           </button>
         </div>
-
-        <!-- Amount + Date -->
         <div class="form-card">
           <div class="form-card-title">💵 Amount & Date</div>
           <div class="row2f">
-            <div class="field">
-              <label>Amount (₹)</label>
-              <input type="number" class="big" id="form-amount" placeholder="0">
-            </div>
-            <div class="field">
-              <label>Date · तारीख</label>
-              <input type="date" id="form-date">
-            </div>
+            <div class="field"><label>Amount (₹)</label><input type="number" class="big" id="form-amount" placeholder="0"></div>
+            <div class="field"><label>Date · तारीख</label><input type="date" id="form-date"></div>
           </div>
         </div>
-
-        <!-- Category -->
         <div class="form-card">
           <div class="form-card-title" id="cat-card-title">📂 Category · प्रकार</div>
           <div class="cat-grid" id="cat-grid"></div>
         </div>
-
-        <!-- Crop + Paid By (dropdowns) -->
         <div class="form-card">
           <div class="form-card-title">🌱 Crop & Payment Details</div>
           <div class="field" style="margin-bottom:12px">
@@ -347,26 +357,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             </div>
           </div>
         </div>
-
-        <!-- Note -->
         <div class="form-card">
           <div class="form-card-title">📝 Note · नोंद</div>
           <input type="text" id="form-note" class="f-input" style="border:2px solid var(--border);border-radius:10px;background:#FAFBFF;" placeholder="e.g. Nashik market, vendor name… (optional)">
         </div>
-
-        <button class="save-btn exp" id="save-btn" onclick="handleSave(event)">
-          💾 &nbsp;Save Expense · खर्च जतन करा
-        </button>
+        <button class="save-btn exp" id="save-btn" onclick="handleSave(event)">💾 &nbsp;Save Expense · खर्च जतन करा</button>
       </div>
 
-      <!-- ══ RECORDS ══ -->
+      <!-- ══ TAB 1: RECORDS ══ -->
       <div class="tab-panel">
+        <div id="viewer-notice-records"></div>
         <div class="filters">
           <div class="sel-wrap"><select id="rec-mf" onchange="renderRecords()"><option value="all">All Months</option></select></div>
           <div class="sel-wrap"><select id="rec-tf" onchange="renderRecords()">
-            <option value="all">All Types</option>
-            <option value="income">जमा</option>
-            <option value="expense">खर्च</option>
+            <option value="all">All Types</option><option value="income">जमा</option><option value="expense">खर्च</option>
           </select></div>
           <div class="sel-wrap"><select id="rec-cf" onchange="renderRecords()">
             <option value="all">All Crops</option>
@@ -388,11 +392,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div id="records-list"></div>
       </div>
 
-      <!-- ══ REPORT ══ -->
+      <!-- ══ TAB 2: REPORT ══ -->
       <div class="tab-panel">
+        <div id="viewer-notice-report"></div>
         <div style="display:flex;justify-content:flex-end;margin-bottom:16px">
           <div class="sel-wrap" style="width:140px">
-            <select id="rep-mf" onchange="renderReport()" style="width:100%;font-size:12px;font-weight:600;padding:9px 30px 9px 12px;background:#fff;border:2px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-family:inherit;outline:none;box-shadow:var(--shadow-sm);">
+            <select id="rep-mf" onchange="renderReport()" style="width:100%;font-size:12px;font-weight:600;padding:9px 28px 9px 12px;background:#fff;border:2px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-family:inherit;outline:none;box-shadow:var(--shadow-sm);">
               <option value="all">All Time</option>
             </select>
           </div>
@@ -404,28 +409,45 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div id="rep-person"></div>
         <div id="rep-inc"></div>
         <div id="rep-exp"></div>
-        <button class="save-btn inc" id="share-btn" onclick="shareReport()" style="margin-top:8px">
-          📤 &nbsp;Share Report · अहवाल शेअर करा
-        </button>
+        <button class="save-btn inc" id="share-btn" onclick="shareReport()" style="margin-top:8px">📤 &nbsp;Share Report · अहवाल शेअर करा</button>
       </div>
 
-      <!-- ══ SETTINGS ══ -->
+      <!-- ══ TAB 3: SETTINGS ══ -->
       <div class="tab-panel">
         <div class="gh-banner">
           <div class="gh-banner-top">
             <div class="gh-icon">☁️</div>
-            <div>
-              <div class="gh-title">GitHub Sync Active</div>
-              <div class="gh-sub">Auto-saves every entry to cloud</div>
-            </div>
+            <div><div class="gh-title">GitHub Sync Active</div><div class="gh-sub">Auto-saves every entry to cloud</div></div>
           </div>
           <div class="gh-detail">📁 kkaniruddha / Kshirsagar-farms<br>📄 farm-data.json · Every save = GitHub commit ✅</div>
         </div>
+
+        <!-- PIN ROLES CARD -->
         <div class="set-card">
-          <div class="set-title">🔒 PIN Lock · पिन लॉक</div>
-          <div class="set-sub">4-digit PIN to protect the app. Leave blank to disable.</div>
-          <input type="password" id="set-pin" maxlength="4" placeholder="4-digit PIN" style="text-align:center;letter-spacing:14px;font-size:22px;font-weight:800;">
+          <div class="set-title">🔐 Access PINs · प्रवेश पिन</div>
+          <div class="set-sub">Set two separate PINs — one for Admin (full access) and one for Viewer (read only). Leave blank to disable PIN lock.</div>
+          <div class="pin-row">
+            <div class="pin-field admin-field">
+              <span class="pin-tag tag-admin">👑 Admin PIN</span>
+              <input type="password" id="set-admin-pin" maxlength="4" placeholder="••••">
+            </div>
+            <div class="pin-field viewer-field">
+              <span class="pin-tag tag-viewer">👁 Viewer PIN</span>
+              <input type="password" id="set-viewer-pin" maxlength="4" placeholder="••••">
+            </div>
+          </div>
+          <!-- Access table -->
+          <table class="access-table" style="margin-top:16px">
+            <tr><th>Feature</th><th>👑 Admin</th><th>👁 Viewer</th></tr>
+            <tr><td>Add Entry</td><td class="tick">✓</td><td class="cross">✗</td></tr>
+            <tr><td>View Records</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+            <tr><td>View Report</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+            <tr><td>Share Report</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+            <tr><td>Delete Entry</td><td class="tick">✓</td><td class="cross">✗</td></tr>
+            <tr><td>Settings</td><td class="tick">✓</td><td class="cross">✗</td></tr>
+          </table>
         </div>
+
         <div class="set-card">
           <div class="set-title">💰 Monthly Budget · मासिक बजेट</div>
           <div class="set-sub">Warning when expenses reach 80% of this amount.</div>
@@ -434,7 +456,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <button class="btn-primary" onclick="saveSettings()" id="save-set-btn">Save Settings · सेटिंग जतन करा</button>
         <button class="btn-outline" onclick="refreshFromGitHub()">↻ Refresh Data from GitHub</button>
         <button class="btn-outline" onclick="resetToken()">🔑 Change GitHub Token</button>
-        <div class="info-box">🌾 Built with love for the Kshirsagar Family Farm<br>Data is safely stored on GitHub — accessible from any device.</div>
+        <button class="btn-outline" style="color:var(--text2)" onclick="lockApp()">🔒 Lock App · अॅप लॉक करा</button>
+        <div class="info-box">🌾 Built with love for the Kshirsagar Family Farm<br>Data safely stored on GitHub — accessible from any device.</div>
       </div>
 
     </div>
@@ -466,16 +489,16 @@ const CROP_ICONS={"Sugarcane / ऊस":"🎋","Cotton / कापूस":"🌸",
 const CROPS_LIST=Object.keys(CROP_ICONS);
 
 const PERSONS=[
-  {name:"भाऊ",        color:"#E65100",bg:"#FFF3E0"},
-  {name:"श्याम",      color:"#1565C0",bg:"#E3F2FD"},
-  {name:"कैलास",      color:"#2D7A18",bg:"#E8F5E9"},
-  {name:"बाळू",       color:"#6B3FA0",bg:"#F3E5F5"},
-  {name:"गणेश",       color:"#B71C1C",bg:"#FFEBEE"},
+  {name:"भाऊ",         color:"#E65100",bg:"#FFF3E0"},
+  {name:"श्याम",       color:"#1565C0",bg:"#E3F2FD"},
+  {name:"कैलास",       color:"#2D7A18",bg:"#E8F5E9"},
+  {name:"बाळू",        color:"#6B3FA0",bg:"#F3E5F5"},
+  {name:"गणेश",        color:"#B71C1C",bg:"#FFEBEE"},
   {name:"भावड्या दादा",color:"#00695C",bg:"#E0F2F1"}
 ];
 const PM=Object.fromEntries(PERSONS.map(p=>[p.name,p]));
 
-let token="",ghSha=null,records=[],settings={pin:"",budget:""},curType="expense",selCat="seeds",pinEntered="";
+let token="",ghSha=null,records=[],settings={adminPin:"",viewerPin:"",budget:""},curType="expense",selCat="seeds",pinEntered="",currentRole="",curTab=0;
 
 const fa=n=>Number(n).toLocaleString("en-IN");
 const td=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;};
@@ -487,6 +510,7 @@ const showLoad=t=>{$("load-txt").textContent=t||"Syncing…";$("loading").classL
 const hideLoad=()=>$("loading").classList.remove("show");
 const setSyncBadge=(ok,t)=>{const b=$("sync-badge");b.textContent=t;b.className="badge-sync"+(ok?"":" err");};
 
+// ── GITHUB ────────────────────────────────────────────────
 async function ghLoad(){
   const r=await fetch(GH_API,{headers:{"Authorization":`token ${token}`,"Accept":"application/vnd.github.v3+json"}});
   if(r.status===404){ghSha=null;return null;}
@@ -501,21 +525,27 @@ async function ghSave(data){
   ghSha=(await r.json()).content.sha;
 }
 
+// ── INIT ─────────────────────────────────────────────────
 async function init(){
   token=localStorage.getItem("fl-gh-token")||"";
   if(!token){$("setup-screen").classList.add("show");return;}
   showLoad("Loading from GitHub…");
   try{
     const data=await ghLoad();
-    if(data){records=data.records||[];settings=data.settings||{pin:"",budget:""};}
+    if(data){records=data.records||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
+    // migrate old settings that used single 'pin' field
+    if(data&&data.settings&&data.settings.pin&&!data.settings.adminPin){settings.adminPin=data.settings.pin;settings.viewerPin="";}
     localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    hideLoad();settings.pin?showPin():showMain();
+    hideLoad();
+    const hasPins=settings.adminPin||settings.viewerPin;
+    hasPins?showPin():loginAs("admin");
   }catch(e){
     hideLoad();
     const c=localStorage.getItem("fl-cache");
-    if(c){const d=JSON.parse(c);records=d.records||[];settings=d.settings||{pin:"",budget:""};}
+    if(c){const d=JSON.parse(c);records=d.records||[];settings=d.settings||{adminPin:"",viewerPin:"",budget:""};}
     setSyncBadge(false,"✗ Offline");
-    settings.pin?showPin():showMain();
+    const hasPins=settings.adminPin||settings.viewerPin;
+    hasPins?showPin():loginAs("admin");
     alert("Could not reach GitHub. Using cached data.\n"+e.message);
   }
 }
@@ -528,26 +558,27 @@ async function setupDone(){
   showLoad("Connecting to GitHub…");
   try{
     const data=await ghLoad();
-    if(data){records=data.records||[];settings=data.settings||{pin:"",budget:""};}
+    if(data){records=data.records||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
     localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    hideLoad();settings.pin?showPin():showMain();
+    hideLoad();
+    const hasPins=settings.adminPin||settings.viewerPin;
+    hasPins?showPin():loginAs("admin");
   }catch(e){hideLoad();alert("Connection failed. Check your token.\n"+e.message);}
 }
 
+// ── PIN ───────────────────────────────────────────────────
 const showPin=()=>$("pin-screen").classList.add("show");
-function showMain(){
-  $("main-app").classList.add("show");
-  $("form-date").value=td();
-  $("set-pin").value=settings.pin||"";
-  $("set-budget").value=settings.budget||"";
-  setType("expense");populateFilters();checkBudget();
-}
 
 function pinPress(d){
   pinEntered+=d;updateDots();
   if(pinEntered.length===4){
-    if(pinEntered===settings.pin){$("pin-screen").classList.remove("show");pinEntered="";showMain();}
-    else{
+    const aPin=settings.adminPin||"";
+    const vPin=settings.viewerPin||"";
+    if(aPin&&pinEntered===aPin){
+      $("pin-screen").classList.remove("show");pinEntered="";loginAs("admin");
+    }else if(vPin&&pinEntered===vPin){
+      $("pin-screen").classList.remove("show");pinEntered="";loginAs("viewer");
+    }else{
       $("pin-err").style.display="block";
       document.querySelectorAll(".pin-dot").forEach(x=>x.classList.add("error"));
       setTimeout(()=>{pinEntered="";$("pin-err").style.display="none";document.querySelectorAll(".pin-dot").forEach(x=>x.classList.remove("error","filled"));},900);
@@ -557,13 +588,78 @@ function pinPress(d){
 function pinBack(){pinEntered=pinEntered.slice(0,-1);updateDots();}
 function updateDots(){for(let i=0;i<4;i++){const d=$("pd"+i);d.classList.toggle("filled",i<pinEntered.length);d.classList.remove("error");}}
 
+// ── ROLE-BASED ACCESS ─────────────────────────────────────
+function loginAs(role){
+  currentRole=role;
+  $("main-app").classList.add("show");
+  $("form-date").value=td();
+  $("set-admin-pin").value=settings.adminPin||"";
+  $("set-viewer-pin").value=settings.viewerPin||"";
+  $("set-budget").value=settings.budget||"";
+
+  const isAdmin=role==="admin";
+
+  // Role badge in header
+  const rb=$("role-badge");
+  if(isAdmin){rb.textContent="👑 Admin";rb.className="role-badge role-admin";}
+  else{rb.textContent="👁 Viewer";rb.className="role-badge role-viewer";}
+
+  // Show/hide tabs — Add tab visible for all, Settings only for Admin
+  $("tab-btn-0").classList.remove("hidden"); // Add — always visible
+  $("tab-btn-3").classList.toggle("hidden",!isAdmin); // Settings — Admin only
+
+  // Save button — hidden for viewers, replaced with notice
+  const saveBtn=$("save-btn");
+  const existingNotice=$("add-viewer-notice");
+  if(!isAdmin){
+    saveBtn.style.display="none";
+    if(!existingNotice){
+      const n=document.createElement("div");
+      n.id="add-viewer-notice";
+      n.className="viewer-notice";
+      n.style.marginTop="8px";
+      n.innerHTML=`<div class="viewer-notice-icon">👁</div><div class="viewer-notice-text">You have <strong>View Only</strong> access.<br>Contact Admin to add or edit entries.</div>`;
+      saveBtn.parentNode.insertBefore(n,saveBtn.nextSibling);
+    }
+  }else{
+    saveBtn.style.display="";
+    if(existingNotice)existingNotice.remove();
+  }
+
+  // Viewer notices on Records and Report tabs
+  const notice=`<div class="viewer-notice"><div class="viewer-notice-icon">👁</div><div class="viewer-notice-text">You have <strong>View Only</strong> access · Contact Admin to add entries.</div></div>`;
+  $("viewer-notice-records").innerHTML=isAdmin?"":notice;
+  $("viewer-notice-report").innerHTML=isAdmin?"":notice;
+
+  // Start on Add tab for everyone
+  const startTab=0;
+  setType("expense");
+  switchTab(startTab);
+  populateFilters();
+  checkBudget();
+}
+
+function lockApp(){
+  if(!confirm("Lock the app? You will need to enter PIN again."))return;
+  $("main-app").classList.remove("show");
+  currentRole="";pinEntered="";
+  updateDots();
+  const hasPins=settings.adminPin||settings.viewerPin;
+  if(hasPins){showPin();}
+}
+
+// ── TABS ─────────────────────────────────────────────────
 function switchTab(idx){
+  // Viewers cannot go to Settings tab only
+  if(currentRole==="viewer"&&idx===3)return;
+  curTab=idx;
   $("slider").style.transform=`translateX(-${idx*100}%)`;
   document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("active",i===idx));
   if(idx===1)renderRecords();
   if(idx===2)renderReport();
 }
 
+// ── TYPE TOGGLE ───────────────────────────────────────────
 function setType(type){
   curType=type;selCat=(type==="expense"?EC:IC)[0].id;
   $("btn-exp").className="type-btn exp"+(type==="expense"?" on":"");
@@ -575,7 +671,6 @@ function setType(type){
   $("paid-by-field").style.display=type==="expense"?"block":"none";
   renderCatGrid();
 }
-
 function renderCatGrid(){
   $("cat-grid").innerHTML=(curType==="expense"?EC:IC).map(c=>`
     <button class="cat-btn${selCat===c.id?" sel":""}" onclick="selCatFn('${c.id}')"
@@ -587,50 +682,36 @@ function renderCatGrid(){
 }
 function selCatFn(id){selCat=id;renderCatGrid();}
 
+// ── SAVE ─────────────────────────────────────────────────
 function handleSave(e){
-  const btn=$("save-btn");
-  const rect=btn.getBoundingClientRect();
-  const rip=document.createElement("span");
-  rip.className="ripple";
+  const btn=$("save-btn");const rect=btn.getBoundingClientRect();
+  const rip=document.createElement("span");rip.className="ripple";
   const size=Math.max(rect.width,rect.height)*2;
   rip.style.cssText=`width:${size}px;height:${size}px;left:${(e.clientX-rect.left)-size/2}px;top:${(e.clientY-rect.top)-size/2}px`;
-  btn.appendChild(rip);
-  setTimeout(()=>rip.remove(),700);
+  btn.appendChild(rip);setTimeout(()=>rip.remove(),700);
   saveRecord();
 }
-
 async function saveRecord(){
   const amt=parseFloat($("form-amount").value);
   if(!amt||isNaN(amt)){alert("Please enter an amount · रक्कम टाका");return;}
-  const rec={
-    id:Date.now(),type:curType,
-    date:$("form-date").value,
-    amount:amt,category:selCat,
-    crop:$("form-crop").value||"",
-    paidBy:curType==="expense"?($("form-paidby").value||""):"",
-    note:$("form-note").value.trim()
-  };
+  const rec={id:Date.now(),type:curType,date:$("form-date").value,amount:amt,category:selCat,crop:$("form-crop").value||"",paidBy:curType==="expense"?($("form-paidby").value||""):"",note:$("form-note").value.trim()};
   records.unshift(rec);
-  $("form-amount").value="";$("form-note").value="";
-  $("form-crop").value="";$("form-paidby").value="";
+  $("form-amount").value="";$("form-note").value="";$("form-crop").value="";$("form-paidby").value="";
   populateFilters();checkBudget();
-  const btn=$("save-btn");
-  btn.innerHTML="☁️ &nbsp;Saving to GitHub…";btn.disabled=true;
+  const btn=$("save-btn");btn.innerHTML="☁️ &nbsp;Saving to GitHub…";btn.disabled=true;
   try{
-    await ghSave({records,settings});
-    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    setSyncBadge(true,"✓ Synced");
-    btn.innerHTML="✅ &nbsp;Saved to GitHub!";
+    await ghSave({records,settings});localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    setSyncBadge(true,"✓ Synced");btn.innerHTML="✅ &nbsp;Saved to GitHub!";
     setTimeout(()=>{btn.disabled=false;setType(curType);},2000);
   }catch{
-    setSyncBadge(false,"✗ Offline");
-    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    setSyncBadge(false,"✗ Offline");localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
     btn.innerHTML="💾 &nbsp;Saved locally";btn.disabled=false;
     setTimeout(()=>setType(curType),2500);
   }
 }
 
 async function delRec(id){
+  if(currentRole!=="admin"){alert("Only Admin can delete records.");return;}
   if(!confirm("Delete this record? · ही नोंद मिटवायची का?"))return;
   records=records.filter(r=>r.id!==id);renderRecords();
   showLoad("Updating GitHub…");
@@ -639,6 +720,7 @@ async function delRec(id){
   hideLoad();
 }
 
+// ── FILTERS ───────────────────────────────────────────────
 function populateFilters(){
   const months=[...new Set(records.map(r=>r.date?.slice(0,7)).filter(Boolean))].sort().reverse();
   ["rec-mf","rep-mf"].forEach(id=>{
@@ -654,6 +736,7 @@ function checkBudget(){
   $("budget-badge").style.display=(budget>0&&ce>=budget*0.8)?"flex":"none";
 }
 
+// ── RECORDS ───────────────────────────────────────────────
 function renderRecords(){
   const mf=$("rec-mf").value,tf=$("rec-tf").value,cf=$("rec-cf").value;
   const filt=records.filter(r=>(mf==="all"||r.date?.startsWith(mf))&&(tf==="all"||r.type===tf)&&(cf==="all"||r.crop===cf));
@@ -663,8 +746,9 @@ function renderRecords(){
     <div class="sum-card sc-green"><div class="sum-lbl">Jama · जमा</div><div class="sum-val">₹${fa(totI)}</div></div>
     <div class="sum-card sc-red"><div class="sum-lbl">Kharch · खर्च</div><div class="sum-val">₹${fa(totE)}</div></div>`;
   if(!filt.length){
-    $("records-list").innerHTML=`<div class="empty-state"><div class="empty-illo">📋</div><div class="empty-title">No records found</div><div class="empty-sub">Change your filters or add a new entry from the Add tab.</div></div>`;return;
+    $("records-list").innerHTML=`<div class="empty-state"><div class="empty-illo">📋</div><div class="empty-title">No records found</div><div class="empty-sub">Change your filters or add a new entry.</div></div>`;return;
   }
+  const isAdmin=currentRole==="admin";
   $("records-list").innerHTML=filt.map(r=>{
     const cat=CM[r.category]||EC[5];const isI=r.type==="income";
     const cropIcon=r.crop?(CROP_ICONS[r.crop]||"🌱"):"";
@@ -682,23 +766,22 @@ function renderRecords(){
       </div>
       <div class="rec-right">
         <div class="rec-amt ${isI?"amt-inc":"amt-exp"}">${isI?"+":"−"}₹${fa(r.amount)}</div>
-        <button class="del-btn" onclick="delRec(${r.id})">🗑 delete</button>
+        ${isAdmin?`<button class="del-btn" onclick="delRec(${r.id})">🗑 delete</button>`:""}
       </div>
     </div>`;
   }).join("");
 }
 
+// ── REPORT ───────────────────────────────────────────────
 function renderReport(){
   const mf=$("rep-mf").value;
   const repR=mf==="all"?records:records.filter(r=>r.date?.startsWith(mf));
   const totI=repR.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
   const totE=repR.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
   const net=totI-totE;
-
   $("rep-cards").innerHTML=`
     <div class="sum-card sc-green"><div class="sum-lbl">Total Income · जमा</div><div class="sum-val">₹${fa(totI)}</div></div>
     <div class="sum-card sc-red"><div class="sum-lbl">Total Expense · खर्च</div><div class="sum-val">₹${fa(totE)}</div></div>`;
-
   $("rep-net").innerHTML=`
     <div class="net-card ${net>=0?"net-profit":"net-loss"}">
       <div>
@@ -708,52 +791,25 @@ function renderReport(){
       </div>
       <div style="font-size:44px">${net>=0?"✅":"❌"}</div>
     </div>`;
-
   const budget=parseFloat(settings.budget)||0;
   if(budget>0){
     const now=new Date();const cm=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
     const ce=records.filter(r=>r.type==="expense"&&r.date?.startsWith(cm)).reduce((s,r)=>s+r.amount,0);
     const pct=Math.min((ce/budget)*100,100);const bc=pct>90?"#E53935":pct>75?"#FFA726":"#4CAF50";
-    $("rep-budget").innerHTML=`<div class="budget-box">
-      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-        <span style="font-size:12px;font-weight:700;color:var(--a1)">💰 Monthly Budget (this month)</span>
-        <span style="font-size:12px;font-weight:800;color:var(--a1)">₹${fa(ce)} / ₹${fa(budget)}</span>
-      </div>
-      <div class="bar-track"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${bc}"></div></div>
-      ${pct>=80?`<div style="font-size:11px;color:var(--a1);margin-top:7px;font-weight:700">⚠️ Nearing your monthly budget!</div>`:""}
-    </div>`;
+    $("rep-budget").innerHTML=`<div class="budget-box"><div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:12px;font-weight:700;color:var(--a1)">💰 Monthly Budget (this month)</span><span style="font-size:12px;font-weight:800;color:var(--a1)">₹${fa(ce)} / ₹${fa(budget)}</span></div><div class="bar-track"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${bc}"></div></div>${pct>=80?`<div style="font-size:11px;color:var(--a1);margin-top:7px;font-weight:700">⚠️ Nearing your monthly budget!</div>`:""}</div>`;
   }else{$("rep-budget").innerHTML="";}
-
-  // Crop breakdown
   const cropsUsed=CROPS_LIST.filter(c=>repR.some(r=>r.crop===c));
   if(cropsUsed.length){
     let h=`<div style="margin-bottom:20px"><div class="sec-hd">🌱 Crop Wise · पिकानुसार</div>`;
     cropsUsed.forEach(crop=>{
-      const em=CROP_ICONS[crop]||"🌱";
-      const label=crop.split("/")[1]?.trim()||crop;
+      const em=CROP_ICONS[crop]||"🌱";const label=crop.split("/")[1]?.trim()||crop;
       const cI=repR.filter(r=>r.type==="income"&&r.crop===crop).reduce((s,r)=>s+r.amount,0);
       const cE=repR.filter(r=>r.type==="expense"&&r.crop===crop).reduce((s,r)=>s+r.amount,0);
       const cNet=cI-cE;
-      h+=`<div class="crop-card">
-        <div class="crop-card-l">
-          <span class="crop-em-rep">${em}</span>
-          <div>
-            <div class="crop-name-rep">${label}</div>
-            <div class="crop-detail-rep">जमा ₹${fa(cI)} &nbsp;|&nbsp; खर्च ₹${fa(cE)}</div>
-          </div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:16px;font-weight:800;color:${cNet>=0?"var(--g1)":"var(--r1)"}">${cNet>=0?"+":"−"}₹${fa(Math.abs(cNet))}</div>
-          <div style="font-size:10px;font-weight:700;color:${cNet>=0?"var(--g3)":"var(--r3)"}">${cNet>=0?"Profit":"Loss"}</div>
-        </div>
-      </div>`;
+      h+=`<div class="crop-card"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:22px">${em}</span><div><div style="font-size:13px;font-weight:700;color:var(--text)">${label}</div><div style="font-size:11px;color:var(--text3);margin-top:2px">जमा ₹${fa(cI)} | खर्च ₹${fa(cE)}</div></div></div><div style="text-align:right"><div style="font-size:16px;font-weight:800;color:${cNet>=0?"var(--g1)":"var(--r1)"}">${cNet>=0?"+":"−"}₹${fa(Math.abs(cNet))}</div><div style="font-size:10px;font-weight:700;color:${cNet>=0?"var(--g3)":"var(--r3)"}">${cNet>=0?"Profit":"Loss"}</div></div></div>`;
     });
     $("rep-crop").innerHTML=h+"</div>";
-  }else{
-    $("rep-crop").innerHTML=`<div class="empty-state" style="padding:2rem 1rem"><div class="empty-illo" style="font-size:40px">🌱</div><div class="empty-title">No crop data yet</div><div class="empty-sub">Select a crop when adding records to see breakdown here.</div></div>`;
-  }
-
-  // Person breakdown
+  }else{$("rep-crop").innerHTML=`<div class="empty-state" style="padding:2rem 1rem"><div class="empty-illo" style="font-size:40px">🌱</div><div class="empty-title">No crop data yet</div><div class="empty-sub">Select a crop when adding records to see breakdown here.</div></div>`;}
   const personsUsed=PERSONS.filter(p=>repR.some(r=>r.paidBy===p.name));
   if(personsUsed.length){
     const totalPaid=personsUsed.reduce((s,p)=>s+repR.filter(r=>r.paidBy===p.name).reduce((s2,r)=>s2+r.amount,0),0);
@@ -761,40 +817,19 @@ function renderReport(){
     personsUsed.forEach(p=>{
       const t=repR.filter(r=>r.paidBy===p.name).reduce((s,r)=>s+r.amount,0);
       const pct=totalPaid>0?(t/totalPaid*100):0;
-      h+=`<div class="person-card">
-        <div style="display:flex;align-items:center;gap:11px">
-          <div class="avatar-sm" style="background:${p.color}">${p.name[0]}</div>
-          <div>
-            <div style="font-size:13px;font-weight:700;color:var(--text)">${p.name}</div>
-            <div class="bar-track" style="width:90px;margin-top:5px"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${p.color}"></div></div>
-          </div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:16px;font-weight:800;color:${p.color}">₹${fa(t)}</div>
-          <div style="font-size:10px;color:var(--text3)">${pct.toFixed(0)}% of total</div>
-        </div>
-      </div>`;
+      h+=`<div class="person-card"><div style="display:flex;align-items:center;gap:11px"><div class="avatar-sm" style="background:${p.color}">${p.name[0]}</div><div><div style="font-size:13px;font-weight:700;color:var(--text)">${p.name}</div><div class="bar-track" style="width:90px;margin-top:5px"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${p.color}"></div></div></div></div><div style="text-align:right"><div style="font-size:16px;font-weight:800;color:${p.color}">₹${fa(t)}</div><div style="font-size:10px;color:var(--text3)">${pct.toFixed(0)}% of total</div></div></div>`;
     });
     $("rep-person").innerHTML=h+"</div>";
   }else{$("rep-person").innerHTML="";}
-
   let iH="";
-  if(totI>0){
-    iH=`<div style="margin-bottom:20px"><div class="sec-hd" style="color:var(--g1)">📈 Income by Category</div>`;
-    IC.forEach(c=>{const t=repR.filter(r=>r.type==="income"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);if(!t)return;
-      iH+=`<div class="bar-row"><div class="bar-hd"><div class="bar-label">${c.icon} ${c.l} <span style="font-size:11px;color:var(--text3)">(${c.m})</span></div><div class="bar-val" style="color:var(--g1)">₹${fa(t)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totI*100).toFixed(1)}%;background:var(--g3)"></div></div><div class="bar-pct">${(t/totI*100).toFixed(0)}% of income</div></div>`;
-    });iH+="</div>";
-  }$("rep-inc").innerHTML=iH;
-
+  if(totI>0){iH=`<div style="margin-bottom:20px"><div class="sec-hd" style="color:var(--g1)">📈 Income by Category</div>`;IC.forEach(c=>{const t=repR.filter(r=>r.type==="income"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);if(!t)return;iH+=`<div class="bar-row"><div class="bar-hd"><div class="bar-label">${c.icon} ${c.l} <span style="font-size:11px;color:var(--text3)">(${c.m})</span></div><div class="bar-val" style="color:var(--g1)">₹${fa(t)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totI*100).toFixed(1)}%;background:var(--g3)"></div></div><div class="bar-pct">${(t/totI*100).toFixed(0)}% of income</div></div>`;});iH+="</div>";}
+  $("rep-inc").innerHTML=iH;
   let eH="";
-  if(totE>0){
-    eH=`<div style="margin-bottom:20px"><div class="sec-hd" style="color:var(--r1)">📉 Expense by Category</div>`;
-    EC.forEach(c=>{const t=repR.filter(r=>r.type==="expense"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);if(!t)return;
-      eH+=`<div class="bar-row"><div class="bar-hd"><div class="bar-label">${c.icon} ${c.l} <span style="font-size:11px;color:var(--text3)">(${c.m})</span></div><div class="bar-val" style="color:var(--r2)">₹${fa(t)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totE*100).toFixed(1)}%;background:var(--r3)"></div></div><div class="bar-pct">${(t/totE*100).toFixed(0)}% of expense</div></div>`;
-    });eH+="</div>";
-  }$("rep-exp").innerHTML=eH;
+  if(totE>0){eH=`<div style="margin-bottom:20px"><div class="sec-hd" style="color:var(--r1)">📉 Expense by Category</div>`;EC.forEach(c=>{const t=repR.filter(r=>r.type==="expense"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);if(!t)return;eH+=`<div class="bar-row"><div class="bar-hd"><div class="bar-label">${c.icon} ${c.l} <span style="font-size:11px;color:var(--text3)">(${c.m})</span></div><div class="bar-val" style="color:var(--r2)">₹${fa(t)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totE*100).toFixed(1)}%;background:var(--r3)"></div></div><div class="bar-pct">${(t/totE*100).toFixed(0)}% of expense</div></div>`;});eH+="</div>";}
+  $("rep-exp").innerHTML=eH;
 }
 
+// ── SHARE ─────────────────────────────────────────────────
 function shareReport(){
   const mf=$("rep-mf").value;
   const repR=mf==="all"?records:records.filter(r=>r.date?.startsWith(mf));
@@ -802,45 +837,33 @@ function shareReport(){
   const totE=repR.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
   const net=totI-totE;
   const lb=mf==="all"?"All Time":`${MONTHS[parseInt(mf.split("-")[1])-1]} ${mf.split("-")[0]}`;
-  const cropLines=CROPS_LIST.map(c=>{
-    const cI=repR.filter(r=>r.type==="income"&&r.crop===c).reduce((s,r)=>s+r.amount,0);
-    const cE=repR.filter(r=>r.type==="expense"&&r.crop===c).reduce((s,r)=>s+r.amount,0);
-    if(!cI&&!cE)return null;
-    const label=c.split("/")[1]?.trim()||c;
-    return `  ${CROP_ICONS[c]} ${label}: जमा ₹${fa(cI)} | खर्च ₹${fa(cE)} | ${cI-cE>=0?"नफा":"नुकसान"} ₹${fa(Math.abs(cI-cE))}`;
-  }).filter(Boolean).join("\n");
+  const cropLines=CROPS_LIST.map(c=>{const cI=repR.filter(r=>r.type==="income"&&r.crop===c).reduce((s,r)=>s+r.amount,0);const cE=repR.filter(r=>r.type==="expense"&&r.crop===c).reduce((s,r)=>s+r.amount,0);if(!cI&&!cE)return null;const label=c.split("/")[1]?.trim()||c;return `  ${CROP_ICONS[c]} ${label}: जमा ₹${fa(cI)} | खर्च ₹${fa(cE)} | ${cI-cE>=0?"नफा":"नुकसान"} ₹${fa(Math.abs(cI-cE))}`;}).filter(Boolean).join("\n");
   const personLines=PERSONS.map(p=>{const t=repR.filter(r=>r.paidBy===p.name).reduce((s,r)=>s+r.amount,0);return t>0?`  ${p.name}: ₹${fa(t)}`:null;}).filter(Boolean).join("\n");
   const text=`🌾 Kshirsagar Farms — ${lb}\n================================\nINCOME  (जमा):    ₹${fa(totI)}\nEXPENSE (खर्च):   ₹${fa(totE)}\nNET     (शिल्लक): ₹${fa(Math.abs(net))} ${net>=0?"PROFIT ✅":"LOSS ❌"}\n================================\n${cropLines?"🌱 CROP WISE:\n"+cropLines+"\n\n":""}${personLines?"👤 PAID BY:\n"+personLines+"\n\n":""}================================\n🌾 Kshirsagar Farms Ledger`;
   const btn=$("share-btn");
   if(navigator.share)navigator.share({text}).catch(()=>copyText(text,btn));
   else copyText(text,btn);
 }
-function copyText(t,btn){
-  navigator.clipboard.writeText(t).then(()=>{btn.innerHTML="✓ &nbsp;Copied! Paste in WhatsApp";setTimeout(()=>{btn.innerHTML="📤 &nbsp;Share Report · अहवाल शेअर करा";},2500);}).catch(()=>alert(t));
-}
+function copyText(t,btn){navigator.clipboard.writeText(t).then(()=>{btn.innerHTML="✓ &nbsp;Copied! Paste in WhatsApp";setTimeout(()=>{btn.innerHTML="📤 &nbsp;Share Report · अहवाल शेअर करा";},2500);}).catch(()=>alert(t));}
 
+// ── SETTINGS ──────────────────────────────────────────────
 async function saveSettings(){
-  settings.pin=$("set-pin").value.replace(/\D/g,"").slice(0,4);
+  settings.adminPin=$("set-admin-pin").value.replace(/\D/g,"").slice(0,4);
+  settings.viewerPin=$("set-viewer-pin").value.replace(/\D/g,"").slice(0,4);
   settings.budget=$("set-budget").value;
-  const btn=$("save-set-btn");
-  btn.textContent="Saving to GitHub… ☁️";btn.disabled=true;
+  const btn=$("save-set-btn");btn.textContent="Saving to GitHub… ☁️";btn.disabled=true;
   try{
-    await ghSave({records,settings});
-    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    setSyncBadge(true,"✓ Synced");
-    btn.textContent="✅ Settings Saved!";
+    await ghSave({records,settings});localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    setSyncBadge(true,"✓ Synced");btn.textContent="✅ Settings Saved!";
     setTimeout(()=>{btn.textContent="Save Settings · सेटिंग जतन करा";btn.disabled=false;},2000);
     checkBudget();
-  }catch{
-    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    btn.textContent="Saved locally";btn.disabled=false;
-  }
+  }catch{localStorage.setItem("fl-cache",JSON.stringify({records,settings}));btn.textContent="Saved locally";btn.disabled=false;}
 }
 async function refreshFromGitHub(){
   showLoad("Refreshing from GitHub…");
   try{
     const data=await ghLoad();
-    if(data){records=data.records||[];settings=data.settings||{pin:"",budget:""};}
+    if(data){records=data.records||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
     localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
     populateFilters();checkBudget();setSyncBadge(true,"✓ Synced");hideLoad();alert("✅ Refreshed from GitHub!");
   }catch(e){hideLoad();alert("Failed: "+e.message);}
