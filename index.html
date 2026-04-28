@@ -8,426 +8,477 @@
 <title>Kshirsagar Farms</title>
 <style>
 :root{
-  --green-dark:#2D5A1B;
-  --green-mid:#3D7A25;
-  --green-light:#EAF3DE;
-  --green-accent:#5A9E35;
-  --red-dark:#7A2218;
-  --red-mid:#993C1D;
-  --red-light:#FAECE7;
-  --blue:#185FA5;
-  --blue-light:#E6F1FB;
-  --purple:#6B5FBF;
-  --purple-light:#EEEDFE;
-  --brown:#854F0B;
-  --brown-light:#FAEEDA;
-  --gold:#B8860B;
-  --gold-light:#FFF8E1;
-  --border:#E8E3DC;
-  --bg:#F7F4EF;
-  --card:#FFFFFF;
-  --text:#1A1A1A;
-  --text-mid:#555;
-  --text-light:#999;
-  --radius:12px;
-  --shadow:0 2px 12px rgba(0,0,0,0.07);
+  --g1:#1B4D0F; --g2:#2D7A18; --g3:#4CAF50; --g4:#81C784; --g5:#E8F5E9;
+  --r1:#B71C1C; --r2:#C62828; --r3:#E53935; --r4:#EF9A9A; --r5:#FFEBEE;
+  --b1:#0D47A1; --b2:#1565C0; --b3:#1E88E5; --b4:#90CAF9; --b5:#E3F2FD;
+  --a1:#E65100; --a2:#F57C00; --a3:#FFA726; --a5:#FFF3E0;
+  --p1:#4A148C; --p2:#7B1FA2; --p3:#AB47BC; --p5:#F3E5F5;
+  --text:#1A1A2E; --text2:#4A4A6A; --text3:#8A8AAA;
+  --border:#E8EAF0; --bg:#F4F6FB; --card:#FFFFFF;
+  --shadow-sm:0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md:0 4px 20px rgba(0,0,0,0.10);
+  --shadow-lg:0 8px 32px rgba(0,0,0,0.14);
+  --radius:16px; --radius-sm:10px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);min-height:100vh;display:flex;justify-content:center;}
-#app{width:100%;max-width:430px;background:var(--card);min-height:100vh;display:flex;flex-direction:column;position:relative;}
+#app{width:100%;max-width:430px;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;}
 
-/* ── SETUP ── */
-.setup-screen{display:none;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem 1.75rem;text-align:center;flex:1;min-height:100vh;background:linear-gradient(160deg,#F0F7E8 0%,#FFF8F0 100%);}
+/* ── SETUP ─────────────────────────────────── */
+.setup-screen{display:none;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem 1.75rem;text-align:center;flex:1;min-height:100vh;background:linear-gradient(160deg,#E8F5E9 0%,#F4F6FB 60%,#E3F2FD 100%);}
 .setup-screen.show{display:flex;}
-.setup-logo{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,var(--green-mid),var(--green-dark));display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 16px;box-shadow:0 8px 24px rgba(45,90,27,0.3);}
-.setup-title{font-size:22px;font-weight:700;color:var(--green-dark);margin-bottom:4px;}
-.setup-sub{font-size:13px;color:var(--text-mid);margin-bottom:28px;line-height:1.6;}
-.setup-card{background:#fff;border-radius:var(--radius);padding:20px;width:100%;box-shadow:var(--shadow);margin-bottom:16px;}
-.setup-field label{display:block;font-size:11px;font-weight:600;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
-.setup-field input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-family:inherit;outline:none;background:#FAFAF8;}
-.setup-field input:focus{border-color:var(--green-mid);background:#fff;}
-.setup-note{font-size:11px;color:var(--text-light);line-height:1.6;background:#F0F7E8;padding:10px 12px;border-radius:8px;text-align:left;width:100%;border-left:3px solid var(--green-accent);}
+.setup-logo{width:80px;height:80px;border-radius:24px;background:linear-gradient(135deg,var(--g3),var(--g1));display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 20px;box-shadow:0 12px 32px rgba(45,122,24,0.35);}
+.setup-title{font-size:24px;font-weight:800;color:var(--g1);margin-bottom:4px;letter-spacing:-0.3px;}
+.setup-sub{font-size:13px;color:var(--text2);margin-bottom:32px;line-height:1.7;}
+.setup-card{background:#fff;border-radius:var(--radius);padding:22px;width:100%;box-shadow:var(--shadow-md);margin-bottom:16px;}
+.field-label{display:block;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:7px;}
+.field-input{width:100%;padding:13px 15px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;outline:none;background:#FAFBFF;color:var(--text);transition:all 0.2s;}
+.field-input:focus{border-color:var(--g3);background:#fff;box-shadow:0 0 0 4px rgba(76,175,80,0.12);}
+.setup-note{font-size:11px;color:var(--text2);line-height:1.7;background:#E8F5E9;padding:12px 14px;border-radius:var(--radius-sm);text-align:left;width:100%;border-left:3px solid var(--g3);}
 
-/* ── PIN ── */
-.pin-screen{display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;flex:1;min-height:100vh;background:linear-gradient(160deg,#F0F7E8 0%,#FFF8F0 100%);}
+/* ── PIN ─────────────────────────────────── */
+.pin-screen{display:none;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;flex:1;min-height:100vh;background:linear-gradient(160deg,#E8F5E9 0%,#F4F6FB 60%,#E3F2FD 100%);}
 .pin-screen.show{display:flex;}
-.pin-icon{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--green-mid),var(--green-dark));display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;box-shadow:0 6px 20px rgba(45,90,27,0.25);}
-.pin-dots{display:flex;justify-content:center;gap:16px;margin:24px 0 32px;}
-.pin-dot{width:14px;height:14px;border-radius:50%;background:var(--border);transition:all 0.15s;}
-.pin-dot.filled{background:var(--green-mid);transform:scale(1.1);}
-.pin-dot.error{background:#E24B4A;}
-.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:260px;}
-.pin-btn{padding:18px;border-radius:12px;border:1.5px solid var(--border);background:#fff;font-size:22px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--text);transition:all 0.1s;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
-.pin-btn:active{background:var(--green-light);border-color:var(--green-mid);}
+.pin-logo{width:70px;height:70px;border-radius:22px;background:linear-gradient(135deg,var(--g3),var(--g1));display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 16px;box-shadow:0 10px 28px rgba(45,122,24,0.3);}
+.pin-dots{display:flex;justify-content:center;gap:18px;margin:24px 0 34px;}
+.pin-dot{width:15px;height:15px;border-radius:50%;background:var(--border);transition:all 0.2s;}
+.pin-dot.filled{background:var(--g2);transform:scale(1.15);box-shadow:0 2px 8px rgba(45,122,24,0.4);}
+.pin-dot.error{background:var(--r3);}
+.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:270px;}
+.pin-btn{padding:18px;border-radius:14px;border:none;background:#fff;font-size:22px;font-weight:700;cursor:pointer;font-family:inherit;color:var(--text);box-shadow:var(--shadow-sm);transition:all 0.15s;}
+.pin-btn:active{transform:scale(0.93);background:var(--g5);color:var(--g1);}
 
-/* ── LOADING ── */
-.loading-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.92);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:16px;backdrop-filter:blur(4px);}
+/* ── LOADING ─────────────────────────────── */
+.loading-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(244,246,251,0.92);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:16px;backdrop-filter:blur(6px);}
 .loading-overlay.show{display:flex;}
-.spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--green-mid);border-radius:50%;animation:spin 0.7s linear infinite;}
+.spinner{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--g3);border-radius:50%;animation:spin 0.75s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.loading-text{font-size:13px;color:var(--text-mid);font-weight:500;}
+.load-txt{font-size:13px;color:var(--text2);font-weight:600;}
 
-/* ── HEADER ── */
+/* ── HEADER ──────────────────────────────── */
 .main-app{display:none;flex-direction:column;flex:1;}
 .main-app.show{display:flex;}
-.header{padding:0;border-bottom:1px solid var(--border);background:#fff;flex-shrink:0;overflow:hidden;}
-.header-top{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green-mid) 100%);padding:16px 16px 14px;display:flex;align-items:center;justify-content:space-between;}
-.header-brand{display:flex;align-items:center;gap:11px;}
-.header-logo{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;}
-.header-title{font-weight:700;font-size:17px;color:#fff;letter-spacing:0.2px;}
-.header-sub{font-size:11px;color:rgba(255,255,255,0.75);margin-top:1px;}
-.header-badges{display:flex;align-items:center;gap:6px;}
-.budget-badge{background:rgba(255,200,100,0.25);border:1px solid rgba(255,200,100,0.4);border-radius:6px;padding:3px 8px;font-size:11px;color:#FFE08A;font-weight:600;}
-.sync-badge{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);border-radius:6px;padding:3px 8px;font-size:11px;color:rgba(255,255,255,0.9);font-weight:500;}
-.sync-badge.err{background:rgba(220,80,80,0.25);border-color:rgba(220,80,80,0.4);color:#FFB3B3;}
+.header{background:#fff;flex-shrink:0;box-shadow:var(--shadow-sm);}
+.header-top{background:linear-gradient(135deg,var(--g1) 0%,var(--g2) 100%);padding:18px 18px 16px;display:flex;align-items:center;justify-content:space-between;}
+.hbrand{display:flex;align-items:center;gap:12px;}
+.hlogo{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid rgba(255,255,255,0.25);}
+.htitle{font-weight:800;font-size:17px;color:#fff;letter-spacing:0.1px;}
+.hsub{font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px;}
+.hbadges{display:flex;gap:6px;align-items:center;}
+.badge-budget{background:rgba(255,193,7,0.2);border:1px solid rgba(255,193,7,0.4);border-radius:20px;padding:4px 10px;font-size:11px;color:#FFD54F;font-weight:700;display:none;}
+.badge-sync{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,0.9);font-weight:600;}
+.badge-sync.err{background:rgba(229,57,53,0.2);border-color:rgba(229,57,53,0.4);color:#EF9A9A;}
 
-/* ── TABS ── */
-.tabs{display:flex;background:#fff;flex-shrink:0;padding:0 4px;}
-.tab{flex:1;padding:10px 4px 8px;border:none;background:none;border-bottom:2.5px solid transparent;cursor:pointer;font-size:12px;font-weight:600;color:var(--text-light);font-family:inherit;transition:all 0.15s;}
-.tab.active{border-bottom-color:var(--green-mid);color:var(--green-dark);}
-.tab span{display:block;font-size:10px;opacity:0.7;margin-top:1px;font-weight:400;}
+/* ── TABS ────────────────────────────────── */
+.tabs{display:flex;background:#fff;padding:0 8px;border-bottom:1px solid var(--border);}
+.tab{flex:1;padding:11px 4px 9px;border:none;background:none;border-bottom:2.5px solid transparent;cursor:pointer;font-size:12px;font-weight:700;color:var(--text3);font-family:inherit;transition:all 0.2s;letter-spacing:0.2px;}
+.tab.active{border-bottom-color:var(--g3);color:var(--g1);}
+.tab span{display:block;font-size:10px;font-weight:400;opacity:0.75;margin-top:1px;}
 
-/* ── CONTENT ── */
-.content{flex:1;padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+/* ── SLIDE WRAPPER ─────────────────────────── */
+.tab-wrap{flex:1;overflow:hidden;position:relative;}
+.tab-slider{display:flex;height:100%;transition:transform 0.32s cubic-bezier(0.4,0,0.2,1);}
+.tab-panel{min-width:100%;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px;}
 
-/* ── TOGGLE ── */
-.type-toggle{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--radius);overflow:hidden;border:1.5px solid var(--border);margin-bottom:18px;background:var(--bg);}
-.type-btn{padding:12px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:600;font-family:inherit;transition:all 0.15s;line-height:1.3;}
-.type-btn .sub{font-size:10px;font-weight:400;opacity:0.8;display:block;margin-top:1px;}
-.type-btn.exp.on{background:var(--red-light);color:var(--red-dark);}
-.type-btn.inc.on{background:var(--green-light);color:var(--green-dark);}
-.type-btn:not(.on){color:var(--text-light);}
-.type-btn.inc{border-left:1.5px solid var(--border);}
+/* ── TYPE TOGGLE ──────────────────────────── */
+.type-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.type-btn{padding:14px 10px;border-radius:var(--radius);border:2px solid var(--border);background:#fff;cursor:pointer;font-family:inherit;transition:all 0.2s;text-align:center;box-shadow:var(--shadow-sm);}
+.type-btn .ti{font-size:22px;margin-bottom:5px;}
+.type-btn .tl{font-size:13px;font-weight:700;display:block;}
+.type-btn .ts{font-size:10px;opacity:0.7;display:block;margin-top:2px;}
+.type-btn.exp.on{border-color:var(--r3);background:var(--r5);box-shadow:0 4px 16px rgba(229,57,53,0.15);}
+.type-btn.exp.on .tl{color:var(--r2);}
+.type-btn.inc.on{border-color:var(--g3);background:var(--g5);box-shadow:0 4px 16px rgba(76,175,80,0.15);}
+.type-btn.inc.on .tl{color:var(--g1);}
+.type-btn:not(.on) .tl{color:var(--text3);}
 
-/* ── FIELDS ── */
-.field{margin-bottom:14px;}
-.field label{display:block;font-size:11px;font-weight:600;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:6px;}
-.field input,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;background:#FAFAF8;color:var(--text);outline:none;transition:border-color 0.15s,box-shadow 0.15s;}
-.field input:focus,.field select:focus{border-color:var(--green-mid);background:#fff;box-shadow:0 0 0 3px rgba(61,122,37,0.08);}
-.field input.big{font-size:28px;font-weight:700;padding:9px 13px;letter-spacing:-0.5px;}
-.row2f{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+/* ── FORM ─────────────────────────────────── */
+.form-card{background:#fff;border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow-sm);}
+.form-card-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+.row2f{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.field{margin-bottom:0;}
+.field label{display:block;font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:7px;}
+.field input,.field select{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;background:#FAFBFF;color:var(--text);outline:none;transition:all 0.2s;-webkit-appearance:none;}
+.field input:focus,.field select:focus{border-color:var(--g3);background:#fff;box-shadow:0 0 0 4px rgba(76,175,80,0.1);}
+.field input.big{font-size:30px;font-weight:800;padding:10px 14px;letter-spacing:-0.5px;}
 
-/* ── CATEGORY GRID ── */
-.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
-.cat-btn{padding:11px 10px;border-radius:10px;border:1.5px solid var(--border);background:#FAFAF8;cursor:pointer;text-align:left;font-family:inherit;transition:all 0.15s;}
-.cat-btn.sel{border-width:2px;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-.cat-btn .cn{font-size:13px;font-weight:600;}
-.cat-btn .cm{font-size:11px;opacity:0.75;margin-top:1px;}
+/* ── CATEGORY GRID ────────────────────────── */
+.cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+.cat-btn{padding:12px 10px;border-radius:var(--radius-sm);border:2px solid var(--border);background:#FAFBFF;cursor:pointer;text-align:left;font-family:inherit;transition:all 0.2s;}
+.cat-btn.sel{border-width:2px;box-shadow:0 4px 14px rgba(0,0,0,0.12);transform:translateY(-1px);}
+.cat-icon{font-size:18px;margin-bottom:5px;display:block;}
+.cat-name{font-size:12px;font-weight:700;display:block;}
+.cat-marathi{font-size:11px;opacity:0.7;display:block;margin-top:1px;}
 
-/* ── SAVE BTN ── */
-.save-btn{width:100%;padding:15px;border-radius:var(--radius);border:none;color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;margin-top:4px;letter-spacing:0.2px;}
-.save-btn:active{transform:scale(0.98);}
-.save-btn.exp{background:linear-gradient(135deg,var(--red-mid),var(--red-dark));}
-.save-btn.inc{background:linear-gradient(135deg,var(--green-accent),var(--green-dark));}
+/* ── CROP OPTIONS ─────────────────────────── */
+.crop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:2px;}
+.crop-opt{padding:10px 10px;border-radius:var(--radius-sm);border:2px solid var(--border);background:#FAFBFF;cursor:pointer;text-align:left;font-family:inherit;transition:all 0.2s;display:flex;align-items:center;gap:8px;}
+.crop-opt.sel{border-color:var(--a2);background:var(--a5);box-shadow:0 3px 10px rgba(245,124,0,0.15);}
+.crop-opt .cem{font-size:18px;flex-shrink:0;}
+.crop-opt .ctxt{font-size:11px;font-weight:600;color:var(--text2);line-height:1.3;}
+.crop-opt.sel .ctxt{color:var(--a1);}
 
-/* ── FILTERS ── */
-.filters{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
-.filters select{flex:1;min-width:90px;font-size:12px;padding:8px 10px;background:#FAFAF8;border:1.5px solid var(--border);border-radius:8px;color:var(--text-mid);font-family:inherit;outline:none;}
-.filters select:focus{border-color:var(--green-mid);}
+/* ── PERSON SELECTOR ─────────────────────── */
+.person-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:2px;}
+.person-opt{padding:10px 6px;border-radius:var(--radius-sm);border:2px solid var(--border);background:#FAFBFF;cursor:pointer;text-align:center;font-family:inherit;transition:all 0.2s;}
+.person-opt.sel{border-color:var(--b3);background:var(--b5);box-shadow:0 3px 10px rgba(30,136,229,0.15);}
+.avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;margin:0 auto 5px;}
+.person-name{font-size:10px;font-weight:700;color:var(--text2);line-height:1.3;}
+.person-opt.sel .person-name{color:var(--b1);}
 
-/* ── SUMMARY CARDS ── */
-.sum-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
-.sum-card{border-radius:var(--radius);padding:14px 15px;box-shadow:var(--shadow);}
-.sum-card .sl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px;}
-.sum-card .sv{font-size:20px;font-weight:700;}
-.sc-green{background:var(--green-light);}.sc-green .sl,.sc-green .sv{color:var(--green-dark);}
-.sc-red{background:var(--red-light);}.sc-red .sl,.sc-red .sv{color:var(--red-dark);}
-.sc-blue{background:var(--blue-light);}.sc-blue .sl,.sc-blue .sv{color:var(--blue);}
-.sc-gold{background:var(--gold-light);}.sc-gold .sl,.sc-gold .sv{color:var(--gold);}
+/* ── SAVE BUTTON + RIPPLE ─────────────────── */
+.save-wrap{position:relative;overflow:hidden;border-radius:var(--radius);margin-top:6px;}
+.save-btn{width:100%;padding:16px;border-radius:var(--radius);border:none;color:#fff;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;position:relative;overflow:hidden;letter-spacing:0.3px;transition:transform 0.15s,box-shadow 0.15s;}
+.save-btn.exp{background:linear-gradient(135deg,var(--r3),var(--r2));}
+.save-btn.inc{background:linear-gradient(135deg,var(--g3),var(--g1));}
+.save-btn:active{transform:scale(0.97);}
+.save-btn:disabled{opacity:0.75;cursor:not-allowed;}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.4);transform:scale(0);animation:rippleAnim 0.6s linear;pointer-events:none;}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0;}}
+.save-icon{margin-right:6px;font-size:17px;}
 
-/* ── RECORD ROWS ── */
-.rec-row{display:flex;align-items:flex-start;gap:11px;padding:13px 0;border-bottom:1px solid #F2EDE6;}
-.rec-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;font-weight:700;text-align:center;line-height:1.3;margin-top:1px;}
+/* ── FILTERS ──────────────────────────────── */
+.filters{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.filters select{flex:1;min-width:90px;font-size:12px;font-weight:600;padding:9px 12px;background:#fff;border:2px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-family:inherit;outline:none;-webkit-appearance:none;box-shadow:var(--shadow-sm);}
+.filters select:focus{border-color:var(--g3);}
+
+/* ── SUMMARY STRIP ────────────────────────── */
+.sum-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;}
+.sum-card{border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;}
+.sum-card::after{content:"";position:absolute;right:-12px;top:-12px;width:60px;height:60px;border-radius:50%;opacity:0.12;}
+.sc-green{background:linear-gradient(135deg,#E8F5E9,#C8E6C9);}.sc-green::after{background:var(--g2);}
+.sc-red{background:linear-gradient(135deg,#FFEBEE,#FFCDD2);}.sc-red::after{background:var(--r3);}
+.sum-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;}
+.sum-val{font-size:20px;font-weight:800;letter-spacing:-0.3px;}
+.sc-green .sum-lbl,.sc-green .sum-val{color:var(--g1);}
+.sc-red .sum-lbl,.sc-red .sum-val{color:var(--r1);}
+
+/* ── RECORD ROWS ──────────────────────────── */
+.rec-row{display:flex;align-items:flex-start;gap:12px;padding:14px;background:#fff;border-radius:var(--radius);margin-bottom:10px;box-shadow:var(--shadow-sm);transition:transform 0.15s;}
+.rec-row:active{transform:scale(0.98);}
+.rec-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
 .rec-info{flex:1;min-width:0;}
-.rec-main{font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:4px;}
-.rec-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:3px;}
-.rec-date{font-size:11px;color:var(--text-light);}
-.badge{font-size:10px;padding:2px 7px;border-radius:5px;font-weight:500;white-space:nowrap;}
-.b-inc{background:var(--green-light);color:var(--green-dark);}
-.b-exp{background:var(--red-light);color:var(--red-dark);}
-.b-crop{background:#FFF3E0;color:#E65100;}
-.b-person{background:var(--blue-light);color:var(--blue);}
+.rec-main{font-size:13px;font-weight:700;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.rec-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px;}
+.rec-date{font-size:11px;color:var(--text3);font-weight:500;}
+.chip{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:3px;}
+.chip-inc{background:var(--g5);color:var(--g1);}
+.chip-exp{background:var(--r5);color:var(--r2);}
+.chip-crop{background:var(--a5);color:var(--a1);}
+.chip-person{background:var(--b5);color:var(--b1);}
 .rec-right{text-align:right;flex-shrink:0;}
-.rec-amt{font-size:16px;font-weight:700;}
-.amt-inc{color:var(--green-dark);}.amt-exp{color:var(--red-dark);}
-.del-btn{font-size:10px;color:var(--text-light);background:none;border:none;cursor:pointer;padding:2px 0;font-family:inherit;display:block;margin-top:2px;}
-.del-btn:hover{color:#E24B4A;}
+.rec-amt{font-size:16px;font-weight:800;letter-spacing:-0.3px;}
+.amt-inc{color:var(--g1);}.amt-exp{color:var(--r2);}
+.del-btn{font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;padding:3px 0;font-family:inherit;display:block;margin-top:3px;font-weight:500;}
+.del-btn:hover{color:var(--r3);}
 
-/* ── REPORT ── */
-.net-card{border-radius:var(--radius);padding:18px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);}
-.net-green{background:linear-gradient(135deg,#D4EDBA,var(--green-light));}
-.net-red{background:linear-gradient(135deg,#FBDBD5,var(--red-light));}
-.net-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:3px;}
-.net-amt{font-size:30px;font-weight:800;margin:3px 0;letter-spacing:-0.5px;}
-.net-res{font-size:13px;font-weight:600;}
-.gd{color:var(--green-dark);}.rd{color:var(--red-dark);}
-.section-hd{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;padding:8px 0 10px;border-bottom:1px solid var(--border);margin-bottom:12px;}
-.bar-row{margin-bottom:13px;}
-.bar-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
-.bar-track{height:6px;border-radius:4px;background:#EDE8E0;overflow:hidden;}
-.bar-fill{height:100%;border-radius:4px;transition:width 0.5s ease;}
-.bar-sub{font-size:10px;color:var(--text-light);margin-top:3px;}
-.budget-box{background:var(--brown-light);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;border-left:4px solid var(--brown);}
-.crop-row{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-radius:10px;background:#F9F6F2;margin-bottom:8px;border-left:3px solid #E65100;}
-.person-row{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-radius:10px;background:var(--blue-light);margin-bottom:8px;}
-.empty{text-align:center;padding:3.5rem 1rem;color:#C5BDB2;font-size:13px;line-height:2;}
+/* ── EMPTY STATE ──────────────────────────── */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;text-align:center;}
+.empty-illo{font-size:64px;margin-bottom:16px;opacity:0.6;}
+.empty-title{font-size:16px;font-weight:700;color:var(--text2);margin-bottom:6px;}
+.empty-sub{font-size:13px;color:var(--text3);line-height:1.6;}
 
-/* ── SETTINGS ── */
-.gh-banner{background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:var(--radius);padding:14px 16px;margin-bottom:20px;color:#fff;}
-.gh-banner .gt{font-size:13px;font-weight:700;margin-bottom:6px;}
-.gh-banner .gs{font-size:11px;opacity:0.8;line-height:1.8;}
-.set-block{background:#FAFAF8;border-radius:var(--radius);padding:16px;margin-bottom:14px;border:1px solid var(--border);}
-.set-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
-.set-sub{font-size:11px;color:var(--text-light);margin-bottom:10px;}
-.set-block input{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:9px;font-size:14px;font-family:inherit;background:#fff;outline:none;}
-.set-block input:focus{border-color:var(--green-mid);}
-.btn-save{width:100%;padding:15px;border-radius:var(--radius);border:none;background:linear-gradient(135deg,var(--green-accent),var(--green-dark));color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:10px;}
-.btn-danger{width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--red-dark);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;margin-bottom:8px;}
-.info-box{background:#F0F7E8;border-radius:10px;padding:14px;font-size:12px;color:var(--green-dark);line-height:1.8;border-left:3px solid var(--green-accent);}
+/* ── REPORT ───────────────────────────────── */
+.net-card{border-radius:var(--radius);padding:20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow-md);}
+.net-profit{background:linear-gradient(135deg,#E8F5E9,#C8E6C9);}
+.net-loss{background:linear-gradient(135deg,#FFEBEE,#FFCDD2);}
+.net-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+.net-amt{font-size:32px;font-weight:900;letter-spacing:-1px;margin:4px 0;}
+.net-res{font-size:13px;font-weight:700;}
+.gd{color:var(--g1);}.rd{color:var(--r1);}
+.sec-hd{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.7px;color:var(--text3);margin:20px 0 12px;display:flex;align-items:center;gap:6px;}
+.sec-hd::after{content:"";flex:1;height:1px;background:var(--border);}
+.bar-row{margin-bottom:14px;}
+.bar-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.bar-label{font-size:12px;font-weight:600;color:var(--text);}
+.bar-val{font-size:13px;font-weight:800;}
+.bar-track{height:7px;border-radius:4px;background:var(--border);overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;transition:width 0.6s cubic-bezier(0.4,0,0.2,1);}
+.bar-pct{font-size:10px;color:var(--text3);margin-top:3px;font-weight:500;}
+.budget-box{background:linear-gradient(135deg,#FFF8E1,#FFF3E0);border-radius:var(--radius);padding:15px 17px;margin-bottom:16px;border-left:4px solid var(--a3);box-shadow:var(--shadow-sm);}
+.crop-card{display:flex;justify-content:space-between;align-items:center;padding:14px;background:#fff;border-radius:var(--radius-sm);margin-bottom:9px;box-shadow:var(--shadow-sm);border-left:3px solid var(--a2);}
+.crop-card-l{display:flex;align-items:center;gap:10px;}
+.crop-em{font-size:22px;}
+.crop-name{font-size:13px;font-weight:700;color:var(--text);}
+.crop-detail{font-size:11px;color:var(--text3);margin-top:2px;}
+.person-card{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#fff;border-radius:var(--radius-sm);margin-bottom:9px;box-shadow:var(--shadow-sm);}
+.person-card-l{display:flex;align-items:center;gap:10px;}
+.avatar-sm{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0;}
+
+/* ── SETTINGS ─────────────────────────────── */
+.gh-banner{background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:var(--radius);padding:18px;margin-bottom:18px;box-shadow:var(--shadow-md);}
+.gh-banner-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.gh-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.gh-title{font-size:14px;font-weight:800;color:#fff;}
+.gh-sub{font-size:11px;color:rgba(255,255,255,0.75);margin-top:1px;}
+.gh-detail{font-size:11px;color:rgba(255,255,255,0.7);line-height:1.8;background:rgba(255,255,255,0.1);border-radius:8px;padding:10px 12px;}
+.set-card{background:#fff;border-radius:var(--radius);padding:18px;margin-bottom:14px;box-shadow:var(--shadow-sm);}
+.set-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.set-sub{font-size:11px;color:var(--text3);margin-bottom:12px;line-height:1.5;}
+.set-card input{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);font-size:14px;font-family:inherit;background:#FAFBFF;outline:none;color:var(--text);}
+.set-card input:focus{border-color:var(--g3);box-shadow:0 0 0 4px rgba(76,175,80,0.1);}
+.btn-primary{width:100%;padding:15px;border-radius:var(--radius);border:none;background:linear-gradient(135deg,var(--g3),var(--g1));color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;margin-bottom:10px;box-shadow:0 4px 16px rgba(45,122,24,0.25);transition:all 0.2s;}
+.btn-primary:active{transform:scale(0.97);}
+.btn-outline{width:100%;padding:13px;border-radius:var(--radius);border:2px solid var(--border);background:#fff;color:var(--r2);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:8px;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--r3);background:var(--r5);}
+.info-box{background:var(--g5);border-radius:var(--radius);padding:16px;font-size:12px;color:var(--g1);line-height:1.8;border-left:3px solid var(--g3);margin-top:4px;}
 </style>
 </head>
 <body>
 <div id="app">
 
-  <!-- LOADING -->
-  <div class="loading-overlay" id="loading">
-    <div class="spinner"></div>
-    <div class="loading-text" id="loading-text">Syncing with GitHub…</div>
-  </div>
+<!-- LOADING -->
+<div class="loading-overlay" id="loading">
+  <div class="spinner"></div>
+  <div class="load-txt" id="load-txt">Syncing with GitHub…</div>
+</div>
 
-  <!-- SETUP SCREEN -->
-  <div class="setup-screen" id="setup-screen">
-    <div class="setup-logo">🌾</div>
-    <div class="setup-title">Kshirsagar Farms</div>
-    <div class="setup-sub">क्षीरसागर शेत खातेवही<br>Enter your GitHub token to get started.</div>
-    <div class="setup-card">
-      <div class="setup-field">
-        <label>GitHub Personal Access Token</label>
-        <input type="password" id="setup-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+<!-- SETUP -->
+<div class="setup-screen" id="setup-screen">
+  <div class="setup-logo">🌾</div>
+  <div class="setup-title">Kshirsagar Farms</div>
+  <div class="setup-sub">क्षीरसागर शेत खातेवही<br>Connect your GitHub to get started.</div>
+  <div class="setup-card">
+    <div class="setup-field" style="margin-bottom:0">
+      <label class="field-label">GitHub Personal Access Token</label>
+      <input class="field-input" type="password" id="setup-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+    </div>
+  </div>
+  <div class="setup-note" style="margin-bottom:22px">
+    🔒 Stored only on this device · never shared<br>
+    📁 Data → <strong>kkaniruddha / Kshirsagar-farms / farm-data.json</strong>
+  </div>
+  <button class="save-btn inc" style="width:100%;border-radius:16px;padding:16px;font-size:16px;font-weight:800;border:none;cursor:pointer;font-family:inherit;" onclick="setupDone()">Connect to GitHub →</button>
+</div>
+
+<!-- PIN -->
+<div class="pin-screen" id="pin-screen">
+  <div class="pin-logo">🔒</div>
+  <div style="font-size:20px;font-weight:800;color:var(--g1);margin-bottom:4px">Kshirsagar Farms</div>
+  <div style="font-size:13px;color:var(--text2);font-weight:500">Enter your PIN · पिन टाका</div>
+  <div class="pin-dots">
+    <div class="pin-dot" id="pd0"></div><div class="pin-dot" id="pd1"></div>
+    <div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div>
+  </div>
+  <div class="pin-grid">
+    <button class="pin-btn" onclick="pinPress('1')">1</button><button class="pin-btn" onclick="pinPress('2')">2</button><button class="pin-btn" onclick="pinPress('3')">3</button>
+    <button class="pin-btn" onclick="pinPress('4')">4</button><button class="pin-btn" onclick="pinPress('5')">5</button><button class="pin-btn" onclick="pinPress('6')">6</button>
+    <button class="pin-btn" onclick="pinPress('7')">7</button><button class="pin-btn" onclick="pinPress('8')">8</button><button class="pin-btn" onclick="pinPress('9')">9</button>
+    <button class="pin-btn" style="visibility:hidden">-</button><button class="pin-btn" onclick="pinPress('0')">0</button><button class="pin-btn" onclick="pinBack()">⌫</button>
+  </div>
+  <div id="pin-err" style="display:none;margin-top:16px;font-size:13px;color:var(--r3);font-weight:700;background:var(--r5);padding:8px 16px;border-radius:20px">❌ Wrong PIN · चुकीचा पिन</div>
+</div>
+
+<!-- MAIN APP -->
+<div class="main-app" id="main-app">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="hbrand">
+        <div class="hlogo">🌾</div>
+        <div>
+          <div class="htitle">Kshirsagar Farms</div>
+          <div class="hsub">क्षीरसागर शेत खातेवही</div>
+        </div>
+      </div>
+      <div class="hbadges">
+        <div class="badge-budget" id="budget-badge">⚠ Budget</div>
+        <div class="badge-sync" id="sync-badge">✓ Synced</div>
       </div>
     </div>
-    <div class="setup-note" style="margin-bottom:20px">
-      🔒 Token is stored only on this device.<br>
-      📁 Data → <strong>kkaniruddha / Kshirsagar-farms / farm-data.json</strong>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(0)">Add<span>नोंद</span></button>
+      <button class="tab" onclick="switchTab(1)">Records<span>यादी</span></button>
+      <button class="tab" onclick="switchTab(2)">Report<span>अहवाल</span></button>
+      <button class="tab" onclick="switchTab(3)">⚙<span>सेटिंग</span></button>
     </div>
-    <button class="save-btn inc" style="width:100%" onclick="setupDone()">Connect to GitHub →</button>
   </div>
 
-  <!-- PIN SCREEN -->
-  <div class="pin-screen" id="pin-screen">
-    <div class="pin-icon">🔒</div>
-    <div style="font-size:18px;font-weight:700;color:var(--green-dark);margin-bottom:3px">Kshirsagar Farms</div>
-    <div style="font-size:13px;color:var(--text-mid)">Enter PIN · पिन टाका</div>
-    <div class="pin-dots">
-      <div class="pin-dot" id="pd0"></div><div class="pin-dot" id="pd1"></div>
-      <div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div>
-    </div>
-    <div class="pin-grid">
-      <button class="pin-btn" onclick="pinPress('1')">1</button><button class="pin-btn" onclick="pinPress('2')">2</button><button class="pin-btn" onclick="pinPress('3')">3</button>
-      <button class="pin-btn" onclick="pinPress('4')">4</button><button class="pin-btn" onclick="pinPress('5')">5</button><button class="pin-btn" onclick="pinPress('6')">6</button>
-      <button class="pin-btn" onclick="pinPress('7')">7</button><button class="pin-btn" onclick="pinPress('8')">8</button><button class="pin-btn" onclick="pinPress('9')">9</button>
-      <button class="pin-btn" style="visibility:hidden">-</button><button class="pin-btn" onclick="pinPress('0')">0</button><button class="pin-btn" onclick="pinBack()">⌫</button>
-    </div>
-    <div id="pin-err" style="display:none;margin-top:14px;font-size:13px;color:#E24B4A;font-weight:500">Wrong PIN · चुकीचा पिन</div>
-  </div>
+  <div class="tab-wrap">
+    <div class="tab-slider" id="slider">
 
-  <!-- MAIN APP -->
-  <div class="main-app" id="main-app">
+      <!-- ══ TAB 0: ADD ══ -->
+      <div class="tab-panel" id="tab-add">
+        <div class="type-toggle">
+          <button class="type-btn exp on" id="btn-exp" onclick="setType('expense')">
+            <div class="ti">💸</div>
+            <span class="tl">Expense · खर्च</span>
+            <span class="ts">Record a payment</span>
+          </button>
+          <button class="type-btn inc" id="btn-inc" onclick="setType('income')">
+            <div class="ti">💰</div>
+            <span class="tl">Income · जमा</span>
+            <span class="ts">Record a receipt</span>
+          </button>
+        </div>
 
-    <div class="header">
-      <div class="header-top">
-        <div class="header-brand">
-          <div class="header-logo">🌾</div>
-          <div>
-            <div class="header-title">Kshirsagar Farms</div>
-            <div class="header-sub">Jama (जमा) · Kharch (खर्च)</div>
+        <!-- Amount + Date -->
+        <div class="form-card">
+          <div class="form-card-title">💵 Amount & Date</div>
+          <div class="row2f">
+            <div class="field">
+              <label>Amount (₹)</label>
+              <input type="number" class="big field-input" id="form-amount" placeholder="0" style="border:2px solid var(--border);border-radius:10px;">
+            </div>
+            <div class="field">
+              <label>Date · तारीख</label>
+              <input type="date" class="field-input" id="form-date" style="border:2px solid var(--border);border-radius:10px;">
+            </div>
           </div>
         </div>
-        <div class="header-badges">
-          <div class="budget-badge" id="budget-badge" style="display:none">⚠ Budget</div>
-          <div class="sync-badge" id="sync-badge">✓ GitHub</div>
+
+        <!-- Category -->
+        <div class="form-card">
+          <div class="form-card-title" id="cat-card-title">📂 Category · प्रकार</div>
+          <div class="cat-grid" id="cat-grid"></div>
         </div>
-      </div>
-    </div>
 
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab('add')">Add<span>नोंद</span></button>
-      <button class="tab" onclick="switchTab('records')">Records<span>यादी</span></button>
-      <button class="tab" onclick="switchTab('report')">Report<span>अहवाल</span></button>
-      <button class="tab" onclick="switchTab('settings')">⚙<span>सेटिंग</span></button>
-    </div>
+        <!-- Crop -->
+        <div class="form-card">
+          <div class="form-card-title">🌱 Crop · पीक</div>
+          <div class="crop-grid" id="crop-grid"></div>
+        </div>
 
-    <!-- ADD TAB -->
-    <div class="content" id="tab-add">
-      <div class="type-toggle">
-        <button class="type-btn exp on" id="btn-exp" onclick="setType('expense')">
-          Expense · खर्च<span class="sub">Record a payment</span>
+        <!-- Paid By (expense only) -->
+        <div class="form-card" id="paid-by-card">
+          <div class="form-card-title">👤 Paid By · कोणी दिले?</div>
+          <div class="person-grid" id="person-grid"></div>
+        </div>
+
+        <!-- Note -->
+        <div class="form-card">
+          <div class="form-card-title">📝 Note · नोंद</div>
+          <input type="text" class="field-input" id="form-note" placeholder="e.g. Nashik market, vendor name… (optional)" style="border:2px solid var(--border);border-radius:10px;">
+        </div>
+
+        <button class="save-btn exp" id="save-btn" onclick="handleSave(event)">
+          <span class="save-icon">💾</span>Save Expense · खर्च जतन करा
         </button>
-        <button class="type-btn inc" id="btn-inc" onclick="setType('income')">
-          Income · जमा<span class="sub">Record a receipt</span>
+      </div>
+
+      <!-- ══ TAB 1: RECORDS ══ -->
+      <div class="tab-panel" id="tab-records">
+        <div class="filters">
+          <select id="rec-mf" onchange="renderRecords()"><option value="all">All Months</option></select>
+          <select id="rec-tf" onchange="renderRecords()">
+            <option value="all">All Types</option>
+            <option value="income">जमा</option>
+            <option value="expense">खर्च</option>
+          </select>
+          <select id="rec-cf" onchange="renderRecords()">
+            <option value="all">All Crops</option>
+          </select>
+        </div>
+        <div class="sum-strip" id="rec-strip"></div>
+        <div id="records-list"></div>
+      </div>
+
+      <!-- ══ TAB 2: REPORT ══ -->
+      <div class="tab-panel" id="tab-report">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:16px">
+          <select id="rep-mf" onchange="renderReport()" style="font-size:12px;font-weight:600;padding:8px 14px;background:#fff;border:2px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-family:inherit;outline:none;box-shadow:var(--shadow-sm);">
+            <option value="all">All Time</option>
+          </select>
+        </div>
+        <div class="sum-strip" id="rep-cards"></div>
+        <div id="rep-net"></div>
+        <div id="rep-budget"></div>
+        <div id="rep-crop"></div>
+        <div id="rep-person"></div>
+        <div id="rep-inc"></div>
+        <div id="rep-exp"></div>
+        <button class="save-btn inc" id="share-btn" onclick="shareReport()" style="margin-top:8px">
+          <span class="save-icon">📤</span>Share Report · अहवाल शेअर करा
         </button>
       </div>
 
-      <div class="row2f">
-        <div class="field" style="margin-bottom:0">
-          <label>Date · तारीख</label>
-          <input type="date" id="form-date">
+      <!-- ══ TAB 3: SETTINGS ══ -->
+      <div class="tab-panel" id="tab-settings">
+        <div class="gh-banner">
+          <div class="gh-banner-top">
+            <div class="gh-icon">☁️</div>
+            <div>
+              <div class="gh-title">GitHub Sync Active</div>
+              <div class="gh-sub">Auto-saves every entry to cloud</div>
+            </div>
+          </div>
+          <div class="gh-detail">
+            📁 kkaniruddha / Kshirsagar-farms<br>
+            📄 farm-data.json · Every save = GitHub commit ✅
+          </div>
         </div>
-        <div class="field" style="margin-bottom:0">
-          <label>Amount (₹) · रक्कम</label>
-          <input type="number" class="big" id="form-amount" placeholder="0">
+        <div class="set-card">
+          <div class="set-title">🔒 PIN Lock · पिन लॉक</div>
+          <div class="set-sub">4-digit PIN to protect the app. Leave blank to disable.</div>
+          <input type="password" id="set-pin" maxlength="4" placeholder="4-digit PIN" style="text-align:center;letter-spacing:14px;font-size:22px;font-weight:800;">
         </div>
-      </div>
-
-      <div class="field" style="margin-top:14px">
-        <label id="cat-label">Category · प्रकार</label>
-        <div class="cat-grid" id="cat-grid"></div>
-      </div>
-
-      <div class="field">
-        <label>Crop · पीक</label>
-        <select id="form-crop">
-          <option value="">-- Select Crop · पीक निवडा --</option>
-          <option value="Sugarcane / ऊस">Sugarcane · ऊस</option>
-          <option value="Cotton / कापूस">Cotton · कापूस</option>
-          <option value="Soybeans / सोयाबीन">Soybeans · सोयाबीन</option>
-          <option value="Jowar / ज्वारी">Jowar (Sorghum) · ज्वारी</option>
-          <option value="Bajra / बाजरी">Bajra (Pearl Millet) · बाजरी</option>
-          <option value="Rice / तांदूळ">Rice · तांदूळ</option>
-          <option value="Wheat / गहू">Wheat · गहू</option>
-          <option value="Tur / तूर">Tur (Pigeon Pea) · तूर</option>
-          <option value="Gram / हरभरा">Gram (Chickpeas) · हरभरा</option>
-          <option value="Onion / कांदा">Onion · कांदा</option>
-          <option value="Coriander / कोथिंबीर">Coriander · कोथिंबीर</option>
-          <option value="Other / इतर">Other · इतर</option>
-        </select>
-      </div>
-
-      <div class="field" id="paid-by-field">
-        <label>Paid By · कोणी दिले?</label>
-        <select id="form-paidby">
-          <option value="">-- Select Person · व्यक्ती निवडा --</option>
-          <option value="भाऊ">भाऊ</option>
-          <option value="श्याम">श्याम</option>
-          <option value="कैलास">कैलास</option>
-          <option value="बाळू">बाळू</option>
-          <option value="गणेश">गणेश</option>
-          <option value="भावड्या दादा">भावड्या दादा</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Note · नोंद (optional)</label>
-        <input type="text" id="form-note" placeholder="e.g. Nashik market, vendor name…">
-      </div>
-
-      <button class="save-btn exp" id="save-btn" onclick="saveRecord()">Save Expense · खर्च जतन करा</button>
-    </div>
-
-    <!-- RECORDS TAB -->
-    <div class="content" id="tab-records" style="display:none">
-      <div class="filters">
-        <select id="rec-mf" onchange="renderRecords()"><option value="all">All Months</option></select>
-        <select id="rec-tf" onchange="renderRecords()">
-          <option value="all">All Types</option>
-          <option value="income">Jama · जमा</option>
-          <option value="expense">Kharch · खर्च</option>
-        </select>
-        <select id="rec-cf" onchange="renderRecords()">
-          <option value="all">All Crops</option>
-          <option value="Sugarcane / ऊस">ऊस</option>
-          <option value="Cotton / कापूस">कापूस</option>
-          <option value="Soybeans / सोयाबीन">सोयाबीन</option>
-          <option value="Jowar / ज्वारी">ज्वारी</option>
-          <option value="Bajra / बाजरी">बाजरी</option>
-          <option value="Rice / तांदूळ">तांदूळ</option>
-          <option value="Wheat / गहू">गहू</option>
-          <option value="Tur / तूर">तूर</option>
-          <option value="Gram / हरभरा">हरभरा</option>
-          <option value="Onion / कांदा">कांदा</option>
-          <option value="Coriander / कोथिंबीर">कोथिंबीर</option>
-          <option value="Other / इतर">इतर</option>
-        </select>
-      </div>
-      <div class="sum-cards" id="rec-totals"></div>
-      <div id="records-list"></div>
-    </div>
-
-    <!-- REPORT TAB -->
-    <div class="content" id="tab-report" style="display:none">
-      <div style="display:flex;justify-content:flex-end;margin-bottom:16px">
-        <select id="rep-mf" onchange="renderReport()" style="font-size:12px;padding:7px 12px;background:#FAFAF8;border:1.5px solid var(--border);border-radius:9px;color:var(--text-mid);font-family:inherit;outline:none">
-          <option value="all">All Time</option>
-        </select>
-      </div>
-      <div class="sum-cards" id="rep-cards"></div>
-      <div id="rep-net"></div>
-      <div id="rep-budget"></div>
-      <div id="rep-crop"></div>
-      <div id="rep-person"></div>
-      <div id="rep-inc"></div>
-      <div id="rep-exp"></div>
-      <button class="save-btn inc" id="share-btn" onclick="shareReport()">📤 Share Report · अहवाल शेअर करा</button>
-    </div>
-
-    <!-- SETTINGS TAB -->
-    <div class="content" id="tab-settings" style="display:none">
-      <div class="gh-banner">
-        <div class="gt">☁️ GitHub Sync Active</div>
-        <div class="gs">
-          Repo: kkaniruddha / Kshirsagar-farms<br>
-          File: farm-data.json<br>
-          Every save auto-commits to GitHub ✅
+        <div class="set-card">
+          <div class="set-title">💰 Monthly Budget · मासिक बजेट</div>
+          <div class="set-sub">Get a warning when expenses reach 80% of this amount.</div>
+          <input type="number" id="set-budget" placeholder="₹ e.g. 50000">
+        </div>
+        <button class="btn-primary" onclick="saveSettings()" id="save-set-btn">Save Settings · सेटिंग जतन करा</button>
+        <button class="btn-outline" onclick="refreshFromGitHub()">↻ Refresh Data from GitHub</button>
+        <button class="btn-outline" onclick="resetToken()">🔑 Change GitHub Token</button>
+        <div class="info-box">
+          🌾 Built with love for the Kshirsagar Family Farm<br>
+          Data is securely stored on GitHub — safe & accessible from any device, anywhere.
         </div>
       </div>
-      <div class="set-block">
-        <div class="set-title">PIN Lock · पिन लॉक 🔒</div>
-        <div class="set-sub">4-digit PIN to protect the app. Leave blank to disable.</div>
-        <input type="password" id="set-pin" maxlength="4" placeholder="4-digit PIN" style="text-align:center;letter-spacing:14px;font-size:22px">
-      </div>
-      <div class="set-block">
-        <div class="set-title">Monthly Expense Budget · मासिक बजेट</div>
-        <div class="set-sub">Get a warning when expenses reach 80% of this amount.</div>
-        <input type="number" id="set-budget" placeholder="₹ e.g. 50000">
-      </div>
-      <button class="btn-save" onclick="saveSettings()" id="save-set-btn">Save Settings · सेटिंग जतन करा</button>
-      <button class="btn-danger" onclick="refreshFromGitHub()">↻ Refresh Data from GitHub</button>
-      <button class="btn-danger" onclick="resetToken()">🔑 Change GitHub Token</button>
-      <div class="info-box">
-        🌾 Built with love for Kshirsagar Family Farm<br>
-        Data is safely stored on GitHub — never lost, accessible from any device.
-      </div>
-    </div>
 
-  </div><!-- /main-app -->
+    </div><!-- /slider -->
+  </div><!-- /tab-wrap -->
+
+</div><!-- /main-app -->
 </div><!-- /app -->
 
 <script>
-// ── CONFIG ────────────────────────────────────────────────
+// ── DATA ─────────────────────────────────────────────────
 const GH_OWNER="kkaniruddha",GH_REPO="Kshirsagar-farms",GH_FILE="farm-data.json";
 const GH_API=`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`;
 const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
 const EC=[
-  {id:"seeds",     l:"Seeds",      m:"बियाणे",   c:"#3B6D11",b:"#EAF3DE"},
-  {id:"fertilizer",l:"Fertilizer", m:"खत",       c:"#854F0B",b:"#FAEEDA"},
-  {id:"pesticides",l:"Pesticides", m:"औषधे",     c:"#6B5FBF",b:"#EEEDFE"},
-  {id:"labour",    l:"Labour",     m:"मजुरी",    c:"#185FA5",b:"#E6F1FB"},
-  {id:"water",     l:"Water",      m:"पाणी",     c:"#0F6E56",b:"#E1F5EE"},
-  {id:"equipment", l:"Equipment",  m:"यंत्र",    c:"#993C1D",b:"#FAECE7"},
-  {id:"other_e",   l:"Other",      m:"इतर",      c:"#5F5E5A",b:"#F1EFE8"}
+  {id:"seeds",     l:"Seeds",      m:"बियाणे",  icon:"🌱", c:"#2D7A18",b:"#E8F5E9"},
+  {id:"fertilizer",l:"Fertilizer", m:"खत",      icon:"🧪", c:"#854F0B",b:"#FFF8E1"},
+  {id:"pesticides",l:"Pesticides", m:"औषधे",    icon:"💊", c:"#6B3FA0",b:"#F3E5F5"},
+  {id:"labour",    l:"Labour",     m:"मजुरी",   icon:"👷", c:"#1565C0",b:"#E3F2FD"},
+  {id:"equipment", l:"Equipment",  m:"यंत्र",   icon:"🚜", c:"#B71C1C",b:"#FFEBEE"},
+  {id:"other_e",   l:"Other",      m:"इतर",     icon:"📦", c:"#455A64",b:"#ECEFF1"}
 ];
 const IC=[
-  {id:"crop_sale", l:"Crop Sale",  m:"पीक विक्री",c:"#3B6D11",b:"#EAF3DE"},
-  {id:"subsidy",   l:"Subsidy",    m:"अनुदान",   c:"#854F0B",b:"#FAEEDA"},
-  {id:"other_i",   l:"Other",      m:"इतर",      c:"#5F5E5A",b:"#F1EFE8"}
+  {id:"crop_sale", l:"Crop Sale",  m:"पीक विक्री",icon:"🌾", c:"#2D7A18",b:"#E8F5E9"},
+  {id:"subsidy",   l:"Subsidy",    m:"अनुदान",  icon:"🏛️", c:"#1565C0",b:"#E3F2FD"},
+  {id:"other_i",   l:"Other",      m:"इतर",     icon:"📦", c:"#455A64",b:"#ECEFF1"}
 ];
 const CM=Object.fromEntries([...EC,...IC].map(c=>[c.id,c]));
 
-const CROPS=["Sugarcane / ऊस","Cotton / कापूस","Soybeans / सोयाबीन","Jowar / ज्वारी","Bajra / बाजरी","Rice / तांदूळ","Wheat / गहू","Tur / तूर","Gram / हरभरा","Onion / कांदा","Coriander / कोथिंबीर","Other / इतर"];
-const PERSONS=["भाऊ","श्याम","कैलास","बाळू","गणेश","भावड्या दादा"];
+const CROPS=[
+  {val:"Sugarcane / ऊस",    em:"🎋",en:"Sugarcane",mr:"ऊस"},
+  {val:"Cotton / कापूस",    em:"🌸",en:"Cotton",   mr:"कापूस"},
+  {val:"Soybeans / सोयाबीन",em:"🫘",en:"Soybeans", mr:"सोयाबीन"},
+  {val:"Jowar / ज्वारी",    em:"🌾",en:"Jowar",    mr:"ज्वारी"},
+  {val:"Bajra / बाजरी",     em:"🌿",en:"Bajra",    mr:"बाजरी"},
+  {val:"Rice / तांदूळ",     em:"🍚",en:"Rice",     mr:"तांदूळ"},
+  {val:"Wheat / गहू",       em:"🌾",en:"Wheat",    mr:"गहू"},
+  {val:"Tur / तूर",         em:"🫛",en:"Tur",      mr:"तूर"},
+  {val:"Gram / हरभरा",      em:"🟤",en:"Gram",     mr:"हरभरा"},
+  {val:"Onion / कांदा",     em:"🧅",en:"Onion",    mr:"कांदा"},
+  {val:"Coriander / कोथिंबीर",em:"🌿",en:"Coriander",mr:"कोथिंबीर"},
+  {val:"Other / इतर",       em:"📦",en:"Other",    mr:"इतर"}
+];
 
-let token="",ghSha=null,records=[],settings={pin:"",budget:""},curType="expense",selCat="seeds",pinEntered="";
+const PERSONS=[
+  {name:"भाऊ",      color:"#E65100",bg:"#FFF3E0"},
+  {name:"श्याम",    color:"#1565C0",bg:"#E3F2FD"},
+  {name:"कैलास",    color:"#2D7A18",bg:"#E8F5E9"},
+  {name:"बाळू",     color:"#6B3FA0",bg:"#F3E5F5"},
+  {name:"गणेश",     color:"#B71C1C",bg:"#FFEBEE"},
+  {name:"भावड्या दादा",color:"#00695C",bg:"#E0F2F1"}
+];
+const PM=Object.fromEntries(PERSONS.map(p=>[p.name,p]));
+
+let token="",ghSha=null,records=[],settings={pin:"",budget:""},curType="expense",selCat="seeds",selCrop="",selPerson="",pinEntered="",curTab=0;
 
 // ── UTILS ─────────────────────────────────────────────────
 const fa=n=>Number(n).toLocaleString("en-IN");
@@ -435,51 +486,53 @@ const td=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth(
 const fd=s=>{if(!s)return"";const[y,m,d]=s.split("-");return `${d} ${MONTHS[parseInt(m)-1]} ${y}`;};
 const b64e=str=>btoa(unescape(encodeURIComponent(str)));
 const b64d=str=>decodeURIComponent(escape(atob(str)));
-const showLoad=t=>{document.getElementById("loading-text").textContent=t||"Syncing…";document.getElementById("loading").classList.add("show");};
-const hideLoad=()=>document.getElementById("loading").classList.remove("show");
-const setSyncBadge=(ok,t)=>{const b=document.getElementById("sync-badge");b.textContent=t;b.className="sync-badge"+(ok?"":" err");};
+const $=id=>document.getElementById(id);
+const showLoad=t=>{$("load-txt").textContent=t||"Syncing…";$("loading").classList.add("show");};
+const hideLoad=()=>$("loading").classList.remove("show");
+const setSyncBadge=(ok,t)=>{const b=$("sync-badge");b.textContent=t;b.className="badge-sync"+(ok?"":" err");};
+
+function initials(name){return name.split("")[0];}
 
 // ── GITHUB ────────────────────────────────────────────────
 async function ghLoad(){
-  const res=await fetch(GH_API,{headers:{"Authorization":`token ${token}`,"Accept":"application/vnd.github.v3+json"}});
-  if(res.status===404){ghSha=null;return null;}
-  if(!res.ok)throw new Error(`GitHub ${res.status}`);
-  const d=await res.json();ghSha=d.sha;
+  const r=await fetch(GH_API,{headers:{"Authorization":`token ${token}`,"Accept":"application/vnd.github.v3+json"}});
+  if(r.status===404){ghSha=null;return null;}
+  if(!r.ok)throw new Error(`GitHub ${r.status}`);
+  const d=await r.json();ghSha=d.sha;
   return JSON.parse(b64d(d.content.replace(/\n/g,"")));
 }
 async function ghSave(data){
   const body={message:`Farm update ${new Date().toLocaleDateString("en-IN")}`,content:b64e(JSON.stringify(data,null,2)),...(ghSha?{sha:ghSha}:{})};
-  const res=await fetch(GH_API,{method:"PUT",headers:{"Authorization":`token ${token}`,"Content-Type":"application/json"},body:JSON.stringify(body)});
-  if(!res.ok){const e=await res.json();throw new Error(e.message||"Save failed");}
-  ghSha=(await res.json()).content.sha;
+  const r=await fetch(GH_API,{method:"PUT",headers:{"Authorization":`token ${token}`,"Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(!r.ok){const e=await r.json();throw new Error(e.message||"Save failed");}
+  ghSha=(await r.json()).content.sha;
 }
 
-// ── INIT ──────────────────────────────────────────────────
+// ── INIT ─────────────────────────────────────────────────
 async function init(){
   token=localStorage.getItem("fl-gh-token")||"";
-  if(!token){document.getElementById("setup-screen").classList.add("show");return;}
+  if(!token){$("setup-screen").classList.add("show");return;}
   showLoad("Loading from GitHub…");
   try{
     const data=await ghLoad();
     if(data){records=data.records||[];settings=data.settings||{pin:"",budget:""};}
     localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    hideLoad();
-    settings.pin?showPin():showMain();
+    hideLoad();settings.pin?showPin():showMain();
   }catch(e){
     hideLoad();
     const c=localStorage.getItem("fl-cache");
     if(c){const d=JSON.parse(c);records=d.records||[];settings=d.settings||{pin:"",budget:""};}
-    setSyncBadge(false,"✗ GitHub");
+    setSyncBadge(false,"✗ Offline");
     settings.pin?showPin():showMain();
     alert("Could not reach GitHub. Using cached data.\n"+e.message);
   }
 }
 
 async function setupDone(){
-  const t=document.getElementById("setup-token").value.trim();
+  const t=$("setup-token").value.trim();
   if(!t||!t.startsWith("ghp_")){alert("Please enter a valid GitHub token (starts with ghp_)");return;}
   token=t;localStorage.setItem("fl-gh-token",t);
-  document.getElementById("setup-screen").classList.remove("show");
+  $("setup-screen").classList.remove("show");
   showLoad("Connecting to GitHub…");
   try{
     const data=await ghLoad();
@@ -489,95 +542,124 @@ async function setupDone(){
   }catch(e){hideLoad();alert("Connection failed. Check your token.\n"+e.message);}
 }
 
-const showPin=()=>document.getElementById("pin-screen").classList.add("show");
+const showPin=()=>$("pin-screen").classList.add("show");
 function showMain(){
-  document.getElementById("main-app").classList.add("show");
-  document.getElementById("form-date").value=td();
-  document.getElementById("set-pin").value=settings.pin||"";
-  document.getElementById("set-budget").value=settings.budget||"";
-  setType("expense");populateMonthFilters();checkBudget();
+  $("main-app").classList.add("show");
+  $("form-date").value=td();
+  $("set-pin").value=settings.pin||"";
+  $("set-budget").value=settings.budget||"";
+  setType("expense");
+  renderCropGrid();renderPersonGrid();
+  populateFilters();checkBudget();
 }
 
-// ── PIN ───────────────────────────────────────────────────
+// ── PIN ──────────────────────────────────────────────────
 function pinPress(d){
   pinEntered+=d;updateDots();
   if(pinEntered.length===4){
-    if(pinEntered===settings.pin){
-      document.getElementById("pin-screen").classList.remove("show");
-      pinEntered="";showMain();
-    }else{
-      document.getElementById("pin-err").style.display="block";
+    if(pinEntered===settings.pin){$("pin-screen").classList.remove("show");pinEntered="";showMain();}
+    else{
+      $("pin-err").style.display="block";
       document.querySelectorAll(".pin-dot").forEach(x=>x.classList.add("error"));
-      setTimeout(()=>{pinEntered="";document.getElementById("pin-err").style.display="none";document.querySelectorAll(".pin-dot").forEach(x=>x.classList.remove("error","filled"));},900);
+      setTimeout(()=>{pinEntered="";$("pin-err").style.display="none";document.querySelectorAll(".pin-dot").forEach(x=>x.classList.remove("error","filled"));},900);
     }
   }
 }
 function pinBack(){pinEntered=pinEntered.slice(0,-1);updateDots();}
-function updateDots(){for(let i=0;i<4;i++){const d=document.getElementById("pd"+i);d.classList.toggle("filled",i<pinEntered.length);d.classList.remove("error");}}
+function updateDots(){for(let i=0;i<4;i++){const d=$("pd"+i);d.classList.toggle("filled",i<pinEntered.length);d.classList.remove("error");}}
 
-// ── TABS ──────────────────────────────────────────────────
-function switchTab(name){
-  ["add","records","report","settings"].forEach((t,i)=>{
-    document.getElementById("tab-"+t).style.display=t===name?"block":"none";
-    document.querySelectorAll(".tab")[i].classList.toggle("active",t===name);
-  });
-  if(name==="records")renderRecords();
-  if(name==="report")renderReport();
+// ── TABS with slide animation ────────────────────────────
+function switchTab(idx){
+  curTab=idx;
+  $("slider").style.transform=`translateX(-${idx*100}%)`;
+  document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("active",i===idx));
+  if(idx===1)renderRecords();
+  if(idx===2)renderReport();
 }
 
-// ── TYPE TOGGLE ───────────────────────────────────────────
+// ── TYPE TOGGLE ──────────────────────────────────────────
 function setType(type){
-  curType=type;
-  selCat=(type==="expense"?EC:IC)[0].id;
-  document.getElementById("btn-exp").className="type-btn exp"+(type==="expense"?" on":"");
-  document.getElementById("btn-inc").className="type-btn inc"+(type==="income"?" on":"");
-  document.getElementById("cat-label").textContent=type==="expense"?"Category · प्रकार":"Income Type · जमा प्रकार";
-  const btn=document.getElementById("save-btn");
-  btn.textContent=type==="expense"?"Save Expense · खर्च जतन करा":"Save Income · जमा जतन करा";
+  curType=type;selCat=(type==="expense"?EC:IC)[0].id;
+  $("btn-exp").className="type-btn exp"+(type==="expense"?" on":"");
+  $("btn-inc").className="type-btn inc"+(type==="income"?" on":"");
+  $("cat-card-title").textContent=type==="expense"?"📂 Category · प्रकार":"📂 Income Type · जमा प्रकार";
+  const btn=$("save-btn");
+  btn.innerHTML=`<span class="save-icon">${type==="expense"?"💾":"✅"}</span>${type==="expense"?"Save Expense · खर्च जतन करा":"Save Income · जमा जतन करा"}`;
   btn.className="save-btn "+(type==="expense"?"exp":"inc");
-  document.getElementById("paid-by-field").style.display=type==="expense"?"block":"none";
-  renderCats();
+  $("paid-by-card").style.display=type==="expense"?"block":"none";
+  renderCatGrid();
 }
 
-function renderCats(){
-  document.getElementById("cat-grid").innerHTML=(curType==="expense"?EC:IC).map(c=>`
+// ── CATEGORY GRID ────────────────────────────────────────
+function renderCatGrid(){
+  $("cat-grid").innerHTML=(curType==="expense"?EC:IC).map(c=>`
     <button class="cat-btn${selCat===c.id?" sel":""}" onclick="selCatFn('${c.id}')"
-      style="border-color:${selCat===c.id?c.c:"var(--border)"};background:${selCat===c.id?c.b:"#FAFAF8"}">
-      <div class="cn" style="color:${c.c}">${c.l}</div>
-      <div class="cm" style="color:${c.c}">${c.m}</div>
+      style="border-color:${selCat===c.id?c.c:"var(--border)"};background:${selCat===c.id?c.b:"#FAFBFF"}">
+      <span class="cat-icon">${c.icon}</span>
+      <span class="cat-name" style="color:${c.c}">${c.l}</span>
+      <span class="cat-marathi" style="color:${c.c}">${c.m}</span>
     </button>`).join("");
 }
-function selCatFn(id){selCat=id;renderCats();}
+function selCatFn(id){selCat=id;renderCatGrid();}
 
-// ── SAVE ──────────────────────────────────────────────────
+// ── CROP GRID ─────────────────────────────────────────────
+function renderCropGrid(){
+  $("crop-grid").innerHTML=CROPS.map(c=>`
+    <button class="crop-opt${selCrop===c.val?" sel":""}" onclick="selCropFn('${c.val.replace(/'/g,"\\'")}')">
+      <span class="cem">${c.em}</span>
+      <span class="ctxt">${c.en}<br><span style="opacity:0.7">${c.mr}</span></span>
+    </button>`).join("");
+  // also update records filter
+  const rcf=$("rec-cf");
+  if(rcf){const cur=rcf.value;rcf.innerHTML='<option value="all">All Crops</option>'+CROPS.map(c=>`<option value="${c.val}"${c.val===cur?" selected":""}>${c.em} ${c.en}</option>`).join("");}
+}
+function selCropFn(val){selCrop=selCrop===val?"":val;renderCropGrid();}
+
+// ── PERSON GRID ───────────────────────────────────────────
+function renderPersonGrid(){
+  $("person-grid").innerHTML=PERSONS.map(p=>`
+    <button class="person-opt${selPerson===p.name?" sel":""}" onclick="selPersonFn('${p.name.replace(/'/g,"\\'")}')">
+      <div class="avatar" style="background:${p.color}">${initials(p.name)}</div>
+      <div class="person-name">${p.name}</div>
+    </button>`).join("");
+}
+function selPersonFn(name){selPerson=selPerson===name?"":name;renderPersonGrid();}
+
+// ── RIPPLE SAVE ───────────────────────────────────────────
+function handleSave(e){
+  const btn=$("save-btn");
+  const rect=btn.getBoundingClientRect();
+  const x=e.clientX-rect.left, y=e.clientY-rect.top;
+  const rip=document.createElement("span");
+  rip.className="ripple";
+  const size=Math.max(rect.width,rect.height)*2;
+  rip.style.cssText=`width:${size}px;height:${size}px;left:${x-size/2}px;top:${y-size/2}px`;
+  btn.appendChild(rip);
+  setTimeout(()=>rip.remove(),700);
+  saveRecord();
+}
+
 async function saveRecord(){
-  const amt=parseFloat(document.getElementById("form-amount").value);
+  const amt=parseFloat($("form-amount").value);
   if(!amt||isNaN(amt)){alert("Please enter an amount · रक्कम टाका");return;}
-  const rec={
-    id:Date.now(),type:curType,
-    date:document.getElementById("form-date").value,
-    amount:amt,category:selCat,
-    crop:document.getElementById("form-crop").value||"",
-    paidBy:curType==="expense"?(document.getElementById("form-paidby").value||""):"",
-    note:document.getElementById("form-note").value.trim()
-  };
+  const rec={id:Date.now(),type:curType,date:$("form-date").value,amount:amt,category:selCat,crop:selCrop,paidBy:curType==="expense"?selPerson:"",note:$("form-note").value.trim()};
   records.unshift(rec);
-  ["form-amount","form-note"].forEach(id=>document.getElementById(id).value="");
-  document.getElementById("form-crop").value="";
-  document.getElementById("form-paidby").value="";
-  populateMonthFilters();checkBudget();
-  const btn=document.getElementById("save-btn");
-  btn.textContent="Saving to GitHub… ☁️";btn.disabled=true;
+  $("form-amount").value="";$("form-note").value="";
+  selCrop="";selPerson="";
+  renderCropGrid();renderPersonGrid();
+  populateFilters();checkBudget();
+  const btn=$("save-btn");
+  btn.innerHTML=`<span class="save-icon">☁️</span>Saving to GitHub…`;btn.disabled=true;
   try{
     await ghSave({records,settings});
     localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    setSyncBadge(true,"✓ GitHub");
-    btn.textContent="✅ Saved to GitHub!";
+    setSyncBadge(true,"✓ Synced");
+    btn.innerHTML=`<span class="save-icon">✅</span>Saved to GitHub!`;
     setTimeout(()=>{btn.disabled=false;setType(curType);},2000);
   }catch{
-    setSyncBadge(false,"✗ Sync Failed");
+    setSyncBadge(false,"✗ Offline");
     localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    btn.textContent="✓ Saved locally";btn.disabled=false;
+    btn.innerHTML=`<span class="save-icon">💾</span>Saved locally`;btn.disabled=false;
     setTimeout(()=>setType(curType),2500);
   }
 }
@@ -586,56 +668,58 @@ async function delRec(id){
   if(!confirm("Delete this record? · ही नोंद मिटवायची का?"))return;
   records=records.filter(r=>r.id!==id);renderRecords();
   showLoad("Updating GitHub…");
-  try{await ghSave({records,settings});localStorage.setItem("fl-cache",JSON.stringify({records,settings}));setSyncBadge(true,"✓ GitHub");}
-  catch{setSyncBadge(false,"✗ Sync Failed");localStorage.setItem("fl-cache",JSON.stringify({records,settings}));}
+  try{await ghSave({records,settings});localStorage.setItem("fl-cache",JSON.stringify({records,settings}));setSyncBadge(true,"✓ Synced");}
+  catch{setSyncBadge(false,"✗ Offline");localStorage.setItem("fl-cache",JSON.stringify({records,settings}));}
   hideLoad();
 }
 
-// ── FILTERS & BUDGET ──────────────────────────────────────
-function populateMonthFilters(){
+// ── FILTERS ───────────────────────────────────────────────
+function populateFilters(){
   const months=[...new Set(records.map(r=>r.date?.slice(0,7)).filter(Boolean))].sort().reverse();
   ["rec-mf","rep-mf"].forEach(id=>{
-    const sel=document.getElementById(id);const cur=sel.value;
+    const sel=$(id);if(!sel)return;const cur=sel.value;
     sel.innerHTML='<option value="all">'+(id==="rep-mf"?"All Time":"All Months")+"</option>"+
       months.map(m=>{const[y,mo]=m.split("-");return`<option value="${m}"${m===cur?" selected":""}>${MONTHS[parseInt(mo)-1]} ${y}</option>`;}).join("");
   });
+  renderCropGrid();
 }
 function checkBudget(){
   const budget=parseFloat(settings.budget)||0;
   const now=new Date();const cm=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
   const ce=records.filter(r=>r.type==="expense"&&r.date?.startsWith(cm)).reduce((s,r)=>s+r.amount,0);
-  document.getElementById("budget-badge").style.display=(budget>0&&ce>=budget*0.8)?"flex":"none";
+  $("budget-badge").style.display=(budget>0&&ce>=budget*0.8)?"flex":"none";
 }
 
 // ── RECORDS ───────────────────────────────────────────────
 function renderRecords(){
-  const mf=document.getElementById("rec-mf").value;
-  const tf=document.getElementById("rec-tf").value;
-  const cf=document.getElementById("rec-cf").value;
+  const mf=$("rec-mf").value, tf=$("rec-tf").value, cf=$("rec-cf").value;
   const filt=records.filter(r=>(mf==="all"||r.date?.startsWith(mf))&&(tf==="all"||r.type===tf)&&(cf==="all"||r.crop===cf));
   const totI=filt.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
   const totE=filt.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
-  const net=totI-totE;
-  document.getElementById("rec-totals").innerHTML=`
-    <div class="sum-card sc-green"><div class="sl">Jama · जमा</div><div class="sv">₹${fa(totI)}</div></div>
-    <div class="sum-card sc-red"><div class="sl">Kharch · खर्च</div><div class="sv">₹${fa(totE)}</div></div>`;
-  if(!filt.length){document.getElementById("records-list").innerHTML='<div class="empty">🌱<br>No records found.<br>अजून कोणतीही नोंद नाही.</div>';return;}
-  document.getElementById("records-list").innerHTML=filt.map(r=>{
-    const cat=CM[r.category]||EC[6];const isI=r.type==="income";
-    const cropLabel=r.crop?r.crop.split("/")[1]?.trim()||r.crop:"";
+  $("rec-strip").innerHTML=`
+    <div class="sum-card sc-green"><div class="sum-lbl">Jama · जमा</div><div class="sum-val">₹${fa(totI)}</div></div>
+    <div class="sum-card sc-red"><div class="sum-lbl">Kharch · खर्च</div><div class="sum-val">₹${fa(totE)}</div></div>`;
+  if(!filt.length){
+    $("records-list").innerHTML=`<div class="empty-state"><div class="empty-illo">📋</div><div class="empty-title">No records found</div><div class="empty-sub">Try changing your filters<br>or add a new entry from the Add tab.</div></div>`;return;
+  }
+  const cropMap=Object.fromEntries(CROPS.map(c=>[c.val,c]));
+  $("records-list").innerHTML=filt.map(r=>{
+    const cat=CM[r.category]||EC[5];const isI=r.type==="income";
+    const cropObj=r.crop?cropMap[r.crop]:null;
+    const personObj=r.paidBy?PM[r.paidBy]:null;
     return `<div class="rec-row">
-      <div class="rec-ico" style="background:${cat.b};color:${cat.c}">${cat.m}</div>
+      <div class="rec-ico" style="background:${cat.b}">${cat.icon}</div>
       <div class="rec-info">
-        <div class="rec-main">${cat.l}<span class="badge ${isI?"b-inc":"b-exp"}">${isI?"जमा":"खर्च"}</span></div>
+        <div class="rec-main">${cat.l}<span class="chip ${isI?"chip-inc":"chip-exp"}">${isI?"💰 जमा":"💸 खर्च"}</span></div>
         <div class="rec-tags">
-          ${cropLabel?`<span class="badge b-crop">🌱 ${cropLabel}</span>`:""}
-          ${r.paidBy?`<span class="badge b-person">👤 ${r.paidBy}</span>`:""}
+          ${cropObj?`<span class="chip chip-crop">${cropObj.em} ${cropObj.mr}</span>`:""}
+          ${personObj?`<span class="chip chip-person" style="background:${personObj.bg};color:${personObj.color}">👤 ${personObj.name}</span>`:""}
         </div>
         <div class="rec-date">${fd(r.date)}${r.note?" · "+r.note:""}</div>
       </div>
       <div class="rec-right">
         <div class="rec-amt ${isI?"amt-inc":"amt-exp"}">${isI?"+":"−"}₹${fa(r.amount)}</div>
-        <button class="del-btn" onclick="delRec(${r.id})">delete</button>
+        <button class="del-btn" onclick="delRec(${r.id})">🗑 delete</button>
       </div>
     </div>`;
   }).join("");
@@ -643,146 +727,151 @@ function renderRecords(){
 
 // ── REPORT ────────────────────────────────────────────────
 function renderReport(){
-  const mf=document.getElementById("rep-mf").value;
+  const mf=$("rep-mf").value;
   const repR=mf==="all"?records:records.filter(r=>r.date?.startsWith(mf));
   const totI=repR.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
   const totE=repR.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
   const net=totI-totE;
 
-  document.getElementById("rep-cards").innerHTML=`
-    <div class="sum-card sc-green"><div class="sl">Total Income · जमा</div><div class="sv">₹${fa(totI)}</div></div>
-    <div class="sum-card sc-red"><div class="sl">Total Expense · खर्च</div><div class="sv">₹${fa(totE)}</div></div>`;
+  $("rep-cards").innerHTML=`
+    <div class="sum-card sc-green"><div class="sum-lbl">Total Income · जमा</div><div class="sum-val">₹${fa(totI)}</div></div>
+    <div class="sum-card sc-red"><div class="sum-lbl">Total Expense · खर्च</div><div class="sum-val">₹${fa(totE)}</div></div>`;
 
-  document.getElementById("rep-net").innerHTML=`
-    <div class="net-card ${net>=0?"net-green":"net-red"}">
+  $("rep-net").innerHTML=`
+    <div class="net-card ${net>=0?"net-profit":"net-loss"}">
       <div>
         <div class="net-lbl ${net>=0?"gd":"rd"}">Net Balance · शिल्लक</div>
         <div class="net-amt ${net>=0?"gd":"rd"}">₹${fa(Math.abs(net))}</div>
         <div class="net-res ${net>=0?"gd":"rd"}">${net>=0?"✅ PROFIT · नफा":"❌ LOSS · नुकसान"}</div>
       </div>
-      <div style="font-size:40px">${net>=0?"✅":"❌"}</div>
+      <div style="font-size:44px">${net>=0?"✅":"❌"}</div>
     </div>`;
 
-  // Budget progress
   const budget=parseFloat(settings.budget)||0;
   if(budget>0){
     const now=new Date();const cm=`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
     const ce=records.filter(r=>r.type==="expense"&&r.date?.startsWith(cm)).reduce((s,r)=>s+r.amount,0);
-    const pct=Math.min((ce/budget)*100,100);
-    const bc=pct>90?"#E24B4A":pct>75?"#EF9F27":"var(--green-mid)";
-    document.getElementById("rep-budget").innerHTML=`
-      <div class="budget-box">
-        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-          <span style="font-size:12px;font-weight:600;color:var(--brown)">Monthly Budget (this month)</span>
-          <span style="font-size:12px;font-weight:700;color:var(--brown)">₹${fa(ce)} / ₹${fa(budget)}</span>
-        </div>
-        <div class="bar-track"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${bc}"></div></div>
-        ${pct>=80?`<div style="font-size:11px;color:var(--brown);margin-top:6px;font-weight:500">⚠ Nearing your monthly budget!</div>`:""}
-      </div>`;
-  }else{document.getElementById("rep-budget").innerHTML="";}
+    const pct=Math.min((ce/budget)*100,100);const bc=pct>90?"#E53935":pct>75?"#FFA726":"#4CAF50";
+    $("rep-budget").innerHTML=`<div class="budget-box">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        <span style="font-size:12px;font-weight:700;color:#E65100">💰 Monthly Budget (this month)</span>
+        <span style="font-size:12px;font-weight:800;color:#E65100">₹${fa(ce)} / ₹${fa(budget)}</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${bc}"></div></div>
+      ${pct>=80?`<div style="font-size:11px;color:#E65100;margin-top:7px;font-weight:700">⚠️ Nearing your monthly budget limit!</div>`:""}
+    </div>`;
+  }else{$("rep-budget").innerHTML="";}
 
   // Crop breakdown
-  const cropsUsed=CROPS.filter(c=>repR.some(r=>r.crop===c));
+  const cropMap=Object.fromEntries(CROPS.map(c=>[c.val,c]));
+  const cropsUsed=CROPS.filter(c=>repR.some(r=>r.crop===c.val));
   if(cropsUsed.length){
-    let h=`<div style="margin-bottom:18px"><div class="section-hd" style="color:#E65100">🌱 Crop Wise · पिकानुसार</div>`;
+    let h=`<div style="margin-bottom:20px"><div class="sec-hd">🌱 Crop Wise · पिकानुसार</div>`;
     cropsUsed.forEach(crop=>{
-      const cI=repR.filter(r=>r.type==="income"&&r.crop===crop).reduce((s,r)=>s+r.amount,0);
-      const cE=repR.filter(r=>r.type==="expense"&&r.crop===crop).reduce((s,r)=>s+r.amount,0);
-      const cNet=cI-cE;const label=crop.split("/")[1]?.trim()||crop;
-      h+=`<div class="crop-row">
-        <div>
-          <div style="font-size:13px;font-weight:600;color:var(--text)">${label}</div>
-          <div style="font-size:11px;color:var(--text-light);margin-top:2px">जमा ₹${fa(cI)} &nbsp;|&nbsp; खर्च ₹${fa(cE)}</div>
+      const cI=repR.filter(r=>r.type==="income"&&r.crop===crop.val).reduce((s,r)=>s+r.amount,0);
+      const cE=repR.filter(r=>r.type==="expense"&&r.crop===crop.val).reduce((s,r)=>s+r.amount,0);
+      const cNet=cI-cE;
+      h+=`<div class="crop-card">
+        <div class="crop-card-l">
+          <span class="crop-em">${crop.em}</span>
+          <div>
+            <div class="crop-name">${crop.en} · ${crop.mr}</div>
+            <div class="crop-detail">जमा ₹${fa(cI)} &nbsp;|&nbsp; खर्च ₹${fa(cE)}</div>
+          </div>
         </div>
         <div style="text-align:right">
-          <div style="font-size:15px;font-weight:700;color:${cNet>=0?"var(--green-dark)":"var(--red-dark)"}">${cNet>=0?"+":"−"}₹${fa(Math.abs(cNet))}</div>
-          <div style="font-size:10px;color:${cNet>=0?"var(--green-accent)":"var(--red-mid)"};font-weight:600">${cNet>=0?"Profit":"Loss"}</div>
+          <div style="font-size:16px;font-weight:800;color:${cNet>=0?"var(--g1)":"var(--r1)"}">${cNet>=0?"+":"−"}₹${fa(Math.abs(cNet))}</div>
+          <div style="font-size:10px;font-weight:700;color:${cNet>=0?"var(--g3)":"var(--r3)"}">${cNet>=0?"Profit":"Loss"}</div>
         </div>
       </div>`;
     });
-    document.getElementById("rep-crop").innerHTML=h+"</div>";
-  }else{document.getElementById("rep-crop").innerHTML="";}
+    $("rep-crop").innerHTML=h+"</div>";
+  }else{$("rep-crop").innerHTML=`<div class="empty-state" style="padding:2rem"><div class="empty-illo" style="font-size:40px">🌱</div><div class="empty-title">No crop data yet</div><div class="empty-sub">Select a crop when adding records to see crop-wise breakdown.</div></div>`;}
 
   // Person breakdown
-  const personsUsed=PERSONS.filter(p=>repR.some(r=>r.paidBy===p));
+  const personsUsed=PERSONS.filter(p=>repR.some(r=>r.paidBy===p.name));
   if(personsUsed.length){
-    const totalPaid=personsUsed.reduce((s,p)=>s+repR.filter(r=>r.paidBy===p).reduce((s2,r)=>s2+r.amount,0),0);
-    let h=`<div style="margin-bottom:18px"><div class="section-hd" style="color:var(--blue)">👤 Paid By · कोणी दिले</div>`;
+    const totalPaid=personsUsed.reduce((s,p)=>s+repR.filter(r=>r.paidBy===p.name).reduce((s2,r)=>s2+r.amount,0),0);
+    let h=`<div style="margin-bottom:20px"><div class="sec-hd">👤 Paid By · कोणी दिले</div>`;
     personsUsed.forEach(p=>{
-      const t=repR.filter(r=>r.paidBy===p).reduce((s,r)=>s+r.amount,0);
+      const t=repR.filter(r=>r.paidBy===p.name).reduce((s,r)=>s+r.amount,0);
       const pct=totalPaid>0?(t/totalPaid*100):0;
-      h+=`<div class="person-row">
-        <div>
-          <div style="font-size:13px;font-weight:600;color:var(--blue)">${p}</div>
-          <div class="bar-track" style="width:100px;margin-top:6px"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:var(--blue)"></div></div>
+      h+=`<div class="person-card">
+        <div class="person-card-l">
+          <div class="avatar-sm" style="background:${p.color}">${initials(p.name)}</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--text)">${p.name}</div>
+            <div class="bar-track" style="width:90px;margin-top:5px"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${p.color}"></div></div>
+          </div>
         </div>
         <div style="text-align:right">
-          <div style="font-size:15px;font-weight:700;color:var(--blue)">₹${fa(t)}</div>
-          <div style="font-size:10px;color:#aaa">${pct.toFixed(0)}% of total</div>
+          <div style="font-size:16px;font-weight:800;color:${p.color}">₹${fa(t)}</div>
+          <div style="font-size:10px;color:var(--text3);font-weight:500">${pct.toFixed(0)}% of total</div>
         </div>
       </div>`;
     });
-    document.getElementById("rep-person").innerHTML=h+"</div>";
-  }else{document.getElementById("rep-person").innerHTML="";}
+    $("rep-person").innerHTML=h+"</div>";
+  }else{$("rep-person").innerHTML="";}
 
-  // Income category
+  // Income breakdown
   let iH="";
   if(totI>0){
-    iH=`<div style="margin-bottom:16px"><div class="section-hd gd">📈 Income by Category · जमा तपशील</div>`;
+    iH=`<div style="margin-bottom:20px"><div class="sec-hd" style="color:var(--g1)">📈 Income by Category</div>`;
     IC.forEach(c=>{const t=repR.filter(r=>r.type==="income"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);if(!t)return;
-      iH+=`<div class="bar-row"><div class="bar-hd"><span style="font-size:12px;color:var(--text)">${c.l} <span style="color:var(--text-light);font-size:11px">(${c.m})</span></span><span style="font-size:13px;font-weight:700;color:var(--green-dark)">₹${fa(t)}</span></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totI*100).toFixed(1)}%;background:var(--green-mid)"></div></div><div class="bar-sub">${(t/totI*100).toFixed(0)}% of income</div></div>`;
+      iH+=`<div class="bar-row"><div class="bar-hd"><div class="bar-label">${c.icon} ${c.l} <span style="font-size:11px;color:var(--text3)">(${c.m})</span></div><div class="bar-val" style="color:var(--g1)">₹${fa(t)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totI*100).toFixed(1)}%;background:var(--g3)"></div></div><div class="bar-pct">${(t/totI*100).toFixed(0)}% of income</div></div>`;
     });
     iH+="</div>";
   }
-  document.getElementById("rep-inc").innerHTML=iH;
+  $("rep-inc").innerHTML=iH;
 
-  // Expense category
   let eH="";
   if(totE>0){
-    eH=`<div style="margin-bottom:18px"><div class="section-hd rd">📉 Expense by Category · खर्च तपशील</div>`;
+    eH=`<div style="margin-bottom:20px"><div class="sec-hd" style="color:var(--r1)">📉 Expense by Category</div>`;
     EC.forEach(c=>{const t=repR.filter(r=>r.type==="expense"&&r.category===c.id).reduce((s,r)=>s+r.amount,0);if(!t)return;
-      eH+=`<div class="bar-row"><div class="bar-hd"><span style="font-size:12px;color:var(--text)">${c.l} <span style="color:var(--text-light);font-size:11px">(${c.m})</span></span><span style="font-size:13px;font-weight:700;color:var(--red-dark)">₹${fa(t)}</span></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totE*100).toFixed(1)}%;background:var(--red-mid)"></div></div><div class="bar-sub">${(t/totE*100).toFixed(0)}% of expense</div></div>`;
+      eH+=`<div class="bar-row"><div class="bar-hd"><div class="bar-label">${c.icon} ${c.l} <span style="font-size:11px;color:var(--text3)">(${c.m})</span></div><div class="bar-val" style="color:var(--r2)">₹${fa(t)}</div></div><div class="bar-track"><div class="bar-fill" style="width:${(t/totE*100).toFixed(1)}%;background:var(--r3)"></div></div><div class="bar-pct">${(t/totE*100).toFixed(0)}% of expense</div></div>`;
     });
     eH+="</div>";
   }
-  document.getElementById("rep-exp").innerHTML=eH;
+  $("rep-exp").innerHTML=eH;
 }
 
 // ── SHARE ─────────────────────────────────────────────────
 function shareReport(){
-  const mf=document.getElementById("rep-mf").value;
+  const mf=$("rep-mf").value;
   const repR=mf==="all"?records:records.filter(r=>r.date?.startsWith(mf));
   const totI=repR.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
   const totE=repR.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
   const net=totI-totE;
   const lb=mf==="all"?"All Time":`${MONTHS[parseInt(mf.split("-")[1])-1]} ${mf.split("-")[0]}`;
   const cropLines=CROPS.map(c=>{
-    const cI=repR.filter(r=>r.type==="income"&&r.crop===c).reduce((s,r)=>s+r.amount,0);
-    const cE=repR.filter(r=>r.type==="expense"&&r.crop===c).reduce((s,r)=>s+r.amount,0);
+    const cI=repR.filter(r=>r.type==="income"&&r.crop===c.val).reduce((s,r)=>s+r.amount,0);
+    const cE=repR.filter(r=>r.type==="expense"&&r.crop===c.val).reduce((s,r)=>s+r.amount,0);
     if(!cI&&!cE)return null;
-    const label=c.split("/")[1]?.trim()||c;
-    return `  ${label}: जमा ₹${fa(cI)} | खर्च ₹${fa(cE)} | ${cI-cE>=0?"नफा":"नुकसान"} ₹${fa(Math.abs(cI-cE))}`;
+    return `  ${c.em} ${c.en}(${c.mr}): जमा ₹${fa(cI)} | खर्च ₹${fa(cE)} | ${cI-cE>=0?"नफा":"नुकसान"} ₹${fa(Math.abs(cI-cE))}`;
   }).filter(Boolean).join("\n");
-  const personLines=PERSONS.map(p=>{const t=repR.filter(r=>r.paidBy===p).reduce((s,r)=>s+r.amount,0);return t>0?`  ${p}: ₹${fa(t)}`:null;}).filter(Boolean).join("\n");
-  const text=`🌾 Kshirsagar Farms — ${lb}\n================================\nINCOME  (जमा):    ₹${fa(totI)}\nEXPENSE (खर्च):   ₹${fa(totE)}\nNET     (शिल्लक): ₹${fa(Math.abs(net))} ${net>=0?"PROFIT ✅":"LOSS ❌"}\n================================\n${cropLines?"🌱 CROP WISE:\n"+cropLines+"\n\n":""}${personLines?"👤 PAID BY:\n"+personLines+"\n\n":""}================================\n🌾 Kshirsagar Farms Ledger`;
-  const btn=document.getElementById("share-btn");
+  const personLines=PERSONS.map(p=>{const t=repR.filter(r=>r.paidBy===p.name).reduce((s,r)=>s+r.amount,0);return t>0?`  ${p.name}: ₹${fa(t)}`:null;}).filter(Boolean).join("\n");
+  const text=`🌾 Kshirsagar Farms — ${lb}\n================================\nINCOME  (जमा):    ₹${fa(totI)}\nEXPENSE (खर्च):   ₹${fa(totE)}\nNET     (शिल्लक): ₹${fa(Math.abs(net))} ${net>=0?"PROFIT ✅":"LOSS ❌"}\n================================\n${cropLines?"🌱 CROP WISE:\n"+cropLines+"\n\n":""}${personLines?"👤 PAID BY:\n"+personLines+"\n\n":""}================================\n🌾 Kshirsagar Farms Ledger App`;
+  const btn=$("share-btn");
   if(navigator.share)navigator.share({text}).catch(()=>copyText(text,btn));
   else copyText(text,btn);
 }
 function copyText(t,btn){
-  navigator.clipboard.writeText(t).then(()=>{btn.textContent="✓ Copied! Paste in WhatsApp";setTimeout(()=>{btn.textContent="📤 Share Report · अहवाल शेअर करा";},2500);}).catch(()=>alert(t));
+  navigator.clipboard.writeText(t).then(()=>{
+    btn.innerHTML=`<span class="save-icon">✓</span>Copied! Paste in WhatsApp`;
+    setTimeout(()=>{btn.innerHTML=`<span class="save-icon">📤</span>Share Report · अहवाल शेअर करा`;},2500);
+  }).catch(()=>alert(t));
 }
 
 // ── SETTINGS ──────────────────────────────────────────────
 async function saveSettings(){
-  settings.pin=document.getElementById("set-pin").value.replace(/\D/g,"").slice(0,4);
-  settings.budget=document.getElementById("set-budget").value;
-  const btn=document.getElementById("save-set-btn");
+  settings.pin=$("set-pin").value.replace(/\D/g,"").slice(0,4);
+  settings.budget=$("set-budget").value;
+  const btn=$("save-set-btn");
   btn.textContent="Saving to GitHub… ☁️";btn.disabled=true;
   try{
     await ghSave({records,settings});
     localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    setSyncBadge(true,"✓ GitHub");
+    setSyncBadge(true,"✓ Synced");
     btn.textContent="✅ Settings Saved!";
     setTimeout(()=>{btn.textContent="Save Settings · सेटिंग जतन करा";btn.disabled=false;},2000);
     checkBudget();
@@ -797,7 +886,8 @@ async function refreshFromGitHub(){
     const data=await ghLoad();
     if(data){records=data.records||[];settings=data.settings||{pin:"",budget:""};}
     localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
-    populateMonthFilters();checkBudget();setSyncBadge(true,"✓ GitHub");hideLoad();alert("Refreshed! ✅");
+    populateFilters();checkBudget();setSyncBadge(true,"✓ Synced");hideLoad();
+    alert("✅ Refreshed from GitHub!");
   }catch(e){hideLoad();alert("Failed: "+e.message);}
 }
 function resetToken(){
