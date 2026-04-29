@@ -219,6 +219,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .access-table tr:last-child td{border-bottom:none;}
 .tick{color:var(--g2);font-weight:700;}
 .cross{color:var(--r3);font-weight:700;}
+
+/* ── HISHOB ── */
+.hishob-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.hishob-tbl{width:100%;border-collapse:collapse;font-size:11px;min-width:520px;}
+.hishob-tbl th{background:var(--g1);color:#fff;padding:9px 8px;text-align:right;font-weight:700;font-size:10px;white-space:nowrap;}
+.hishob-tbl th:first-child{text-align:left;border-radius:8px 0 0 0;}
+.hishob-tbl th:last-child{border-radius:0 8px 0 0;}
+.hishob-tbl td{padding:10px 8px;text-align:right;border-bottom:1px solid var(--border);font-weight:600;font-size:12px;}
+.hishob-tbl td:first-child{text-align:left;font-weight:700;}
+.hishob-tbl tr:last-child td{border-bottom:none;}
+.hishob-tbl tr:nth-child(even) td{background:#F9FBFF;}
+.h-share{font-size:9px;color:var(--text3);font-weight:500;display:block;margin-top:1px;}
+.h-profit{color:var(--g1);}.h-loss{color:var(--r2);}.h-zero{color:var(--text3);}
+.hpay-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f0ece6;}
+.hpay-ico{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+.hpay-info{flex:1;}
+.hpay-name{font-size:12px;font-weight:700;color:var(--text);}
+.hpay-date{font-size:10px;color:var(--text3);}
+.hpay-amt{font-size:14px;font-weight:800;text-align:right;}
+.hpay-del{font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;padding:0;font-family:inherit;display:block;margin-top:2px;}
+.hpay-del:hover{color:var(--r3);}
 </style>
 </head>
 <body>
@@ -292,7 +313,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <button class="tab active" id="tab-btn-0" onclick="switchTab(0)">Add<span>नोंद</span></button>
       <button class="tab" id="tab-btn-1" onclick="switchTab(1)">Records<span>यादी</span></button>
       <button class="tab" id="tab-btn-2" onclick="switchTab(2)">Report<span>अहवाल</span></button>
-      <button class="tab" id="tab-btn-3" onclick="switchTab(3)">⚙<span>सेटिंग</span></button>
+      <button class="tab" id="tab-btn-3" onclick="switchTab(3)">Hishob<span>हिशोब</span></button>
+      <button class="tab" id="tab-btn-4" onclick="switchTab(4)">⚙<span>सेटिंग</span></button>
     </div>
   </div>
 
@@ -412,7 +434,73 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <button class="save-btn inc" id="share-btn" onclick="shareReport()" style="margin-top:8px">📤 &nbsp;Share Report · अहवाल शेअर करा</button>
       </div>
 
-      <!-- ══ TAB 3: SETTINGS ══ -->
+
+      <!-- ══ TAB 3: HISHOB ══ -->
+      <div class="tab-panel" id="tab-hishob">
+
+        <!-- Summary Table -->
+        <div style="background:#fff;border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--shadow-sm);">
+          <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:14px;">📊 Person-wise Settlement · व्यक्तिनिहाय हिशोब</div>
+          <div id="hishob-table"></div>
+        </div>
+
+        <!-- Expense Paid Entry -->
+        <div class="form-card">
+          <div class="form-card-title" style="color:var(--r2)">💸 Expense Paid Amount · खर्च दिलेली रक्कम</div>
+          <div class="field" style="margin-bottom:12px">
+            <label>Paid By · कोणी दिले</label>
+            <div class="sel-wrap">
+              <select id="h-exp-person">
+                <option value="">-- Select Person --</option>
+                <option value="भाऊ">भाऊ</option>
+                <option value="श्याम">श्याम</option>
+                <option value="कैलास">कैलास</option>
+                <option value="बाळू">बाळू</option>
+                <option value="गणेश">गणेश</option>
+                <option value="भावड्या दादा">भावड्या दादा</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:14px">
+            <label>Amount (₹) · रक्कम</label>
+            <input type="number" id="h-exp-amount" class="big" placeholder="0" style="border:2px solid var(--border);border-radius:10px;background:#FAFBFF;">
+          </div>
+          <button class="save-btn exp" id="h-exp-save-btn" onclick="saveHishobPayment(event,'expense')">💾  Save Expense Payment</button>
+        </div>
+
+        <!-- Income Paid Entry -->
+        <div class="form-card">
+          <div class="form-card-title" style="color:var(--g1)">💰 Income Paid Amount · जमा दिलेली रक्कम</div>
+          <div class="field" style="margin-bottom:12px">
+            <label>Paid To · कोणाला दिले</label>
+            <div class="sel-wrap">
+              <select id="h-inc-person">
+                <option value="">-- Select Person --</option>
+                <option value="भाऊ">भाऊ</option>
+                <option value="श्याम">श्याम</option>
+                <option value="कैलास">कैलास</option>
+                <option value="बाळू">बाळू</option>
+                <option value="गणेश">गणेश</option>
+                <option value="भावड्या दादा">भावड्या दादा</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:14px">
+            <label>Amount (₹) · रक्कम</label>
+            <input type="number" id="h-inc-amount" class="big" placeholder="0" style="border:2px solid var(--border);border-radius:10px;background:#FAFBFF;">
+          </div>
+          <button class="save-btn inc" id="h-inc-save-btn" onclick="saveHishobPayment(event,'income')">💾  Save Income Payment</button>
+        </div>
+
+        <!-- Payment History -->
+        <div style="background:#fff;border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--shadow-sm);">
+          <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:12px;">📋 Payment History · देणे-घेणे इतिहास</div>
+          <div id="hishob-history"></div>
+        </div>
+
+      </div>
+
+      <!-- ══ TAB 4: SETTINGS ══ -->
       <div class="tab-panel">
         <div class="gh-banner">
           <div class="gh-banner-top">
@@ -498,7 +586,7 @@ const PERSONS=[
 ];
 const PM=Object.fromEntries(PERSONS.map(p=>[p.name,p]));
 
-let token="",ghSha=null,records=[],settings={adminPin:"",viewerPin:"",budget:""},curType="expense",selCat="seeds",pinEntered="",currentRole="",curTab=0;
+let token="",ghSha=null,records=[],hishobPayments=[],settings={adminPin:"",viewerPin:"",budget:""},curType="expense",selCat="seeds",pinEntered="",currentRole="",curTab=0;
 
 const fa=n=>Number(n).toLocaleString("en-IN");
 const td=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;};
@@ -532,17 +620,17 @@ async function init(){
   showLoad("Loading from GitHub…");
   try{
     const data=await ghLoad();
-    if(data){records=data.records||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
+    if(data){records=data.records||[];hishobPayments=data.hishobPayments||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
     // migrate old settings that used single 'pin' field
     if(data&&data.settings&&data.settings.pin&&!data.settings.adminPin){settings.adminPin=data.settings.pin;settings.viewerPin="";}
-    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));
     hideLoad();
     const hasPins=settings.adminPin||settings.viewerPin;
     hasPins?showPin():loginAs("admin");
   }catch(e){
     hideLoad();
     const c=localStorage.getItem("fl-cache");
-    if(c){const d=JSON.parse(c);records=d.records||[];settings=d.settings||{adminPin:"",viewerPin:"",budget:""};}
+    if(c){const d=JSON.parse(c);records=d.records||[];hishobPayments=d.hishobPayments||[];settings=d.settings||{adminPin:"",viewerPin:"",budget:""};}
     setSyncBadge(false,"✗ Offline");
     const hasPins=settings.adminPin||settings.viewerPin;
     hasPins?showPin():loginAs("admin");
@@ -558,8 +646,8 @@ async function setupDone(){
   showLoad("Connecting to GitHub…");
   try{
     const data=await ghLoad();
-    if(data){records=data.records||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
-    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    if(data){records=data.records||[];hishobPayments=data.hishobPayments||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
+    localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,hishobPayments,settings}));
     hideLoad();
     const hasPins=settings.adminPin||settings.viewerPin;
     hasPins?showPin():loginAs("admin");
@@ -606,7 +694,7 @@ function loginAs(role){
 
   // Show/hide tabs — Add tab visible for all, Settings only for Admin
   $("tab-btn-0").classList.remove("hidden"); // Add — always visible
-  $("tab-btn-3").classList.toggle("hidden",!isAdmin); // Settings — Admin only
+  $("tab-btn-4").classList.toggle("hidden",!isAdmin); // Settings — Admin only
 
   // Save button — hidden for viewers, replaced with notice
   const saveBtn=$("save-btn");
@@ -650,13 +738,14 @@ function lockApp(){
 
 // ── TABS ─────────────────────────────────────────────────
 function switchTab(idx){
-  // Viewers cannot go to Settings tab only
-  if(currentRole==="viewer"&&idx===3)return;
+  // Viewers cannot go to Settings tab (idx 4) only
+  if(currentRole==="viewer"&&idx===4)return;
   curTab=idx;
   $("slider").style.transform=`translateX(-${idx*100}%)`;
   document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("active",i===idx));
   if(idx===1)renderRecords();
   if(idx===2)renderReport();
+  if(idx===3)renderHishob();
 }
 
 // ── TYPE TOGGLE ───────────────────────────────────────────
@@ -700,11 +789,11 @@ async function saveRecord(){
   populateFilters();checkBudget();
   const btn=$("save-btn");btn.innerHTML="☁️ &nbsp;Saving to GitHub…";btn.disabled=true;
   try{
-    await ghSave({records,settings});localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    await ghSave({records,hishobPayments,settings});localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));
     setSyncBadge(true,"✓ Synced");btn.innerHTML="✅ &nbsp;Saved to GitHub!";
     setTimeout(()=>{btn.disabled=false;setType(curType);},2000);
   }catch{
-    setSyncBadge(false,"✗ Offline");localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    setSyncBadge(false,"✗ Offline");localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));
     btn.innerHTML="💾 &nbsp;Saved locally";btn.disabled=false;
     setTimeout(()=>setType(curType),2500);
   }
@@ -715,8 +804,8 @@ async function delRec(id){
   if(!confirm("Delete this record? · ही नोंद मिटवायची का?"))return;
   records=records.filter(r=>r.id!==id);renderRecords();
   showLoad("Updating GitHub…");
-  try{await ghSave({records,settings});localStorage.setItem("fl-cache",JSON.stringify({records,settings}));setSyncBadge(true,"✓ Synced");}
-  catch{setSyncBadge(false,"✗ Offline");localStorage.setItem("fl-cache",JSON.stringify({records,settings}));}
+  try{await ghSave({records,hishobPayments,settings});localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));setSyncBadge(true,"✓ Synced");}
+  catch{setSyncBadge(false,"✗ Offline");localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));}
   hideLoad();
 }
 
@@ -853,24 +942,169 @@ async function saveSettings(){
   settings.budget=$("set-budget").value;
   const btn=$("save-set-btn");btn.textContent="Saving to GitHub… ☁️";btn.disabled=true;
   try{
-    await ghSave({records,settings});localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    await ghSave({records,hishobPayments,settings});localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));
     setSyncBadge(true,"✓ Synced");btn.textContent="✅ Settings Saved!";
     setTimeout(()=>{btn.textContent="Save Settings · सेटिंग जतन करा";btn.disabled=false;},2000);
     checkBudget();
-  }catch{localStorage.setItem("fl-cache",JSON.stringify({records,settings}));btn.textContent="Saved locally";btn.disabled=false;}
+  }catch{localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));btn.textContent="Saved locally";btn.disabled=false;}
 }
 async function refreshFromGitHub(){
   showLoad("Refreshing from GitHub…");
   try{
     const data=await ghLoad();
-    if(data){records=data.records||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
-    localStorage.setItem("fl-cache",JSON.stringify({records,settings}));
+    if(data){records=data.records||[];hishobPayments=data.hishobPayments||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
+    localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,hishobPayments,settings}));
     populateFilters();checkBudget();setSyncBadge(true,"✓ Synced");hideLoad();alert("✅ Refreshed from GitHub!");
   }catch(e){hideLoad();alert("Failed: "+e.message);}
 }
 function resetToken(){
   if(!confirm("Reset GitHub token? You will need to enter a new one on next launch."))return;
   localStorage.removeItem("fl-gh-token");location.reload();
+}
+
+
+// ── HISHOB ─────────────────────────────────────────────────────
+const HISHOB_SHARES = {
+  "भावड्या दादा": 1/2,
+  "भाऊ": 1/10,
+  "श्याम": 1/10,
+  "कैलास": 1/10,
+  "बाळू": 1/10,
+  "गणेश": 1/10
+};
+const HISHOB_PERSONS = ["भावड्या दादा","भाऊ","श्याम","कैलास","बाळू","गणेश"];
+
+function renderHishob(){
+  const totI = records.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
+  const totE = records.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+
+  // Build table
+  let rows = "";
+  HISHOB_PERSONS.forEach(name=>{
+    const share = HISHOB_SHARES[name]||0;
+    const sharePct = (share*100%1===0)?(share*100)+"%" : (share*100).toFixed(1)+"%";
+    const p = PM[name]||{color:"#888",bg:"#eee"};
+
+    const expDue   = totE * share;
+    const expPaid  = hishobPayments.filter(h=>h.type==="expense"&&h.person===name).reduce((s,h)=>s+h.amount,0);
+    const expRem   = expDue - expPaid;
+
+    const incDue   = totI * share;
+    const incPaid  = hishobPayments.filter(h=>h.type==="income"&&h.person===name).reduce((s,h)=>s+h.amount,0);
+    const incRem   = incDue - incPaid;
+
+    const expRemCls = expRem>0?"h-loss":expRem<0?"h-profit":"h-zero";
+    const incRemCls = incRem>0?"h-profit":incRem<0?"h-loss":"h-zero";
+    const ekunHishob = incRem - expRem;
+    const ekunCls = ekunHishob>0?"h-profit":ekunHishob<0?"h-loss":"h-zero";
+
+    rows += `<tr>
+      <td><span style="display:inline-flex;align-items:center;gap:6px">
+        <span style="width:24px;height:24px;border-radius:50%;background:${p.color};color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0">${name[0]}</span>
+        ${name}
+      </span><span class="h-share">${sharePct} share</span></td>
+      <td>₹${fa(expDue)}</td>
+      <td style="color:var(--g1)">₹${fa(expPaid)}</td>
+      <td class="${expRemCls}">₹${fa(Math.abs(expRem))}${expRem<0?" ↑":""}</td>
+      <td>₹${fa(incDue)}</td>
+      <td style="color:var(--g1)">₹${fa(incPaid)}</td>
+      <td class="${incRemCls}">₹${fa(Math.abs(incRem))}${incRem<0?" ↑":""}</td>
+      <td class="${ekunCls}" style="font-weight:800;background:${ekunHishob>=0?"#F0FFF0":"#FFF0F0"}">₹${fa(Math.abs(ekunHishob))}${ekunHishob>0?" ▲":ekunHishob<0?" ▼":""}</td>
+    </tr>`;
+  });
+
+  $("hishob-table").innerHTML = `
+    <div class="hishob-table-wrap">
+      <table class="hishob-tbl">
+        <thead>
+          <tr>
+            <th>Person</th>
+            <th>एकूण खर्च</th>
+            <th>खर्च जमा</th>
+            <th>खर्च बाकी</th>
+            <th>एकूण उत्पन्न</th>
+            <th>उत्पन्न जमा</th>
+            <th>उत्पन्न बाकी</th>
+            <th style="background:#B8860B">एकूण हिशोब</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <div style="margin-top:10px;font-size:10px;color:var(--text3);line-height:1.7">
+      Total Income: <strong>₹${fa(totI)}</strong> &nbsp;|&nbsp; Total Expense: <strong>₹${fa(totE)}</strong><br>
+      खर्च बाकी = एकूण खर्च − खर्च जमा &nbsp;|&nbsp; उत्पन्न बाकी = एकूण उत्पन्न − उत्पन्न जमा &nbsp;|&nbsp; एकूण हिशोब = उत्पन्न बाकी − खर्च बाकी
+    </div>`;
+
+  // Payment history
+  if(!hishobPayments.length){
+    $("hishob-history").innerHTML=`<div style="text-align:center;padding:1.5rem;color:var(--text3);font-size:13px">No payments recorded yet.</div>`;
+    return;
+  }
+  $("hishob-history").innerHTML=[...hishobPayments].reverse().map(h=>{
+    const p=PM[h.person]||{color:"#888"};
+    const isE=h.type==="expense";
+    return `<div class="hpay-row">
+      <div class="hpay-ico" style="background:${p.color}">${h.person[0]}</div>
+      <div class="hpay-info">
+        <div class="hpay-name">${h.person} <span class="chip ${isE?"chip-exp":"chip-inc"}" style="font-size:9px;padding:2px 6px">${isE?"💸 Exp Paid":"💰 Inc Paid"}</span></div>
+        <div class="hpay-date">${fd(h.date)}</div>
+      </div>
+      <div style="text-align:right">
+        <div class="hpay-amt ${isE?"amt-exp":"amt-inc"}">₹${fa(h.amount)}</div>
+        <button class="hpay-del" onclick="delHishobPayment(${h.id})">🗑 delete</button>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+async function saveHishobPayment(e, type){
+  const personSel = type==="expense"?"h-exp-person":"h-inc-person";
+  const amountSel = type==="expense"?"h-exp-amount":"h-inc-amount";
+  const btnId     = type==="expense"?"h-exp-save-btn":"h-inc-save-btn";
+  const person = $(personSel).value;
+  const amount = parseFloat($(amountSel).value);
+
+  // ripple
+  const btn=$(btnId);
+  const rect=btn.getBoundingClientRect();
+  const rip=document.createElement("span");rip.className="ripple";
+  const size=Math.max(rect.width,rect.height)*2;
+  rip.style.cssText=`width:${size}px;height:${size}px;left:${(e.clientX-rect.left)-size/2}px;top:${(e.clientY-rect.top)-size/2}px`;
+  btn.appendChild(rip);setTimeout(()=>rip.remove(),700);
+
+  if(!person){alert("Please select a person · व्यक्ती निवडा");return;}
+  if(!amount||isNaN(amount)){alert("Please enter an amount · रक्कम टाका");return;}
+
+  const entry = {id:Date.now(), type, person, amount, date:td()};
+  hishobPayments.push(entry);
+  $(personSel).value="";
+  $(amountSel).value="";
+
+  btn.innerHTML="☁️  Saving…";btn.disabled=true;
+  try{
+    await ghSave({records,hishobPayments,settings});
+    localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));
+    setSyncBadge(true,"✓ Synced");
+    btn.innerHTML="✅  Saved!";
+    setTimeout(()=>{btn.disabled=false;btn.innerHTML=type==="expense"?"💾  Save Expense Payment":"💾  Save Income Payment";},2000);
+  }catch{
+    setSyncBadge(false,"✗ Offline");
+    localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));
+    btn.innerHTML="💾  Saved locally";btn.disabled=false;
+    setTimeout(()=>{btn.innerHTML=type==="expense"?"💾  Save Expense Payment":"💾  Save Income Payment";},2500);
+  }
+  renderHishob();
+}
+
+async function delHishobPayment(id){
+  if(!confirm("Delete this payment entry?"))return;
+  hishobPayments=hishobPayments.filter(h=>h.id!==id);
+  renderHishob();
+  showLoad("Updating GitHub…");
+  try{await ghSave({records,hishobPayments,settings});localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));setSyncBadge(true,"✓ Synced");}
+  catch{setSyncBadge(false,"✗ Offline");localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));}
+  hideLoad();
 }
 
 init();
