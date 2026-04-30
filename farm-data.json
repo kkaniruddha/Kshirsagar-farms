@@ -21,15 +21,7 @@
       "note": ""
     }
   ],
-  "hishobPayments": [
-    {
-      "id": 1777483580677,
-      "type": "expense",
-      "person": "बाळू",
-      "amount": 10000,
-      "date": "2026-04-29"
-    }
-  ],
+  "hishobPayments": [],
   "settings": {
     "pin": "7614",
     "budget": "",
