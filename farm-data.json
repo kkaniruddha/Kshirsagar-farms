@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777626266121,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 2395,
+      "category": "seeds",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "भुईमूग बी घेतली"
+    },
+    {
       "id": 1777626212043,
       "type": "expense",
       "date": "2026-05-01",
