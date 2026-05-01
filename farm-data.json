@@ -1,5 +1,16 @@
 {
-  "records": [],
+  "records": [
+    {
+      "id": 1777625089687,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 380,
+      "category": "pesticides",
+      "crop": "",
+      "paidBy": "",
+      "note": ""
+    }
+  ],
   "hishobPayments": [],
   "settings": {
     "pin": "7614",
