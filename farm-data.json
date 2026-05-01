@@ -401,7 +401,15 @@
       "note": ""
     }
   ],
-  "hishobPayments": [],
+  "hishobPayments": [
+    {
+      "id": 1777629989787,
+      "type": "expense",
+      "person": "गणेश",
+      "amount": 55000,
+      "date": "2026-05-01"
+    }
+  ],
   "settings": {
     "pin": "7614",
     "budget": "",
