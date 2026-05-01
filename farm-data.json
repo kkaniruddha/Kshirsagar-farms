@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777627155072,
+      "type": "expense",
+      "date": "2026-02-22",
+      "amount": 3000,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "भास्कर काकांच्या शेतातील कांदा खुरपणी"
+    },
+    {
       "id": 1777627079353,
       "type": "expense",
       "date": "2026-02-17",
