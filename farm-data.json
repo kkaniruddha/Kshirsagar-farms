@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777625733916,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 850,
+      "category": "pesticides",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "मका औषध मारणे"
+    },
+    {
       "id": 1777625627041,
       "type": "expense",
       "date": "2026-05-01",
