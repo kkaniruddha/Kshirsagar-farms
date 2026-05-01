@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1777637721245,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 80000,
+      "category": "labour",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "विहीर आडवे बोअर",
+      "splitWithBhavdya": false
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1777629137471,
       "type": "income",
