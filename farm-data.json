@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777625163475,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 111966,
+      "category": "seeds",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": ""
+    },
+    {
       "id": 1777625089687,
       "type": "expense",
       "date": "2026-05-01",
