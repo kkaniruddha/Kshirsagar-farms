@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": false,
       "id": 1777637823452,
       "type": "income",
       "date": "2026-05-01",
@@ -8,10 +9,10 @@
       "category": "subsidy",
       "crop": "Other / इतर",
       "paidBy": "",
-      "note": "Spriklar subsidi",
-      "splitWithBhavdya": false
+      "note": "Spriklar subsidi"
     },
     {
+      "splitWithBhavdya": false,
       "id": 1777637721245,
       "type": "expense",
       "date": "2026-05-01",
@@ -19,8 +20,7 @@
       "category": "labour",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "विहीर आडवे बोअर",
-      "splitWithBhavdya": false
+      "note": "विहीर आडवे बोअर"
     },
     {
       "splitWithBhavdya": true,
@@ -481,13 +481,6 @@
       "id": 1777630730426,
       "type": "expense",
       "person": "बाळू",
-      "amount": 9805,
-      "date": "2026-05-01"
-    },
-    {
-      "id": 1777630758752,
-      "type": "expense",
-      "person": "गणेश",
       "amount": 9805,
       "date": "2026-05-01"
     }
