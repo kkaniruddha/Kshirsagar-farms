@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777627970624,
+      "type": "expense",
+      "date": "2025-10-03",
+      "amount": 10000,
+      "category": "other_e",
+      "crop": "Gram / हरभरा",
+      "paidBy": "बाळू",
+      "note": "हरभरा बी खत व इतर कामासाठी"
+    },
+    {
       "id": 1777627857490,
       "type": "expense",
       "date": "2025-12-04",
