@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777626691166,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 4000,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "कैलास च्या शेतातील खुरपणी"
+    },
+    {
       "id": 1777626648468,
       "type": "expense",
       "date": "2026-05-01",
