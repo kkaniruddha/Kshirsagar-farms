@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777625213427,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 11570,
+      "category": "seeds",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "बाळू",
+      "note": ""
+    },
+    {
       "id": 1777625163475,
       "type": "expense",
       "date": "2026-05-01",
