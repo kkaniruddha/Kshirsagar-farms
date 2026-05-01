@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777627531343,
+      "type": "expense",
+      "date": "2026-04-15",
+      "amount": 600,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "कांदा बी काढणे"
+    },
+    {
       "id": 1777627482213,
       "type": "expense",
       "date": "2026-04-06",
