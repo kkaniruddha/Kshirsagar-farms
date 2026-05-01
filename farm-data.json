@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777626515260,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 1150,
+      "category": "pesticides",
+      "crop": "Wheat / गहू",
+      "paidBy": "बाळू",
+      "note": "गहू औषध फवारणी"
+    },
+    {
       "id": 1777626418721,
       "type": "expense",
       "date": "2026-05-01",
