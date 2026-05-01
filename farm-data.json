@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1777637823452,
+      "type": "income",
+      "date": "2026-05-01",
+      "amount": 18183,
+      "category": "subsidy",
+      "crop": "Other / इतर",
+      "paidBy": "",
+      "note": "Spriklar subsidi",
+      "splitWithBhavdya": false
+    },
+    {
       "id": 1777637721245,
       "type": "expense",
       "date": "2026-05-01",
