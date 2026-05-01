@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777626616965,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 2330,
+      "category": "fertilizer",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": ""
+    },
+    {
       "id": 1777626543250,
       "type": "expense",
       "date": "2026-05-01",
