@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777626362241,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 200,
+      "category": "labour",
+      "crop": "Wheat / गहू",
+      "paidBy": "बाळू",
+      "note": ""
+    },
+    {
       "id": 1777626332401,
       "type": "expense",
       "date": "2026-05-01",
