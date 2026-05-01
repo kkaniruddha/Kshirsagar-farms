@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777625863758,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 2370,
+      "category": "pesticides",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "कांद्यावर पोषक फवारणी"
+    },
+    {
       "id": 1777625806436,
       "type": "expense",
       "date": "2026-05-01",
