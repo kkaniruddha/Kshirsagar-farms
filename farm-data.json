@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777625481948,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 800,
+      "category": "labour",
+      "crop": "Wheat / गहू",
+      "paidBy": "",
+      "note": ""
+    },
+    {
       "id": 1777625456361,
       "type": "expense",
       "date": "2026-05-01",
