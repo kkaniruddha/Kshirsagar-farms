@@ -9,16 +9,6 @@
       "crop": "Sugarcane / ऊस",
       "paidBy": "",
       "note": ""
-    },
-    {
-      "id": 1777354459569,
-      "type": "expense",
-      "date": "2026-04-28",
-      "amount": 44000,
-      "category": "labour",
-      "crop": "Sugarcane / ऊस",
-      "paidBy": "बाळू",
-      "note": ""
     }
   ],
   "hishobPayments": [],
