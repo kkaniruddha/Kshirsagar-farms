@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777629137471,
+      "type": "income",
+      "date": "2026-04-06",
+      "amount": 61688,
+      "category": "crop_sale",
+      "crop": "Gram / हरभरा",
+      "paidBy": "",
+      "note": "हरभरा विक्रीतून आली"
+    },
+    {
       "id": 1777628260829,
       "type": "expense",
       "date": "2026-04-30",
