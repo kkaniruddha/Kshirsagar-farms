@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777627857490,
+      "type": "expense",
+      "date": "2025-12-04",
+      "amount": 28000,
+      "category": "equipment",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "स्प्रिंकलर सिस्टीम खरेदी केली"
+    },
+    {
       "id": 1777627587372,
       "type": "expense",
       "date": "2026-04-20",
