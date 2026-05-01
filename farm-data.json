@@ -1,16 +1,7 @@
 {
   "records": [
     {
-      "id": 1777629324343,
-      "type": "income",
-      "date": "2026-04-06",
-      "amount": 18183,
-      "category": "subsidy",
-      "crop": "Other / इतर",
-      "paidBy": "",
-      "note": "जिंकलं सिस्टीम घेतलेले अनुदान परत मिळाले व सर्वांना वाटप केले"
-    },
-    {
+      "splitWithBhavdya": true,
       "id": 1777629137471,
       "type": "income",
       "date": "2026-04-06",
@@ -21,6 +12,7 @@
       "note": "हरभरा विक्रीतून आली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777628046758,
       "type": "expense",
       "date": "2025-10-03",
@@ -31,6 +23,7 @@
       "note": "खरीप हंगामानंतर मशागतीसाठी दिली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627970624,
       "type": "expense",
       "date": "2025-10-03",
@@ -41,6 +34,7 @@
       "note": "हरभरा बी खत व इतर कामासाठी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627857490,
       "type": "expense",
       "date": "2025-12-04",
@@ -51,6 +45,7 @@
       "note": "स्प्रिंकलर सिस्टीम खरेदी केली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627587372,
       "type": "expense",
       "date": "2026-04-20",
@@ -61,6 +56,7 @@
       "note": "कांदा काढण्यासाठी दिले"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627531343,
       "type": "expense",
       "date": "2026-04-15",
@@ -71,6 +67,7 @@
       "note": "कांदा बी काढणे"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627482213,
       "type": "expense",
       "date": "2026-04-06",
@@ -81,6 +78,7 @@
       "note": "वजन काटा घेतला तीनशे किलो पर्यंत चार बाय चार"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627416269,
       "type": "expense",
       "date": "2026-04-06",
@@ -91,6 +89,7 @@
       "note": "भुईमूग खुरपणी ६×३००=१८००"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627272051,
       "type": "expense",
       "date": "2026-03-25",
@@ -101,6 +100,7 @@
       "note": "गहू काढणे मजुरी हार्वेस्टर"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627200934,
       "type": "expense",
       "date": "2026-02-22",
@@ -111,6 +111,7 @@
       "note": "औषध फवारणी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627155072,
       "type": "expense",
       "date": "2026-02-22",
@@ -121,6 +122,7 @@
       "note": "भास्कर काकांच्या शेतातील कांदा खुरपणी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627079353,
       "type": "expense",
       "date": "2026-02-17",
@@ -131,6 +133,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777627045525,
       "type": "expense",
       "date": "2026-02-17",
@@ -141,6 +144,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626691166,
       "type": "expense",
       "date": "2026-05-01",
@@ -151,6 +155,7 @@
       "note": "कैलास च्या शेतातील खुरपणी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626648468,
       "type": "expense",
       "date": "2026-05-01",
@@ -161,6 +166,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626616965,
       "type": "expense",
       "date": "2026-05-01",
@@ -171,6 +177,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626543250,
       "type": "expense",
       "date": "2026-05-01",
@@ -181,6 +188,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626515260,
       "type": "expense",
       "date": "2026-05-01",
@@ -191,6 +199,7 @@
       "note": "गहू औषध फवारणी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626418721,
       "type": "expense",
       "date": "2026-05-01",
@@ -201,6 +210,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626362241,
       "type": "expense",
       "date": "2026-05-01",
@@ -211,6 +221,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626332401,
       "type": "expense",
       "date": "2026-05-01",
@@ -221,6 +232,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626266121,
       "type": "expense",
       "date": "2026-05-01",
@@ -231,6 +243,7 @@
       "note": "भुईमूग बी घेतली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626212043,
       "type": "expense",
       "date": "2026-05-01",
@@ -241,6 +254,7 @@
       "note": "पोषक फवारणी कांदा"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777626035428,
       "type": "expense",
       "date": "2026-05-01",
@@ -251,6 +265,7 @@
       "note": "सा मधील कांद्याचे तन नाशक ऊसा"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625947842,
       "type": "expense",
       "date": "2026-05-01",
@@ -261,6 +276,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625900703,
       "type": "expense",
       "date": "2026-05-01",
@@ -271,6 +287,7 @@
       "note": "कांदा फवारणी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625863758,
       "type": "expense",
       "date": "2026-05-01",
@@ -281,6 +298,7 @@
       "note": "कांद्यावर पोषक फवारणी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625806436,
       "type": "expense",
       "date": "2026-05-01",
@@ -291,6 +309,7 @@
       "note": "कांदा खुरपणीसाठी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625733916,
       "type": "expense",
       "date": "2026-05-01",
@@ -301,6 +320,7 @@
       "note": "मका औषध मारणे"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625627041,
       "type": "expense",
       "date": "2026-05-01",
@@ -311,6 +331,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625592355,
       "type": "expense",
       "date": "2026-05-01",
@@ -321,6 +342,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625526805,
       "type": "expense",
       "date": "2026-05-01",
@@ -331,6 +353,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625481948,
       "type": "expense",
       "date": "2026-05-01",
@@ -341,6 +364,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625456361,
       "type": "expense",
       "date": "2026-05-01",
@@ -351,6 +375,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625396543,
       "type": "expense",
       "date": "2026-05-01",
@@ -361,6 +386,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625213427,
       "type": "expense",
       "date": "2026-05-01",
@@ -371,6 +397,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625163475,
       "type": "expense",
       "date": "2026-05-01",
@@ -381,6 +408,7 @@
       "note": ""
     },
     {
+      "splitWithBhavdya": true,
       "id": 1777625089687,
       "type": "expense",
       "date": "2026-05-01",
