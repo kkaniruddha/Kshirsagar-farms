@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777626035428,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 1200,
+      "category": "pesticides",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "",
+      "note": "सा मधील कांद्याचे तन नाशक ऊसा"
+    },
+    {
       "id": 1777625947842,
       "type": "expense",
       "date": "2026-05-01",
