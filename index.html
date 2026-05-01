@@ -240,6 +240,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .hpay-amt{font-size:14px;font-weight:800;text-align:right;}
 .hpay-del{font-size:10px;color:var(--text3);background:none;border:none;cursor:pointer;padding:0;font-family:inherit;display:block;margin-top:2px;}
 .hpay-del:hover{color:var(--r3);}
+
+/* ── BHAAGIDAARI ── */
+.bhaag-wrap{display:flex;align-items:center;gap:12px;padding:13px 15px;background:linear-gradient(135deg,#E8F5E9,#F1F8E9);border-radius:var(--radius-sm);border:2px solid var(--g4);margin-bottom:4px;cursor:pointer;transition:all 0.2s;}
+.bhaag-wrap:hover{border-color:var(--g3);}
+.bhaag-wrap.unchecked{background:linear-gradient(135deg,#FFEBEE,#FFF3E0);border-color:#FFCDD2;}
+.bhaag-checkbox{width:22px;height:22px;border-radius:6px;border:2px solid var(--g3);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;font-size:14px;}
+.bhaag-wrap.unchecked .bhaag-checkbox{border-color:#FFCDD2;background:#fff;}
+.bhaag-text{flex:1;}
+.bhaag-title{font-size:13px;font-weight:700;color:var(--g1);}
+.bhaag-wrap.unchecked .bhaag-title{color:var(--r2);}
+.bhaag-sub{font-size:10px;color:var(--text3);margin-top:2px;}
 </style>
 </head>
 <body>
@@ -382,6 +393,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div class="form-card">
           <div class="form-card-title">📝 Note · नोंद</div>
           <input type="text" id="form-note" class="f-input" style="border:2px solid var(--border);border-radius:10px;background:#FAFBFF;" placeholder="e.g. Nashik market, vendor name… (optional)">
+        </div>
+                <div class="form-card">
+          <div class="form-card-title">🤝 भागीदारी · Partnership Share</div>
+          <div class="bhaag-wrap" id="bhaag-wrap" onclick="toggleBhaagidaari()">
+            <div class="bhaag-checkbox" id="bhaag-checkbox">✓</div>
+            <div class="bhaag-text">
+              <div class="bhaag-title" id="bhaag-title">भावड्या दादांसह वाटणी · Split with Bhavdya Dada</div>
+              <div class="bhaag-sub" id="bhaag-sub">Checked: Bhavdya=50%, Others=10% each &nbsp;|&nbsp; Unchecked: Others=20% each</div>
+            </div>
+          </div>
         </div>
         <button class="save-btn exp" id="save-btn" onclick="handleSave(event)">💾 &nbsp;Save Expense · खर्च जतन करा</button>
       </div>
@@ -586,7 +607,7 @@ const PERSONS=[
 ];
 const PM=Object.fromEntries(PERSONS.map(p=>[p.name,p]));
 
-let token="",ghSha=null,records=[],hishobPayments=[],settings={adminPin:"",viewerPin:"",budget:""},curType="expense",selCat="seeds",pinEntered="",currentRole="",curTab=0;
+let token="",ghSha=null,records=[],hishobPayments=[],settings={adminPin:"",viewerPin:"",budget:""},curType="expense",selCat="seeds",pinEntered="",currentRole="",curTab=0,bhaagidaari=true;
 
 const fa=n=>Number(n).toLocaleString("en-IN");
 const td=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;};
@@ -621,6 +642,8 @@ async function init(){
   try{
     const data=await ghLoad();
     if(data){records=data.records||[];hishobPayments=data.hishobPayments||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
+    // migrate: mark old entries without splitWithBhavdya as true
+    records=records.map(r=>({splitWithBhavdya:true,...r}));
     // migrate old settings that used single 'pin' field
     if(data&&data.settings&&data.settings.pin&&!data.settings.adminPin){settings.adminPin=data.settings.pin;settings.viewerPin="";}
     localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));
@@ -630,7 +653,7 @@ async function init(){
   }catch(e){
     hideLoad();
     const c=localStorage.getItem("fl-cache");
-    if(c){const d=JSON.parse(c);records=d.records||[];hishobPayments=d.hishobPayments||[];settings=d.settings||{adminPin:"",viewerPin:"",budget:""};}
+    if(c){const d=JSON.parse(c);records=d.records||[];hishobPayments=d.hishobPayments||[];settings=d.settings||{adminPin:"",viewerPin:"",budget:""};records=records.map(r=>({splitWithBhavdya:true,...r}));}
     setSyncBadge(false,"✗ Offline");
     const hasPins=settings.adminPin||settings.viewerPin;
     hasPins?showPin():loginAs("admin");
@@ -647,6 +670,7 @@ async function setupDone(){
   try{
     const data=await ghLoad();
     if(data){records=data.records||[];hishobPayments=data.hishobPayments||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
+    records=records.map(r=>({splitWithBhavdya:true,...r}));
     localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,hishobPayments,settings}));
     hideLoad();
     const hasPins=settings.adminPin||settings.viewerPin;
@@ -783,9 +807,9 @@ function handleSave(e){
 async function saveRecord(){
   const amt=parseFloat($("form-amount").value);
   if(!amt||isNaN(amt)){alert("Please enter an amount · रक्कम टाका");return;}
-  const rec={id:Date.now(),type:curType,date:$("form-date").value,amount:amt,category:selCat,crop:$("form-crop").value||"",paidBy:curType==="expense"?($("form-paidby").value||""):"",note:$("form-note").value.trim()};
+  const rec={id:Date.now(),type:curType,date:$("form-date").value,amount:amt,category:selCat,crop:$("form-crop").value||"",paidBy:curType==="expense"?($("form-paidby").value||""):"",note:$("form-note").value.trim(),splitWithBhavdya:bhaagidaari};
   records.unshift(rec);
-  $("form-amount").value="";$("form-note").value="";$("form-crop").value="";$("form-paidby").value="";
+  $("form-amount").value="";$("form-note").value="";$("form-crop").value="";$("form-paidby").value="";bhaagidaari=true;updateBhaagUI();
   populateFilters();checkBudget();
   const btn=$("save-btn");btn.innerHTML="☁️ &nbsp;Saving to GitHub…";btn.disabled=true;
   try{
@@ -851,7 +875,7 @@ function renderRecords(){
           ${cropLabel?`<span class="chip chip-crop">${cropIcon} ${cropLabel}</span>`:""}
           ${personObj?`<span class="chip chip-person" style="background:${personObj.bg};color:${personObj.color}">👤 ${personObj.name}</span>`:""}
         </div>
-        <div class="rec-date">${fd(r.date)}${r.note?" · "+r.note:""}</div>
+        <div class="rec-tags" style="margin-bottom:3px">${r.splitWithBhavdya===false?'<span class="chip" style="background:#FFF3E0;color:#E65100;font-size:9px">🤝 5 जण</span>':'<span class="chip" style="background:#E8F5E9;color:#2D7A18;font-size:9px">🤝 भागीदारी</span>'}</div><div class="rec-date">${fd(r.date)}${r.note?" · "+r.note:""}</div>
       </div>
       <div class="rec-right">
         <div class="rec-amt ${isI?"amt-inc":"amt-exp"}">${isI?"+":"−"}₹${fa(r.amount)}</div>
@@ -953,6 +977,7 @@ async function refreshFromGitHub(){
   try{
     const data=await ghLoad();
     if(data){records=data.records||[];hishobPayments=data.hishobPayments||[];settings=data.settings||{adminPin:"",viewerPin:"",budget:""};}
+    records=records.map(r=>({splitWithBhavdya:true,...r}));
     localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,hishobPayments,settings}));
     populateFilters();checkBudget();setSyncBadge(true,"✓ Synced");hideLoad();alert("✅ Refreshed from GitHub!");
   }catch(e){hideLoad();alert("Failed: "+e.message);}
@@ -975,21 +1000,40 @@ const HISHOB_SHARES = {
 const HISHOB_PERSONS = ["भावड्या दादा","भाऊ","श्याम","कैलास","बाळू","गणेश"];
 
 function renderHishob(){
-  const totI = records.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
-  const totE = records.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+  // Separate records by splitWithBhavdya flag
+  const splitRecs    = records.filter(r=>r.splitWithBhavdya!==false); // checked (default)
+  const noSplitRecs  = records.filter(r=>r.splitWithBhavdya===false); // unchecked
+
+  const splitI  = splitRecs.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
+  const splitE  = splitRecs.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+  const noSplitI= noSplitRecs.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
+  const noSplitE= noSplitRecs.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+  const totI    = splitI + noSplitI;
+  const totE    = splitE + noSplitE;
 
   // Build table
   let rows = "";
   HISHOB_PERSONS.forEach(name=>{
-    const share = HISHOB_SHARES[name]||0;
-    const sharePct = (share*100%1===0)?(share*100)+"%" : (share*100).toFixed(1)+"%";
+    const isBhavdya = name==="भावड्या दादा";
     const p = PM[name]||{color:"#888",bg:"#eee"};
 
-    const expDue   = totE * share;
+    // Option B formula:
+    // Bhavdya: splitE/2,  splitI/2  (no share in noSplit entries)
+    // Others:  splitE/10 + noSplitE/5,  splitI/10 + noSplitI/5
+    let expDue, incDue, sharePct;
+    if(isBhavdya){
+      expDue   = splitE / 2;
+      incDue   = splitI / 2;
+      sharePct = "50% (भागीदारी)";
+    } else {
+      expDue   = (splitE / 10) + (noSplitE / 5);
+      incDue   = (splitI / 10) + (noSplitI / 5);
+      sharePct = "10%+20%";
+    }
+
     const expPaid  = hishobPayments.filter(h=>h.type==="expense"&&h.person===name).reduce((s,h)=>s+h.amount,0);
     const expRem   = expDue - expPaid;
 
-    const incDue   = totI * share;
     const incPaid  = hishobPayments.filter(h=>h.type==="income"&&h.person===name).reduce((s,h)=>s+h.amount,0);
     const incRem   = incDue - incPaid;
 
@@ -1033,7 +1077,8 @@ function renderHishob(){
     </div>
     <div style="margin-top:10px;font-size:10px;color:var(--text3);line-height:1.7">
       Total Income: <strong>₹${fa(totI)}</strong> &nbsp;|&nbsp; Total Expense: <strong>₹${fa(totE)}</strong><br>
-      खर्च बाकी = एकूण खर्च − खर्च जमा &nbsp;|&nbsp; उत्पन्न बाकी = एकूण उत्पन्न − उत्पन्न जमा &nbsp;|&nbsp; एकूण हिशोब = उत्पन्न बाकी − खर्च बाकी
+      🟢 भागीदारी (checked): ₹${fa(splitE)} खर्च · ₹${fa(splitI)} उत्पन्न &nbsp;|&nbsp; 🟠 5 जण (unchecked): ₹${fa(noSplitE)} खर्च · ₹${fa(noSplitI)} उत्पन्न<br>
+      एकूण हिशोब = उत्पन्न बाकी − खर्च बाकी
     </div>`;
 
   // Payment history
@@ -1105,6 +1150,37 @@ async function delHishobPayment(id){
   try{await ghSave({records,hishobPayments,settings});localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));setSyncBadge(true,"✓ Synced");}
   catch{setSyncBadge(false,"✗ Offline");localStorage.setItem("fl-cache",JSON.stringify({records,hishobPayments,settings}));}
   hideLoad();
+}
+
+
+// ── BHAAGIDAARI TOGGLE ──────────────────────────────────────────
+function toggleBhaagidaari(){
+  bhaagidaari = !bhaagidaari;
+  updateBhaagUI();
+}
+function updateBhaagUI(){
+  const wrap  = $("bhaag-wrap");
+  const check = $("bhaag-checkbox");
+  const title = $("bhaag-title");
+  const sub   = $("bhaag-sub");
+  if(!wrap) return;
+  if(bhaagidaari){
+    wrap.classList.remove("unchecked");
+    check.textContent = "✓";
+    check.style.background = "var(--g3)";
+    check.style.borderColor = "var(--g3)";
+    check.style.color = "#fff";
+    title.textContent = "भावड्या दादांसह वाटणी · Split with Bhavdya Dada";
+    sub.textContent   = "✅ Checked: Bhavdya=50%, Others=10% each";
+  } else {
+    wrap.classList.add("unchecked");
+    check.textContent = "✗";
+    check.style.background = "#FFEBEE";
+    check.style.borderColor = "var(--r3)";
+    check.style.color = "var(--r2)";
+    title.textContent = "फक्त 5 जण · Only 5 Members (no Bhavdya)";
+    sub.textContent   = "❌ Unchecked: Bhavdya=0%, Others=20% each";
+  }
 }
 
 init();
