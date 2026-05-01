@@ -1,6 +1,16 @@
 {
   "records": [
     {
+      "id": 1777627200934,
+      "type": "expense",
+      "date": "2026-02-22",
+      "amount": 400,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "औषध फवारणी"
+    },
+    {
       "id": 1777627155072,
       "type": "expense",
       "date": "2026-02-22",
