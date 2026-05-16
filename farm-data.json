@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1778946434166,
+      "type": "expense",
+      "date": "2026-05-05",
+      "amount": 11480,
+      "category": "other_e",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "शेतातील आडवे बोअर चे फायनल पेमेंट  केले हस्ते भावड्या भावड्या",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1777720878987,
       "type": "expense",
       "date": "2026-04-09",
@@ -8,8 +20,7 @@
       "category": "equipment",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "आपल्या शेतातील पाच एचपी ची इलेक्ट्रिक मोटर जळाली होती व सर्विसिंग केली त्याचा खर्च",
-      "splitWithBhavdya": true
+      "note": "आपल्या शेतातील पाच एचपी ची इलेक्ट्रिक मोटर जळाली होती व सर्विसिंग केली त्याचा खर्च"
     },
     {
       "splitWithBhavdya": false,
