@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1778946434166,
       "type": "expense",
       "date": "2026-05-05",
@@ -8,8 +9,7 @@
       "category": "other_e",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "शेतातील आडवे बोअर चे फायनल पेमेंट  केले हस्ते भावड्या भावड्या",
-      "splitWithBhavdya": true
+      "note": "शेतातील आडवे बोअर चे फायनल पेमेंट  केले हस्ते भावड्या भावड्या"
     },
     {
       "splitWithBhavdya": true,
@@ -526,6 +526,13 @@
       "person": "बाळू",
       "amount": 40378,
       "date": "2026-05-01"
+    },
+    {
+      "id": 1779030041699,
+      "type": "expense",
+      "person": "कैलास",
+      "amount": 10000,
+      "date": "2026-05-17"
     }
   ],
   "settings": {
