@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1779030533207,
+      "type": "income",
+      "date": "2026-04-05",
+      "amount": 7440,
+      "category": "crop_sale",
+      "crop": "Onion / कांदा",
+      "paidBy": "",
+      "note": "खराब कांदा 16 क्विंटल चांदी कसा रा या मार्केटला विकला.",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": false,
       "id": 1779030178257,
       "type": "expense",
       "date": "2026-05-17",
@@ -8,8 +20,7 @@
       "category": "labour",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "विहीर आडवे बोर फायनल हिशोब",
-      "splitWithBhavdya": false
+      "note": "विहीर आडवे बोर फायनल हिशोब"
     },
     {
       "splitWithBhavdya": true,
