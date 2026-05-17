@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1779030866669,
       "type": "income",
       "date": "2026-04-12",
@@ -8,8 +9,7 @@
       "category": "crop_sale",
       "crop": "Other / इतर",
       "paidBy": "",
-      "note": "मका विक्री व चारा ज्वारीचा विकला",
-      "splitWithBhavdya": true
+      "note": "मका विक्री व चारा ज्वारीचा विकला"
     },
     {
       "splitWithBhavdya": true,
@@ -561,6 +561,13 @@
       "type": "expense",
       "person": "बाळू",
       "amount": 11480,
+      "date": "2026-05-17"
+    },
+    {
+      "id": 1779031004620,
+      "type": "income",
+      "person": "भावड्या दादा",
+      "amount": 5862,
       "date": "2026-05-17"
     }
   ],
