@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1779030866669,
+      "type": "income",
+      "date": "2026-04-12",
+      "amount": 11725,
+      "category": "crop_sale",
+      "crop": "Other / इतर",
+      "paidBy": "",
+      "note": "मका विक्री व चारा ज्वारीचा विकला",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1779030533207,
       "type": "income",
       "date": "2026-04-05",
@@ -8,8 +20,7 @@
       "category": "crop_sale",
       "crop": "Onion / कांदा",
       "paidBy": "",
-      "note": "खराब कांदा 16 क्विंटल चांदी कसा रा या मार्केटला विकला.",
-      "splitWithBhavdya": true
+      "note": "खराब कांदा 16 क्विंटल चांदी कसा रा या मार्केटला विकला."
     },
     {
       "splitWithBhavdya": false,
