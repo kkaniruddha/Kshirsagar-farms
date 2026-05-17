@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1779030178257,
+      "type": "expense",
+      "date": "2026-05-17",
+      "amount": 11480,
+      "category": "labour",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "विहीर आडवे बोर फायनल हिशोब",
+      "splitWithBhavdya": false
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1777720878987,
       "type": "expense",
