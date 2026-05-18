@@ -325,7 +325,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <button class="tab" id="tab-btn-1" onclick="switchTab(1)">Records<span>यादी</span></button>
       <button class="tab" id="tab-btn-2" onclick="switchTab(2)">Report<span>अहवाल</span></button>
       <button class="tab" id="tab-btn-3" onclick="switchTab(3)">Hishob<span>हिशोब</span></button>
-      <button class="tab" id="tab-btn-4" onclick="switchTab(4)">⚙<span>सेटिंग</span></button>
+      <button class="tab" id="tab-btn-4" onclick="switchTab(4)">Crops<span>पीक</span></button>
+      <button class="tab" id="tab-btn-5" onclick="switchTab(5)">⚙<span>सेटिंग</span></button>
     </div>
   </div>
 
@@ -371,6 +372,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
                 <option value="Gram / हरभरा">🟤 Gram · हरभरा</option>
                 <option value="Onion / कांदा">🧅 Onion · कांदा</option>
                 <option value="Coriander / कोथिंबीर">🌿 Coriander · कोथिंबीर</option>
+                <option value="Corn / मका">🌽 Corn · मका</option>
+                <option value="Groundnut / भुईमूग">🥜 Groundnut · भुईमूग</option>
+                <option value="Brinjal / वांगी">🍆 Brinjal · वांगी</option>
+                <option value="Cauliflower / फ्लॉवर">🥦 Cauliflower · फ्लॉवर</option>
                 <option value="Other / इतर">📦 Other · इतर</option>
               </select>
             </div>
@@ -428,6 +433,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             <option value="Gram / हरभरा">🟤 हरभरा</option>
             <option value="Onion / कांदा">🧅 कांदा</option>
             <option value="Coriander / कोथिंबीर">🌿 कोथिंबीर</option>
+            <option value="Corn / मका">🌽 मका</option>
+            <option value="Groundnut / भुईमूग">🥜 भुईमूग</option>
+            <option value="Brinjal / वांगी">🍆 वांगी</option>
+            <option value="Cauliflower / फ्लॉवर">🥦 फ्लॉवर</option>
             <option value="Other / इतर">📦 इतर</option>
           </select></div>
         </div>
@@ -519,6 +528,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
           <div id="hishob-history"></div>
         </div>
 
+        <!-- WhatsApp Share -->
+        <button class="save-btn inc" id="hishob-share-btn" onclick="shareHishob()" style="margin-bottom:16px">📤 &nbsp;Share Hishob · हिशोब शेअर करा</button>
+
+      </div>
+
+      <!-- ══ TAB 4: CROP ANALYSIS ══ -->
+      <div class="tab-panel" id="tab-crops">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+          <div style="font-size:15px;font-weight:800;color:var(--g1)">🌾 Crop Analysis · पीक विश्लेषण</div>
+          <div class="sel-wrap" style="width:140px">
+            <select id="crop-mf" onchange="renderCropAnalysis()" style="width:100%;font-size:12px;font-weight:600;padding:9px 28px 9px 12px;background:#fff;border:2px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-family:inherit;outline:none;box-shadow:var(--shadow-sm);">
+              <option value="all">All Time</option>
+            </select>
+          </div>
+        </div>
+        <div id="crop-analysis-content"></div>
       </div>
 
       <!-- ══ TAB 4: SETTINGS ══ -->
@@ -594,7 +619,7 @@ const IC=[
 ];
 const CM=Object.fromEntries([...EC,...IC].map(c=>[c.id,c]));
 
-const CROP_ICONS={"Sugarcane / ऊस":"🎋","Cotton / कापूस":"🌸","Soybeans / सोयाबीन":"🫘","Jowar / ज्वारी":"🌾","Bajra / बाजरी":"🌿","Rice / तांदूळ":"🍚","Wheat / गहू":"🌾","Tur / तूर":"🫛","Gram / हरभरा":"🟤","Onion / कांदा":"🧅","Coriander / कोथिंबीर":"🌿","Other / इतर":"📦"};
+const CROP_ICONS={"Sugarcane / ऊस":"🎋","Cotton / कापूस":"🌸","Soybeans / सोयाबीन":"🫘","Jowar / ज्वारी":"🌾","Bajra / बाजरी":"🌿","Rice / तांदूळ":"🍚","Wheat / गहू":"🌾","Tur / तूर":"🫛","Gram / हरभरा":"🟤","Onion / कांदा":"🧅","Coriander / कोथिंबीर":"🌿","Corn / मका":"🌽","Groundnut / भुईमूग":"🥜","Brinjal / वांगी":"🍆","Cauliflower / फ्लॉवर":"🥦","Other / इतर":"📦"};
 const CROPS_LIST=Object.keys(CROP_ICONS);
 
 const PERSONS=[
@@ -718,7 +743,7 @@ function loginAs(role){
 
   // Show/hide tabs — Add tab visible for all, Settings only for Admin
   $("tab-btn-0").classList.remove("hidden"); // Add — always visible
-  $("tab-btn-4").classList.toggle("hidden",!isAdmin); // Settings — Admin only
+  $("tab-btn-5").classList.toggle("hidden",!isAdmin); // Settings — Admin only
 
   // Save button — hidden for viewers, replaced with notice
   const saveBtn=$("save-btn");
@@ -762,14 +787,15 @@ function lockApp(){
 
 // ── TABS ─────────────────────────────────────────────────
 function switchTab(idx){
-  // Viewers cannot go to Settings tab (idx 4) only
-  if(currentRole==="viewer"&&idx===4)return;
+  // Viewers cannot go to Settings tab (idx 5) only
+  if(currentRole==="viewer"&&idx===5)return;
   curTab=idx;
   $("slider").style.transform=`translateX(-${idx*100}%)`;
   document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("active",i===idx));
   if(idx===1)renderRecords();
   if(idx===2)renderReport();
   if(idx===3)renderHishob();
+  if(idx===4){populateCropFilter();renderCropAnalysis();}
 }
 
 // ── TYPE TOGGLE ───────────────────────────────────────────
@@ -836,9 +862,9 @@ async function delRec(id){
 // ── FILTERS ───────────────────────────────────────────────
 function populateFilters(){
   const months=[...new Set(records.map(r=>r.date?.slice(0,7)).filter(Boolean))].sort().reverse();
-  ["rec-mf","rep-mf"].forEach(id=>{
+  ["rec-mf","rep-mf","crop-mf"].forEach(id=>{
     const sel=$(id);if(!sel)return;const cur=sel.value;
-    sel.innerHTML='<option value="all">'+(id==="rep-mf"?"All Time":"All Months")+"</option>"+
+    sel.innerHTML='<option value="all">'+(id==="rec-mf"?"All Months":"All Time")+"</option>"+
       months.map(m=>{const[y,mo]=m.split("-");return`<option value="${m}"${m===cur?" selected":""}>${MONTHS[parseInt(mo)-1]} ${y}</option>`;}).join("");
   });
 }
@@ -959,6 +985,161 @@ function shareReport(){
 }
 function copyText(t,btn){navigator.clipboard.writeText(t).then(()=>{btn.innerHTML="✓ &nbsp;Copied! Paste in WhatsApp";setTimeout(()=>{btn.innerHTML="📤 &nbsp;Share Report · अहवाल शेअर करा";},2500);}).catch(()=>alert(t));}
 
+// ── SHARE HISHOB ──────────────────────────────────────────
+function shareHishob(){
+  const splitRecs   = records.filter(r=>r.splitWithBhavdya!==false);
+  const noSplitRecs = records.filter(r=>r.splitWithBhavdya===false);
+  const splitE = splitRecs.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+  const splitI = splitRecs.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
+  const noSplitE = noSplitRecs.filter(r=>r.type==="expense").reduce((s,r)=>s+r.amount,0);
+  const noSplitI = noSplitRecs.filter(r=>r.type==="income").reduce((s,r)=>s+r.amount,0);
+
+  let lines = `🌾 Kshirsagar Farms — हिशोब\n${"=".repeat(34)}\n`;
+  let bhavdyaLine = "", brothers5Lines = "";
+
+  HISHOB_PERSONS.forEach(name=>{
+    const isBhavdya = name==="भावड्या दादा";
+    let expDue, incDue;
+    if(isBhavdya){expDue=splitE/2;incDue=splitI/2;}
+    else{expDue=(splitE/10)+(noSplitE/5);incDue=(splitI/10)+(noSplitI/5);}
+    const expPaid=hishobPayments.filter(h=>h.type==="expense"&&h.person===name).reduce((s,h)=>s+h.amount,0);
+    const incPaid=hishobPayments.filter(h=>h.type==="income"&&h.person===name).reduce((s,h)=>s+h.amount,0);
+    const expRem=expDue-expPaid, incRem=incDue-incPaid;
+    const net=incRem-expRem;
+    const row=`  ${name}: खर्च बाकी ₹${fa(Math.abs(expRem))} | उत्पन्न बाकी ₹${fa(Math.abs(incRem))} | एकूण ${net>=0?"▲":"▼"} ₹${fa(Math.abs(net))}`;
+    if(isBhavdya) bhavdyaLine=row;
+    else brothers5Lines+=row+"\n";
+  });
+
+  lines += `🧑‍🌾 भावड्या दादा:\n${bhavdyaLine}\n\n👬 5 Brothers:\n${brothers5Lines}`;
+  lines += `${"=".repeat(34)}\n🌾 Kshirsagar Farms Ledger`;
+
+  const btn=$("hishob-share-btn");
+  if(navigator.share)navigator.share({text:lines}).catch(()=>copyHishobText(lines,btn));
+  else copyHishobText(lines,btn);
+}
+function copyHishobText(t,btn){navigator.clipboard.writeText(t).then(()=>{btn.innerHTML="✓ &nbsp;Copied! Paste in WhatsApp";setTimeout(()=>{btn.innerHTML="📤 &nbsp;Share Hishob · हिशोब शेअर करा";},2500);}).catch(()=>alert(t));}
+
+// ── CROP ANALYSIS ─────────────────────────────────────────
+const CROP_TIPS = {
+  "Sugarcane / ऊस":       {tip:"Long 12-18 month cycle. High water use but stable MSP. Good if irrigation is available year-round.",         icon:"💧"},
+  "Cotton / कापूस":       {tip:"Kharif crop. MSP support available. Monitor for bollworm. Medium risk with good returns.",                    icon:"🌤️"},
+  "Soybeans / सोयाबीन":  {tip:"Excellent Kharif crop for Marathwada. Low input cost and rising export demand. Recommended.",                 icon:"✅"},
+  "Jowar / ज्वारी":       {tip:"Very drought tolerant. Low input cost. Good for food security and as fodder. Safe choice.",                   icon:"✅"},
+  "Bajra / बाजरी":        {tip:"Best for dry regions. Extremely low water need. Low cost, steady demand.",                                    icon:"✅"},
+  "Rice / तांदूळ":         {tip:"High water requirement. Steady local demand. Only suitable if reliable water supply is available.",           icon:"💧"},
+  "Wheat / गहू":           {tip:"Stable Rabi crop. MSP guaranteed. Lower risk. Good complement to your Kharif lineup.",                       icon:"✅"},
+  "Tur / तूर":             {tip:"Kharif/Rabi pulse. High protein demand. Prices can be volatile but generally profitable long-term.",          icon:"📈"},
+  "Gram / हरभरा":          {tip:"Rabi pulse. Low water needs. MSP support. Great rotational crop to improve soil health.",                    icon:"✅"},
+  "Onion / कांदा":         {tip:"High profit potential but price is very volatile. Good storage facility needed to time the market.",          icon:"⚠️"},
+  "Coriander / कोथिंबीर": {tip:"Quick 45-60 day yield. Good margins in local market. Water intensive. Best for small plots.",                icon:"📈"},
+  "Corn / मका":            {tip:"Versatile — food, feed, and industrial use. Growing demand. Medium input cost. Good diversification crop.",   icon:"📈"},
+  "Groundnut / भुईमूग":   {tip:"Good Kharif oilseed. MSP support available. Lower water need than sugarcane. Profitable.",                   icon:"✅"},
+  "Brinjal / वांगी":       {tip:"Year-round local market demand. Quick turnover. Good for small plots. Needs pest management.",               icon:"📈"},
+  "Cauliflower / फ्लॉवर": {tip:"Seasonal Rabi vegetable. Good local demand. Consistent irrigation needed. Short cycle, quick returns.",       icon:"📈"},
+  "Other / इतर":          {tip:"Track income and expenses carefully to evaluate this crop's performance over multiple seasons.",               icon:"📊"}
+};
+
+function populateCropFilter(){
+  const months=[...new Set(records.map(r=>r.date?.slice(0,7)).filter(Boolean))].sort().reverse();
+  const sel=$("crop-mf");if(!sel)return;
+  const cur=sel.value;
+  sel.innerHTML='<option value="all">All Time</option>'+
+    months.map(m=>{const[y,mo]=m.split("-");return`<option value="${m}"${m===cur?" selected":""}>${MONTHS[parseInt(mo)-1]} ${y}</option>`;}).join("");
+}
+
+function renderCropAnalysis(){
+  const mf=$("crop-mf").value;
+  const repR=mf==="all"?records:records.filter(r=>r.date?.startsWith(mf));
+  const cropsUsed=CROPS_LIST.filter(c=>repR.some(r=>r.crop===c));
+
+  if(!cropsUsed.length){
+    $("crop-analysis-content").innerHTML=`<div class="empty-state"><div class="empty-illo">🌱</div><div class="empty-title">No crop data yet</div><div class="empty-sub">Select a crop when adding records to see analysis here.</div></div>`;
+    return;
+  }
+
+  // Sort by net profit desc
+  const cropData = cropsUsed.map(crop=>{
+    const em=CROP_ICONS[crop]||"🌱";
+    const label=crop.split("/")[1]?.trim()||crop;
+    const cI=repR.filter(r=>r.type==="income"&&r.crop===crop).reduce((s,r)=>s+r.amount,0);
+    const cE=repR.filter(r=>r.type==="expense"&&r.crop===crop).reduce((s,r)=>s+r.amount,0);
+    const net=cI-cE;
+    const pct=cE>0?((net/cE)*100):null;
+    return {crop,em,label,cI,cE,net,pct};
+  }).sort((a,b)=>b.net-a.net);
+
+  const totI=cropData.reduce((s,c)=>s+c.cI,0);
+  const totE=cropData.reduce((s,c)=>s+c.cE,0);
+  const totNet=totI-totE;
+
+  let html=``;
+
+  // Summary strip
+  html+=`<div class="sum-strip" style="margin-bottom:16px">
+    <div class="sum-card sc-green"><div class="sum-lbl">Total Income · जमा</div><div class="sum-val">₹${fa(totI)}</div></div>
+    <div class="sum-card sc-red"><div class="sum-lbl">Total Expense · खर्च</div><div class="sum-val">₹${fa(totE)}</div></div>
+  </div>
+  <div class="net-card ${totNet>=0?"net-profit":"net-loss"}" style="margin-bottom:20px">
+    <div>
+      <div class="net-lbl ${totNet>=0?"gd":"rd"}">Overall Net · एकूण शिल्लक</div>
+      <div class="net-amt ${totNet>=0?"gd":"rd"}">₹${fa(Math.abs(totNet))}</div>
+      <div class="net-res ${totNet>=0?"gd":"rd"}">${totNet>=0?"✅ PROFIT · नफा":"❌ LOSS · नुकसान"}</div>
+    </div>
+    <div style="font-size:44px">${totNet>=0?"✅":"❌"}</div>
+  </div>`;
+
+  // Crop cards
+  html+=`<div class="sec-hd">🌾 Crop-wise Breakdown</div>`;
+  cropData.forEach(({crop,em,label,cI,cE,net,pct})=>{
+    const profitColor=net>0?"var(--g1)":"var(--r1)";
+    const profitBg=net>0?"linear-gradient(135deg,#E8F5E9,#C8E6C9)":"linear-gradient(135deg,#FFEBEE,#FFCDD2)";
+    const pctStr=pct!==null?`${pct>=0?"+":""}${pct.toFixed(1)}%`:"N/A";
+    const pctColor=pct===null?"var(--text3)":pct>20?"var(--g1)":pct>0?"#F57C00":"var(--r1)";
+    const badge=pct===null?"⚪ No Data":pct>20?"🟢 Good":pct>0?"🟡 Moderate":"🔴 Loss";
+    const tips=CROP_TIPS[crop]||CROP_TIPS["Other / इतर"];
+
+    // Income bar relative to max income
+    const maxI=Math.max(...cropData.map(c=>c.cI),1);
+    const maxE=Math.max(...cropData.map(c=>c.cE),1);
+    const iBarW=(cI/maxI*100).toFixed(1);
+    const eBarW=(cE/maxE*100).toFixed(1);
+
+    html+=`<div style="background:#fff;border-radius:var(--radius);padding:16px;margin-bottom:14px;box-shadow:var(--shadow-sm);border-left:4px solid ${net>=0?"var(--g3)":"var(--r3)"}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:28px">${em}</span>
+          <div>
+            <div style="font-size:14px;font-weight:800;color:var(--text)">${label}</div>
+            <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;background:${net>=0?"var(--g5)":"var(--r5)"};color:${profitColor}">${badge}</span>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:18px;font-weight:900;color:${profitColor}">${net>=0?"+":"−"}₹${fa(Math.abs(net))}</div>
+          <div style="font-size:12px;font-weight:800;color:${pctColor}">${pctStr} profit</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+        <div>
+          <div style="font-size:10px;font-weight:700;color:var(--g1);text-transform:uppercase;margin-bottom:4px">💰 Income · उत्पन्न</div>
+          <div style="font-size:15px;font-weight:800;color:var(--g1)">₹${fa(cI)}</div>
+          <div class="bar-track" style="margin-top:5px"><div class="bar-fill" style="width:${iBarW}%;background:var(--g3)"></div></div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:var(--r2);text-transform:uppercase;margin-bottom:4px">💸 Expense · खर्च</div>
+          <div style="font-size:15px;font-weight:800;color:var(--r2)">₹${fa(cE)}</div>
+          <div class="bar-track" style="margin-top:5px"><div class="bar-fill" style="width:${eBarW}%;background:var(--r3)"></div></div>
+        </div>
+      </div>
+      <div style="background:${net>=0?"#F0FFF4":"#FFF5F5"};border-radius:8px;padding:10px 12px;font-size:11px;color:var(--text2);line-height:1.6;border-left:3px solid ${net>=0?"var(--g3)":"var(--r3)"}">
+        ${tips.icon} <strong>Suggestion:</strong> ${tips.tip}
+      </div>
+    </div>`;
+  });
+
+  $("crop-analysis-content").innerHTML=html;
+}
+
 // ── SETTINGS ──────────────────────────────────────────────
 async function saveSettings(){
   settings.adminPin=$("set-admin-pin").value.replace(/\D/g,"").slice(0,4);
@@ -1013,6 +1194,11 @@ function renderHishob(){
 
   // Build table
   let rows = "";
+  // Track subtotals
+  let bhavdyaRow = null;
+  const brotherNames = ["भाऊ","श्याम","कैलास","बाळू","गणेश"];
+  let sub5 = {expDue:0,expPaid:0,expRem:0,incDue:0,incPaid:0,incRem:0,ekunHishob:0};
+
   HISHOB_PERSONS.forEach(name=>{
     const isBhavdya = name==="भावड्या दादा";
     const p = PM[name]||{color:"#888",bg:"#eee"};
@@ -1042,6 +1228,15 @@ function renderHishob(){
     const ekunHishob = incRem - expRem;
     const ekunCls = ekunHishob>0?"h-profit":ekunHishob<0?"h-loss":"h-zero";
 
+    // Track for subtotals
+    if(isBhavdya){
+      bhavdyaRow = {expDue,expPaid,expRem,incDue,incPaid,incRem,ekunHishob};
+    } else {
+      sub5.expDue+=expDue; sub5.expPaid+=expPaid; sub5.expRem+=expRem;
+      sub5.incDue+=incDue; sub5.incPaid+=incPaid; sub5.incRem+=incRem;
+      sub5.ekunHishob+=ekunHishob;
+    }
+
     rows += `<tr>
       <td><span style="display:inline-flex;align-items:center;gap:6px">
         <span style="width:24px;height:24px;border-radius:50%;background:${p.color};color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0">${name[0]}</span>
@@ -1056,6 +1251,32 @@ function renderHishob(){
       <td class="${ekunCls}" style="font-weight:800;background:${ekunHishob>=0?"#F0FFF0":"#FFF0F0"}">₹${fa(Math.abs(ekunHishob))}${ekunHishob>0?" ▲":ekunHishob<0?" ▼":""}</td>
     </tr>`;
   });
+
+  // Subtotal row: Bhavdya Dada
+  const bER=bhavdyaRow.expRem, bIR=bhavdyaRow.incRem, bEK=bhavdyaRow.ekunHishob;
+  rows += `<tr style="background:#E0F2F1;border-top:2px solid #00897B">
+    <td style="font-weight:800;color:#00695C">🧑‍🌾 भावड्या दादा<br><span class="h-share" style="color:#00897B">Subtotal</span></td>
+    <td style="font-weight:800">₹${fa(bhavdyaRow.expDue)}</td>
+    <td style="color:var(--g1);font-weight:800">₹${fa(bhavdyaRow.expPaid)}</td>
+    <td class="${bER>0?"h-loss":bER<0?"h-profit":"h-zero"}" style="font-weight:800">₹${fa(Math.abs(bER))}${bER<0?" ↑":""}</td>
+    <td style="font-weight:800">₹${fa(bhavdyaRow.incDue)}</td>
+    <td style="color:var(--g1);font-weight:800">₹${fa(bhavdyaRow.incPaid)}</td>
+    <td class="${bIR>0?"h-profit":bIR<0?"h-loss":"h-zero"}" style="font-weight:800">₹${fa(Math.abs(bIR))}${bIR<0?" ↑":""}</td>
+    <td class="${bEK>0?"h-profit":bEK<0?"h-loss":"h-zero"}" style="font-weight:900;background:${bEK>=0?"#C8E6C9":"#FFCDD2"}">₹${fa(Math.abs(bEK))}${bEK>0?" ▲":bEK<0?" ▼":""}</td>
+  </tr>`;
+
+  // Subtotal row: 5 Brothers
+  const s5ER=sub5.expRem, s5IR=sub5.incRem, s5EK=sub5.ekunHishob;
+  rows += `<tr style="background:#E3F2FD;border-top:2px solid #1565C0">
+    <td style="font-weight:800;color:#0D47A1">👬 5 Brothers<br><span class="h-share" style="color:#1565C0">भाऊ · श्याम · कैलास · बाळू · गणेश</span></td>
+    <td style="font-weight:800">₹${fa(sub5.expDue)}</td>
+    <td style="color:var(--g1);font-weight:800">₹${fa(sub5.expPaid)}</td>
+    <td class="${s5ER>0?"h-loss":s5ER<0?"h-profit":"h-zero"}" style="font-weight:800">₹${fa(Math.abs(s5ER))}${s5ER<0?" ↑":""}</td>
+    <td style="font-weight:800">₹${fa(sub5.incDue)}</td>
+    <td style="color:var(--g1);font-weight:800">₹${fa(sub5.incPaid)}</td>
+    <td class="${s5IR>0?"h-profit":s5IR<0?"h-loss":"h-zero"}" style="font-weight:800">₹${fa(Math.abs(s5IR))}${s5IR<0?" ↑":""}</td>
+    <td class="${s5EK>0?"h-profit":s5EK<0?"h-loss":"h-zero"}" style="font-weight:900;background:${s5EK>=0?"#C8E6C9":"#FFCDD2"}">₹${fa(Math.abs(s5EK))}${s5EK>0?" ▲":s5EK<0?" ▼":""}</td>
+  </tr>`;
 
   $("hishob-table").innerHTML = `
     <div class="hishob-table-wrap">
