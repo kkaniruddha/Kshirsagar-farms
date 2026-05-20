@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1779032156815,
       "type": "expense",
       "date": "2026-05-16",
@@ -8,8 +9,7 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "नांगरट डिझेल आणि कांदा मजुरी ॲडव्हान्स",
-      "splitWithBhavdya": true
+      "note": "नांगरट डिझेल आणि कांदा मजुरी ॲडव्हान्स"
     },
     {
       "splitWithBhavdya": true,
@@ -594,6 +594,13 @@
       "person": "बाळू",
       "amount": 10000,
       "date": "2026-05-17"
+    },
+    {
+      "id": 1779250075776,
+      "type": "expense",
+      "person": "गणेश",
+      "amount": 10000,
+      "date": "2026-05-20"
     }
   ],
   "settings": {
