@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780383610196,
+      "type": "expense",
+      "date": "2026-05-21",
+      "amount": 900,
+      "category": "labour",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "तीन बायांच्या साहाय्याने शेतातील काँग्रेस काढली. जरी दिली",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780383519112,
       "type": "expense",
       "date": "2026-05-13",
