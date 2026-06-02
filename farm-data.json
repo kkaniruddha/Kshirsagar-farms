@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1780383957925,
+      "type": "expense",
+      "date": "2026-05-26",
+      "amount": 4081,
+      "category": "fertilizer",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "बाळू",
+      "note": "10.22 उसात टाकली",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1780383681171,
       "type": "expense",
       "date": "2026-05-25",
@@ -8,10 +20,10 @@
       "category": "fertilizer",
       "crop": "Sugarcane / ऊस",
       "paidBy": "बाळू",
-      "note": "उसात खणी नी करण्यापूर्वी खत कधी घेतली",
-      "splitWithBhavdya": true
+      "note": "उसात खणी नी करण्यापूर्वी खत कधी घेतली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780383610196,
       "type": "expense",
       "date": "2026-05-21",
@@ -19,10 +31,10 @@
       "category": "labour",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "तीन बायांच्या साहाय्याने शेतातील काँग्रेस काढली. जरी दिली",
-      "splitWithBhavdya": true
+      "note": "तीन बायांच्या साहाय्याने शेतातील काँग्रेस काढली. जरी दिली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780383519112,
       "type": "expense",
       "date": "2026-05-13",
@@ -30,8 +42,7 @@
       "category": "labour",
       "crop": "Sugarcane / ऊस",
       "paidBy": "बाळू",
-      "note": "उसामध्ये कल्टीवेटर मारणे ट्रॅक्टरची मजुरी छोटा",
-      "splitWithBhavdya": true
+      "note": "उसामध्ये कल्टीवेटर मारणे ट्रॅक्टरची मजुरी छोटा"
     },
     {
       "splitWithBhavdya": true,
