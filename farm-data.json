@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780382826541,
+      "type": "expense",
+      "date": "2026-05-11",
+      "amount": 11000,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "खांदे काढणे मजुरी शेतात",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780382714049,
       "type": "expense",
       "date": "2026-05-05",
