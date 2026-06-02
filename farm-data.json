@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780382356136,
+      "type": "expense",
+      "date": "2026-04-07",
+      "amount": 12500,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "भाऊच्या शेतातील कांदे काढण्यासाठी मजुरी दिली",
+      "splitWithBhavdya": true
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1779032156815,
       "type": "expense",
