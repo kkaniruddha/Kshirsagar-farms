@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780384368978,
+      "type": "expense",
+      "date": "2026-05-21",
+      "amount": 2300,
+      "category": "other_e",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "सोलर फिटिंग करण्यासाठी मजुरांना दिले",
+      "splitWithBhavdya": false
+    },
+    {
       "id": 1780384283136,
       "type": "expense",
       "date": "2026-05-21",
