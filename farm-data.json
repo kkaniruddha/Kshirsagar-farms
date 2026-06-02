@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780382608540,
+      "type": "expense",
+      "date": "2026-05-02",
+      "amount": 400,
+      "category": "labour",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "",
+      "note": "फवारणी करण्यासाठी मजुरी उसाची शेत",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780382568435,
       "type": "expense",
       "date": "2026-05-02",
