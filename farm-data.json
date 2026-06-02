@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780382487050,
+      "type": "expense",
+      "date": "2026-05-01",
+      "amount": 5100,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "17 बाय 300 रोजानी कांदा चाळी त लावणी व निवडणे साठी मजुरी दिली",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780382356136,
       "type": "expense",
       "date": "2026-04-07",
