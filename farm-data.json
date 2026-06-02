@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780383126128,
+      "type": "expense",
+      "date": "2026-05-16",
+      "amount": 3300,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "11 वाया गुणिले 300 रोज प्रमाणे 3300 रुपये दिले",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780383009922,
       "type": "expense",
       "date": "2026-05-15",
