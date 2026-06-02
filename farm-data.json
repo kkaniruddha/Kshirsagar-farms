@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1780383446228,
+      "type": "expense",
+      "date": "2026-05-12",
+      "amount": 3810,
+      "category": "fertilizer",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "बाळू",
+      "note": "ऊसाला दोन गोण्या खत टाकली",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1780383313173,
       "type": "expense",
       "date": "2026-05-18",
@@ -8,10 +20,10 @@
       "category": "labour",
       "crop": "Sugarcane / ऊस",
       "paidBy": "बाळू",
-      "note": "उसामध्ये खत टाकण्यासाठी दोन बाया मजुरी",
-      "splitWithBhavdya": true
+      "note": "उसामध्ये खत टाकण्यासाठी दोन बाया मजुरी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780383232510,
       "type": "expense",
       "date": "2026-05-17",
@@ -19,8 +31,7 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "300×5 बाया=1500 मजुरी",
-      "splitWithBhavdya": true
+      "note": "300×5 बाया=1500 मजुरी"
     },
     {
       "splitWithBhavdya": true,
