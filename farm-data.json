@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780383313173,
+      "type": "expense",
+      "date": "2026-05-18",
+      "amount": 500,
+      "category": "labour",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "बाळू",
+      "note": "उसामध्ये खत टाकण्यासाठी दोन बाया मजुरी",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780383232510,
       "type": "expense",
       "date": "2026-05-17",
