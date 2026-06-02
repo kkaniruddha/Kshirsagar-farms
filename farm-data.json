@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780382714049,
+      "type": "expense",
+      "date": "2026-05-05",
+      "amount": 1200,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "कांदा चाळीत लावणी मजुरी 300*4 बाया",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780382608540,
       "type": "expense",
       "date": "2026-05-02",
