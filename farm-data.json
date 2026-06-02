@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780384094783,
+      "type": "expense",
+      "date": "2026-06-02",
+      "amount": 9900,
+      "category": "labour",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "शेतातील कडीची चारी जेसीपीच्या साह्याने खणली त्याची मजुरी नऊ तास गुणिले अकराशे रेट",
+      "splitWithBhavdya": false
+    },
+    {
       "id": 1780383957925,
       "type": "expense",
       "date": "2026-05-26",
