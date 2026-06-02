@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780382895367,
+      "type": "expense",
+      "date": "2026-05-14",
+      "amount": 2700,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "कांदा चाळीत भरणे 9*300=2700",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780382826541,
       "type": "expense",
       "date": "2026-05-11",
