@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1780384283136,
+      "type": "expense",
+      "date": "2026-05-21",
+      "amount": 5000,
+      "category": "other_e",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "शेतात जाण्यासाठी रस्ता केला त्यासाठी दोन पाईप सिमेंटची विकत घेतले त्याची बिल दिले",
+      "splitWithBhavdya": false
+    },
+    {
+      "splitWithBhavdya": false,
       "id": 1780384094783,
       "type": "expense",
       "date": "2026-06-02",
@@ -8,10 +20,10 @@
       "category": "labour",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "शेतातील कडीची चारी जेसीपीच्या साह्याने खणली त्याची मजुरी नऊ तास गुणिले अकराशे रेट",
-      "splitWithBhavdya": false
+      "note": "शेतातील कडीची चारी जेसीपीच्या साह्याने खणली त्याची मजुरी नऊ तास गुणिले अकराशे रेट"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780383957925,
       "type": "expense",
       "date": "2026-05-26",
@@ -19,8 +31,7 @@
       "category": "fertilizer",
       "crop": "Sugarcane / ऊस",
       "paidBy": "बाळू",
-      "note": "10.22 उसात टाकली",
-      "splitWithBhavdya": true
+      "note": "10.22 उसात टाकली"
     },
     {
       "splitWithBhavdya": true,
