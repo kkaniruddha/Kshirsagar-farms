@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780384444567,
+      "type": "expense",
+      "date": "2026-05-21",
+      "amount": 3150,
+      "category": "other_e",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "सोलर पाईप साठी दोन गोण्या सिमेंट. ट्रॅक्टरने खड्डा खणणे. बोल टाळी साहित्यांनी",
+      "splitWithBhavdya": false
+    },
+    {
       "id": 1780384368978,
       "type": "expense",
       "date": "2026-05-21",
