@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1780383232510,
+      "type": "expense",
+      "date": "2026-05-17",
+      "amount": 1500,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "300×5 बाया=1500 मजुरी",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1780383126128,
       "type": "expense",
       "date": "2026-05-16",
@@ -8,10 +20,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "11 वाया गुणिले 300 रोज प्रमाणे 3300 रुपये दिले",
-      "splitWithBhavdya": true
+      "note": "11 वाया गुणिले 300 रोज प्रमाणे 3300 रुपये दिले"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780383009922,
       "type": "expense",
       "date": "2026-05-15",
@@ -19,8 +31,7 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "7 बाया*300 रोज प्रमाणे=2100",
-      "splitWithBhavdya": true
+      "note": "7 बाया*300 रोज प्रमाणे=2100"
     },
     {
       "splitWithBhavdya": true,
