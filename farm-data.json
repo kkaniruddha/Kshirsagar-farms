@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1780382568435,
+      "type": "expense",
+      "date": "2026-05-02",
+      "amount": 1620,
+      "category": "fertilizer",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "बाळू",
+      "note": "उसावर औषध मारणे त्यासाठी औषधे घेतली",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1780382487050,
       "type": "expense",
       "date": "2026-05-01",
