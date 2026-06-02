@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1780383519112,
+      "type": "expense",
+      "date": "2026-05-13",
+      "amount": 1500,
+      "category": "labour",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "बाळू",
+      "note": "उसामध्ये कल्टीवेटर मारणे ट्रॅक्टरची मजुरी छोटा",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1780383446228,
       "type": "expense",
       "date": "2026-05-12",
@@ -8,8 +20,7 @@
       "category": "fertilizer",
       "crop": "Sugarcane / ऊस",
       "paidBy": "बाळू",
-      "note": "ऊसाला दोन गोण्या खत टाकली",
-      "splitWithBhavdya": true
+      "note": "ऊसाला दोन गोण्या खत टाकली"
     },
     {
       "splitWithBhavdya": true,
