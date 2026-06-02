@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1780383009922,
+      "type": "expense",
+      "date": "2026-05-15",
+      "amount": 2100,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "बाळू",
+      "note": "7 बाया*300 रोज प्रमाणे=2100",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1780382895367,
       "type": "expense",
       "date": "2026-05-14",
@@ -8,10 +20,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "कांदा चाळीत भरणे 9*300=2700",
-      "splitWithBhavdya": true
+      "note": "कांदा चाळीत भरणे 9*300=2700"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780382826541,
       "type": "expense",
       "date": "2026-05-11",
@@ -19,10 +31,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "खांदे काढणे मजुरी शेतात",
-      "splitWithBhavdya": true
+      "note": "खांदे काढणे मजुरी शेतात"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780382714049,
       "type": "expense",
       "date": "2026-05-05",
@@ -30,10 +42,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "कांदा चाळीत लावणी मजुरी 300*4 बाया",
-      "splitWithBhavdya": true
+      "note": "कांदा चाळीत लावणी मजुरी 300*4 बाया"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780382608540,
       "type": "expense",
       "date": "2026-05-02",
@@ -41,10 +53,10 @@
       "category": "labour",
       "crop": "Sugarcane / ऊस",
       "paidBy": "",
-      "note": "फवारणी करण्यासाठी मजुरी उसाची शेत",
-      "splitWithBhavdya": true
+      "note": "फवारणी करण्यासाठी मजुरी उसाची शेत"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780382568435,
       "type": "expense",
       "date": "2026-05-02",
@@ -52,10 +64,10 @@
       "category": "fertilizer",
       "crop": "Sugarcane / ऊस",
       "paidBy": "बाळू",
-      "note": "उसावर औषध मारणे त्यासाठी औषधे घेतली",
-      "splitWithBhavdya": true
+      "note": "उसावर औषध मारणे त्यासाठी औषधे घेतली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780382487050,
       "type": "expense",
       "date": "2026-05-01",
@@ -63,10 +75,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "17 बाय 300 रोजानी कांदा चाळी त लावणी व निवडणे साठी मजुरी दिली",
-      "splitWithBhavdya": true
+      "note": "17 बाय 300 रोजानी कांदा चाळी त लावणी व निवडणे साठी मजुरी दिली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1780382356136,
       "type": "expense",
       "date": "2026-04-07",
@@ -74,8 +86,7 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "भाऊच्या शेतातील कांदे काढण्यासाठी मजुरी दिली",
-      "splitWithBhavdya": true
+      "note": "भाऊच्या शेतातील कांदे काढण्यासाठी मजुरी दिली"
     },
     {
       "splitWithBhavdya": true,
