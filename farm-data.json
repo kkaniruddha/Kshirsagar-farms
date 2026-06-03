@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": false,
       "id": 1780384444567,
       "type": "expense",
       "date": "2026-05-21",
@@ -8,10 +9,10 @@
       "category": "other_e",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "सोलर पाईप साठी दोन गोण्या सिमेंट. ट्रॅक्टरने खड्डा खणणे. बोल टाळी साहित्यांनी",
-      "splitWithBhavdya": false
+      "note": "सोलर पाईप साठी दोन गोण्या सिमेंट. ट्रॅक्टरने खड्डा खणणे. बोल टाळी साहित्यांनी"
     },
     {
+      "splitWithBhavdya": false,
       "id": 1780384368978,
       "type": "expense",
       "date": "2026-05-21",
@@ -19,10 +20,10 @@
       "category": "other_e",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "सोलर फिटिंग करण्यासाठी मजुरांना दिले",
-      "splitWithBhavdya": false
+      "note": "सोलर फिटिंग करण्यासाठी मजुरांना दिले"
     },
     {
+      "splitWithBhavdya": false,
       "id": 1780384283136,
       "type": "expense",
       "date": "2026-05-21",
@@ -30,8 +31,7 @@
       "category": "other_e",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "शेतात जाण्यासाठी रस्ता केला त्यासाठी दोन पाईप सिमेंटची विकत घेतले त्याची बिल दिले",
-      "splitWithBhavdya": false
+      "note": "शेतात जाण्यासाठी रस्ता केला त्यासाठी दोन पाईप सिमेंटची विकत घेतले त्याची बिल दिले"
     },
     {
       "splitWithBhavdya": false,
@@ -821,6 +821,13 @@
       "person": "गणेश",
       "amount": 10000,
       "date": "2026-05-20"
+    },
+    {
+      "id": 1780491704424,
+      "type": "expense",
+      "person": "भाऊ",
+      "amount": 51743,
+      "date": "2026-06-03"
     }
   ],
   "settings": {
