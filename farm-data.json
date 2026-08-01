@@ -1,17 +1,6 @@
 {
   "records": [
     {
-      "id": 1785564228044,
-      "type": "income",
-      "date": "2026-05-20",
-      "amount": 1341,
-      "category": "crop_sale",
-      "crop": "Onion / कांदा",
-      "paidBy": "",
-      "note": "भाव शंभर रुपये प्रमाणे १५९० किलो",
-      "splitWithBhavdya": true
-    },
-    {
       "splitWithBhavdya": false,
       "id": 1780384444567,
       "type": "expense",
