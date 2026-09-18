@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1789733618941,
+      "type": "expense",
+      "date": "2026-06-22",
+      "amount": 2700,
+      "category": "labour",
+      "crop": "Groundnut / भुईमूग",
+      "paidBy": "भावड्या दादा",
+      "note": "कांदा व भुईमुग काढणे",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1789733544614,
       "type": "expense",
       "date": "2026-06-16",
