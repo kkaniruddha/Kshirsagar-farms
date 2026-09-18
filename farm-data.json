@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1789733544614,
+      "type": "expense",
+      "date": "2026-06-16",
+      "amount": 3350,
+      "category": "labour",
+      "crop": "Sugarcane / ऊस",
+      "paidBy": "भावड्या दादा",
+      "note": "उसाची खणनी केली.",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1789733463174,
       "type": "expense",
       "date": "2026-06-02",
