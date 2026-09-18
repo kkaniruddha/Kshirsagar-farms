@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1789734668729,
       "type": "expense",
       "date": "2026-09-08",
@@ -8,10 +9,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "भावड्या दादा",
-      "note": "३००*२=६०० कांदा भरणी",
-      "splitWithBhavdya": true
+      "note": "३००*२=६०० कांदा भरणी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789734597363,
       "type": "expense",
       "date": "2026-09-06",
@@ -19,10 +20,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "भावड्या दादा",
-      "note": "३००*६=१८००",
-      "splitWithBhavdya": true
+      "note": "३००*६=१८००"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789734486064,
       "type": "expense",
       "date": "2026-09-18",
@@ -30,10 +31,10 @@
       "category": "labour",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "३*४५०=१३५० औषध मारणे मजुरी",
-      "splitWithBhavdya": true
+      "note": "३*४५०=१३५० औषध मारणे मजुरी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789734403826,
       "type": "expense",
       "date": "2026-09-18",
@@ -41,10 +42,10 @@
       "category": "labour",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "७*४५०=३१५० औषध मारणे मजुरी",
-      "splitWithBhavdya": true
+      "note": "७*४५०=३१५० औषध मारणे मजुरी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789734319209,
       "type": "expense",
       "date": "2026-09-17",
@@ -52,8 +53,7 @@
       "category": "labour",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "सोयाबीन मका खुरपणी मजुरी",
-      "splitWithBhavdya": true
+      "note": "सोयाबीन मका खुरपणी मजुरी"
     },
     {
       "splitWithBhavdya": true,
@@ -1022,6 +1022,13 @@
       "person": "कैलास",
       "amount": 10000,
       "date": "2026-06-03"
+    },
+    {
+      "id": 1789736091068,
+      "type": "expense",
+      "person": "भावड्या दादा",
+      "amount": 100,
+      "date": "2026-09-18"
     }
   ],
   "settings": {
