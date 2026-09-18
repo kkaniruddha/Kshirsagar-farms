@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1789734110348,
+      "type": "expense",
+      "date": "2026-08-01",
+      "amount": 7750,
+      "category": "pesticides",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "मका सोयाबीन तन नाशक मारणे",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1789734035169,
       "type": "expense",
       "date": "2026-08-01",
