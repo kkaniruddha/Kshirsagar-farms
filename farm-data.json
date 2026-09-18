@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1789734035169,
+      "type": "expense",
+      "date": "2026-08-01",
+      "amount": 2800,
+      "category": "labour",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "सोयाबीन तन नाशक मारणे.(७*४००)",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1789733931350,
       "type": "expense",
       "date": "2026-08-08",
