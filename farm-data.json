@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1789734403826,
+      "type": "expense",
+      "date": "2026-09-18",
+      "amount": 3150,
+      "category": "labour",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "७*४५०=३१५० औषध मारणे मजुरी",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1789734319209,
       "type": "expense",
       "date": "2026-09-17",
