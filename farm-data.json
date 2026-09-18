@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1789733857405,
+      "type": "expense",
+      "date": "2026-07-29",
+      "amount": 600,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "भावड्या दादा",
+      "note": "दोन बाया कांदा भरणे",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1789733774505,
       "type": "expense",
       "date": "2026-07-26",
