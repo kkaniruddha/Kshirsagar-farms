@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1789733463174,
+      "type": "expense",
+      "date": "2026-06-02",
+      "amount": 3600,
+      "category": "fertilizer",
+      "crop": "Other / इतर",
+      "paidBy": "भावड्या दादा",
+      "note": "सहा गोण्या डीपी खत पसरवणे व आणणे",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1789733351938,
       "type": "expense",
       "date": "2026-05-26",
