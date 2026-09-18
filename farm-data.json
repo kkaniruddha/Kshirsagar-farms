@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1789734319209,
+      "type": "expense",
+      "date": "2026-09-17",
+      "amount": 5000,
+      "category": "labour",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "सोयाबीन मका खुरपणी मजुरी",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1789734242990,
       "type": "expense",
       "date": "2026-08-15",
@@ -8,10 +20,10 @@
       "category": "fertilizer",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "पोषक सोयाबीन वर मारणे",
-      "splitWithBhavdya": true
+      "note": "पोषक सोयाबीन वर मारणे"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789734188401,
       "type": "expense",
       "date": "2026-08-01",
@@ -19,10 +31,10 @@
       "category": "pesticides",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "स्टिकर तनाशक",
-      "splitWithBhavdya": true
+      "note": "स्टिकर तनाशक"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789734110348,
       "type": "expense",
       "date": "2026-08-01",
@@ -30,10 +42,10 @@
       "category": "pesticides",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "मका सोयाबीन तन नाशक मारणे",
-      "splitWithBhavdya": true
+      "note": "मका सोयाबीन तन नाशक मारणे"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789734035169,
       "type": "expense",
       "date": "2026-08-01",
@@ -41,10 +53,10 @@
       "category": "labour",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "सोयाबीन तन नाशक मारणे.(७*४००)",
-      "splitWithBhavdya": true
+      "note": "सोयाबीन तन नाशक मारणे.(७*४००)"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789733931350,
       "type": "expense",
       "date": "2026-08-08",
@@ -52,10 +64,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "भावड्या दादा",
-      "note": "कांदा ट्रेलर भरणे आठ बाया",
-      "splitWithBhavdya": true
+      "note": "कांदा ट्रेलर भरणे आठ बाया"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789733857405,
       "type": "expense",
       "date": "2026-07-29",
@@ -63,10 +75,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "भावड्या दादा",
-      "note": "दोन बाया कांदा भरणे",
-      "splitWithBhavdya": true
+      "note": "दोन बाया कांदा भरणे"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789733774505,
       "type": "expense",
       "date": "2026-07-26",
@@ -74,10 +86,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "भावड्या दादा",
-      "note": "दोन बाया कांदे भरण्यासाठी",
-      "splitWithBhavdya": true
+      "note": "दोन बाया कांदे भरण्यासाठी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789733713447,
       "type": "expense",
       "date": "2026-07-20",
@@ -85,10 +97,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "भावड्या दादा",
-      "note": "सहा बाया कांदा भरण्यासाठी लावल्या",
-      "splitWithBhavdya": true
+      "note": "सहा बाया कांदा भरण्यासाठी लावल्या"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789733618941,
       "type": "expense",
       "date": "2026-06-22",
@@ -96,10 +108,10 @@
       "category": "labour",
       "crop": "Groundnut / भुईमूग",
       "paidBy": "भावड्या दादा",
-      "note": "कांदा व भुईमुग काढणे",
-      "splitWithBhavdya": true
+      "note": "कांदा व भुईमुग काढणे"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789733544614,
       "type": "expense",
       "date": "2026-06-16",
@@ -107,10 +119,10 @@
       "category": "labour",
       "crop": "Sugarcane / ऊस",
       "paidBy": "भावड्या दादा",
-      "note": "उसाची खणनी केली.",
-      "splitWithBhavdya": true
+      "note": "उसाची खणनी केली."
     },
     {
+      "splitWithBhavdya": true,
       "id": 1789733463174,
       "type": "expense",
       "date": "2026-06-02",
@@ -118,10 +130,10 @@
       "category": "fertilizer",
       "crop": "Other / इतर",
       "paidBy": "भावड्या दादा",
-      "note": "सहा गोण्या डीपी खत पसरवणे व आणणे",
-      "splitWithBhavdya": true
+      "note": "सहा गोण्या डीपी खत पसरवणे व आणणे"
     },
     {
+      "splitWithBhavdya": false,
       "id": 1789733351938,
       "type": "expense",
       "date": "2026-05-26",
@@ -129,8 +141,7 @@
       "category": "other_e",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "",
-      "splitWithBhavdya": false
+      "note": ""
     },
     {
       "splitWithBhavdya": false,
