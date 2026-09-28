@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790573556525,
+      "type": "expense",
+      "date": "2026-09-15",
+      "amount": 600,
+      "category": "labour",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "मूग काढणे",
+      "splitWithBhavdya": true
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1789734668729,
       "type": "expense",
