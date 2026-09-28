@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790574120552,
+      "type": "expense",
+      "date": "2026-07-01",
+      "amount": 5000,
+      "category": "seeds",
+      "crop": "Corn / मका",
+      "paidBy": "भावड्या दादा",
+      "note": "मका बी खरेदी",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790574056171,
       "type": "expense",
       "date": "2026-05-25",
