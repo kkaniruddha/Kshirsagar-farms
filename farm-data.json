@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790573779712,
+      "type": "expense",
+      "date": "2026-08-15",
+      "amount": 2400,
+      "category": "labour",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "बाळू",
+      "note": "पोषक औषध मारणे",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790573703900,
       "type": "expense",
       "date": "2026-09-11",
