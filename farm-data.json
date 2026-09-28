@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790573703900,
+      "type": "expense",
+      "date": "2026-09-11",
+      "amount": 760,
+      "category": "fertilizer",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "बाळू",
+      "note": "सुपर दाणेदार खत",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790573628984,
       "type": "expense",
       "date": "2026-09-10",
