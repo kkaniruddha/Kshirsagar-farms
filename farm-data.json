@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790574218862,
+      "type": "expense",
+      "date": "2026-08-12",
+      "amount": 4030,
+      "category": "fertilizer",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "सोयाबीन पोषक",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790574162795,
       "type": "expense",
       "date": "2026-07-01",
