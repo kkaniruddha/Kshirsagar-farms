@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1790574878077,
       "type": "expense",
       "date": "2026-09-17",
@@ -8,10 +9,10 @@
       "category": "equipment",
       "crop": "Onion / कांदा",
       "paidBy": "भावड्या दादा",
-      "note": "१४.६.२६ ती १७.९.२६ कांदा कोपरगाव येथे घेऊन जा आणि वाहतूक खर्च",
-      "splitWithBhavdya": true
+      "note": "१४.६.२६ ती १७.९.२६ कांदा कोपरगाव येथे घेऊन जा आणि वाहतूक खर्च"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574718557,
       "type": "expense",
       "date": "2026-07-28",
@@ -19,10 +20,10 @@
       "category": "equipment",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "नऊ एकर पेरणी सोयाबीन मका तूर मूग",
-      "splitWithBhavdya": true
+      "note": "नऊ एकर पेरणी सोयाबीन मका तूर मूग"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574658382,
       "type": "expense",
       "date": "2026-07-14",
@@ -30,10 +31,10 @@
       "category": "equipment",
       "crop": "Corn / मका",
       "paidBy": "भावड्या दादा",
-      "note": "कल्टीवेटर 10 एकर",
-      "splitWithBhavdya": true
+      "note": "कल्टीवेटर 10 एकर"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574567482,
       "type": "expense",
       "date": "2026-07-17",
@@ -41,10 +42,10 @@
       "category": "equipment",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "दहा एकर रोटावेटर",
-      "splitWithBhavdya": true
+      "note": "दहा एकर रोटावेटर"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574497049,
       "type": "expense",
       "date": "2026-05-15",
@@ -52,10 +53,10 @@
       "category": "equipment",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "दहा एकर नांगरट",
-      "splitWithBhavdya": true
+      "note": "दहा एकर नांगरट"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574412906,
       "type": "expense",
       "date": "2026-09-17",
@@ -63,10 +64,10 @@
       "category": "fertilizer",
       "crop": "Corn / मका",
       "paidBy": "भावड्या दादा",
-      "note": "कीटकनाशक मका",
-      "splitWithBhavdya": true
+      "note": "कीटकनाशक मका"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574349195,
       "type": "expense",
       "date": "2026-06-23",
@@ -74,10 +75,10 @@
       "category": "seeds",
       "crop": "Tur / तूर",
       "paidBy": "भावड्या दादा",
-      "note": "मूग व तुर बी",
-      "splitWithBhavdya": true
+      "note": "मूग व तुर बी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574265665,
       "type": "expense",
       "date": "2026-08-18",
@@ -85,10 +86,10 @@
       "category": "fertilizer",
       "crop": "Corn / मका",
       "paidBy": "भावड्या दादा",
-      "note": "मका पोषक",
-      "splitWithBhavdya": true
+      "note": "मका पोषक"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574218862,
       "type": "expense",
       "date": "2026-08-12",
@@ -96,10 +97,10 @@
       "category": "fertilizer",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "सोयाबीन पोषक",
-      "splitWithBhavdya": true
+      "note": "सोयाबीन पोषक"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574162795,
       "type": "expense",
       "date": "2026-07-01",
@@ -107,10 +108,10 @@
       "category": "seeds",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "सोयाबीन खरेदी",
-      "splitWithBhavdya": true
+      "note": "सोयाबीन खरेदी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574120552,
       "type": "expense",
       "date": "2026-07-01",
@@ -118,10 +119,10 @@
       "category": "seeds",
       "crop": "Corn / मका",
       "paidBy": "भावड्या दादा",
-      "note": "मका बी खरेदी",
-      "splitWithBhavdya": true
+      "note": "मका बी खरेदी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790574056171,
       "type": "expense",
       "date": "2026-05-25",
@@ -129,10 +130,10 @@
       "category": "fertilizer",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "मका सोयाबीन याच्यासाठी खतखरेदी केले",
-      "splitWithBhavdya": true
+      "note": "मका सोयाबीन याच्यासाठी खतखरेदी केले"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790573937082,
       "type": "expense",
       "date": "2026-08-10",
@@ -140,8 +141,7 @@
       "category": "fertilizer",
       "crop": "Corn / मका",
       "paidBy": "बाळू",
-      "note": "पोषक",
-      "splitWithBhavdya": true
+      "note": "पोषक"
     },
     {
       "splitWithBhavdya": true,
@@ -1209,6 +1209,13 @@
       "person": "कैलास",
       "amount": 10000,
       "date": "2026-06-03"
+    },
+    {
+      "id": 1790575360580,
+      "type": "expense",
+      "person": "भावड्या दादा",
+      "amount": 119545,
+      "date": "2026-09-28"
     }
   ],
   "settings": {
