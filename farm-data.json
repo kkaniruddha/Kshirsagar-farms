@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790574349195,
+      "type": "expense",
+      "date": "2026-06-23",
+      "amount": 950,
+      "category": "seeds",
+      "crop": "Tur / तूर",
+      "paidBy": "भावड्या दादा",
+      "note": "मूग व तुर बी",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790574265665,
       "type": "expense",
       "date": "2026-08-18",
