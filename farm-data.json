@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790574718557,
+      "type": "expense",
+      "date": "2026-07-28",
+      "amount": 6000,
+      "category": "equipment",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "नऊ एकर पेरणी सोयाबीन मका तूर मूग",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790574658382,
       "type": "expense",
       "date": "2026-07-14",
