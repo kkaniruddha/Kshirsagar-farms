@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790575489546,
+      "type": "income",
+      "date": "2026-09-17",
+      "amount": 319987,
+      "category": "crop_sale",
+      "crop": "Onion / कांदा",
+      "paidBy": "",
+      "note": "संपूर्ण कांदा विकला गेला त्याचा हा हिशोब",
+      "splitWithBhavdya": true
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1790574878077,
       "type": "expense",
