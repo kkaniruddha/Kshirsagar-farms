@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790574658382,
+      "type": "expense",
+      "date": "2026-07-14",
+      "amount": 6000,
+      "category": "equipment",
+      "crop": "Corn / मका",
+      "paidBy": "भावड्या दादा",
+      "note": "कल्टीवेटर 10 एकर",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790574567482,
       "type": "expense",
       "date": "2026-07-17",
