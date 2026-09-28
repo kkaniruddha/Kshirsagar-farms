@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1790573937082,
+      "type": "expense",
+      "date": "2026-08-10",
+      "amount": 900,
+      "category": "fertilizer",
+      "crop": "Corn / मका",
+      "paidBy": "बाळू",
+      "note": "पोषक",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1790573779712,
       "type": "expense",
       "date": "2026-08-15",
@@ -8,10 +20,10 @@
       "category": "labour",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "बाळू",
-      "note": "पोषक औषध मारणे",
-      "splitWithBhavdya": true
+      "note": "पोषक औषध मारणे"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790573703900,
       "type": "expense",
       "date": "2026-09-11",
@@ -19,10 +31,10 @@
       "category": "fertilizer",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "बाळू",
-      "note": "सुपर दाणेदार खत",
-      "splitWithBhavdya": true
+      "note": "सुपर दाणेदार खत"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790573628984,
       "type": "expense",
       "date": "2026-09-10",
@@ -30,10 +42,10 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "बाळू",
-      "note": "कांदा बी पेरणी",
-      "splitWithBhavdya": true
+      "note": "कांदा बी पेरणी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1790573556525,
       "type": "expense",
       "date": "2026-09-15",
@@ -41,8 +53,7 @@
       "category": "labour",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "मूग काढणे",
-      "splitWithBhavdya": true
+      "note": "मूग काढणे"
     },
     {
       "splitWithBhavdya": true,
