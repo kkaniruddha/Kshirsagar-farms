@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790574878077,
+      "type": "expense",
+      "date": "2026-09-17",
+      "amount": 9000,
+      "category": "equipment",
+      "crop": "Onion / कांदा",
+      "paidBy": "भावड्या दादा",
+      "note": "१४.६.२६ ती १७.९.२६ कांदा कोपरगाव येथे घेऊन जा आणि वाहतूक खर्च",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790574718557,
       "type": "expense",
       "date": "2026-07-28",
