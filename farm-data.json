@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790574412906,
+      "type": "expense",
+      "date": "2026-09-17",
+      "amount": 3350,
+      "category": "fertilizer",
+      "crop": "Corn / मका",
+      "paidBy": "भावड्या दादा",
+      "note": "कीटकनाशक मका",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1790574349195,
       "type": "expense",
       "date": "2026-06-23",
