@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": false,
       "id": 1790575744464,
       "type": "expense",
       "date": "2026-09-01",
@@ -8,8 +9,7 @@
       "category": "other_e",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "पिक विमा सगळ्यांचा काढला",
-      "splitWithBhavdya": false
+      "note": "पिक विमा सगळ्यांचा काढला"
     },
     {
       "splitWithBhavdya": true,
@@ -1244,6 +1244,13 @@
       "type": "income",
       "person": "भावड्या दादा",
       "amount": 159994,
+      "date": "2026-09-28"
+    },
+    {
+      "id": 1790575806785,
+      "type": "income",
+      "person": "भाऊ",
+      "amount": 30728,
       "date": "2026-09-28"
     }
   ],
