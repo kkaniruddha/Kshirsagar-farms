@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": false,
       "id": 1790578385075,
       "type": "expense",
       "date": "2026-05-13",
@@ -8,8 +9,7 @@
       "category": "other_e",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "दोन्ही विहिरींना आडवे बोर मारले",
-      "splitWithBhavdya": false
+      "note": "दोन्ही विहिरींना आडवे बोर मारले"
     },
     {
       "splitWithBhavdya": false,
@@ -1304,6 +1304,13 @@
       "type": "income",
       "person": "गणेश",
       "amount": 18300,
+      "date": "2026-09-28"
+    },
+    {
+      "id": 1790578673030,
+      "type": "expense",
+      "person": "बाळू",
+      "amount": 91480,
       "date": "2026-09-28"
     }
   ],
