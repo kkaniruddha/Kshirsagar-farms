@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790575744464,
+      "type": "expense",
+      "date": "2026-09-01",
+      "amount": 6354,
+      "category": "other_e",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "पिक विमा सगळ्यांचा काढला",
+      "splitWithBhavdya": false
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1790575489546,
       "type": "income",
