@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790578385075,
+      "type": "expense",
+      "date": "2026-05-13",
+      "amount": 91480,
+      "category": "other_e",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "दोन्ही विहिरींना आडवे बोर मारले",
+      "splitWithBhavdya": false
+    },
+    {
       "splitWithBhavdya": false,
       "id": 1790575744464,
       "type": "expense",
