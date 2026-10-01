@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1790872742767,
+      "type": "expense",
+      "date": "2026-09-28",
+      "amount": 1400,
+      "category": "labour",
+      "crop": "Onion / कांदा",
+      "paidBy": "भावड्या दादा",
+      "note": "कांदा रोप पेरणी साठी लेबर बैल ने पेरले",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": true,
       "id": 1790872616331,
       "type": "expense",
       "date": "2026-05-31",
@@ -8,8 +20,7 @@
       "category": "fertilizer",
       "crop": "Other / इतर",
       "paidBy": "भावड्या दादा",
-      "note": "शेतामध्ये शेणखत३०००*१४ ट्रिप=४२०००",
-      "splitWithBhavdya": true
+      "note": "शेतामध्ये शेणखत३०००*१४ ट्रिप=४२०००"
     },
     {
       "splitWithBhavdya": false,
