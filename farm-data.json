@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1790872616331,
+      "type": "expense",
+      "date": "2026-05-31",
+      "amount": 42000,
+      "category": "fertilizer",
+      "crop": "Other / इतर",
+      "paidBy": "भावड्या दादा",
+      "note": "शेतामध्ये शेणखत३०००*१४ ट्रिप=४२०००",
+      "splitWithBhavdya": true
+    },
+    {
       "splitWithBhavdya": false,
       "id": 1790575744464,
       "type": "expense",
