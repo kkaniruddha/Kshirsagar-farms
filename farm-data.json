@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1790872742767,
       "type": "expense",
       "date": "2026-09-28",
@@ -8,8 +9,7 @@
       "category": "labour",
       "crop": "Onion / कांदा",
       "paidBy": "भावड्या दादा",
-      "note": "कांदा रोप पेरणी साठी लेबर बैल ने पेरले",
-      "splitWithBhavdya": true
+      "note": "कांदा रोप पेरणी साठी लेबर बैल ने पेरले"
     },
     {
       "splitWithBhavdya": true,
@@ -1288,6 +1288,13 @@
       "person": "बाळू",
       "amount": 30728,
       "date": "2026-09-28"
+    },
+    {
+      "id": 1790872893209,
+      "type": "expense",
+      "person": "भावड्या दादा",
+      "amount": 43400,
+      "date": "2026-10-01"
     }
   ],
   "settings": {
