@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1791184537957,
+      "type": "expense",
+      "date": "2026-10-05",
+      "amount": 600,
+      "category": "seeds",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "पंचनामे व उतारे काढण्यासाठी",
+      "splitWithBhavdya": false
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1790872742767,
       "type": "expense",
