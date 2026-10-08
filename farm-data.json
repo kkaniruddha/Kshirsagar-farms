@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1791460985494,
+      "type": "expense",
+      "date": "2026-10-08",
+      "amount": 24000,
+      "category": "labour",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "सोयाबीन सोगणी ची मजुरी चार एकर तीन हजार प्रमाणे",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": false,
       "id": 1791184537957,
       "type": "expense",
       "date": "2026-10-05",
@@ -8,8 +20,7 @@
       "category": "seeds",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "पंचनामे व उतारे काढण्यासाठी",
-      "splitWithBhavdya": false
+      "note": "पंचनामे व उतारे काढण्यासाठी"
     },
     {
       "splitWithBhavdya": true,
