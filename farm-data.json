@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1791461099080,
       "type": "expense",
       "date": "2026-10-08",
@@ -8,10 +9,10 @@
       "category": "equipment",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "सोयाबीन मशीन डिझेल खर्च",
-      "splitWithBhavdya": true
+      "note": "सोयाबीन मशीन डिझेल खर्च"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1791461045097,
       "type": "expense",
       "date": "2026-10-08",
@@ -19,10 +20,10 @@
       "category": "labour",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "मजुरांना आणण्यासाठी तीन हजार रुपये तीन दिवसाची टेम्पो वाडी",
-      "splitWithBhavdya": true
+      "note": "मजुरांना आणण्यासाठी तीन हजार रुपये तीन दिवसाची टेम्पो वाडी"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1791460985494,
       "type": "expense",
       "date": "2026-10-08",
@@ -30,8 +31,7 @@
       "category": "labour",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "भावड्या दादा",
-      "note": "सोयाबीन सोगणी ची मजुरी चार एकर तीन हजार प्रमाणे",
-      "splitWithBhavdya": true
+      "note": "सोयाबीन सोगणी ची मजुरी चार एकर तीन हजार प्रमाणे"
     },
     {
       "splitWithBhavdya": false,
@@ -1360,6 +1360,13 @@
       "person": "गणेश",
       "amount": 5300,
       "date": "2026-10-04"
+    },
+    {
+      "id": 1791461174537,
+      "type": "expense",
+      "person": "बाळू",
+      "amount": 24000,
+      "date": "2026-10-08"
     }
   ],
   "settings": {
