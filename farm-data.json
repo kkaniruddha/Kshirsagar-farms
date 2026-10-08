@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1791461099080,
+      "type": "expense",
+      "date": "2026-10-08",
+      "amount": 3000,
+      "category": "equipment",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "सोयाबीन मशीन डिझेल खर्च",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1791461045097,
       "type": "expense",
       "date": "2026-10-08",
