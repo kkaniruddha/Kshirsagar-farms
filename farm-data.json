@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1791461045097,
+      "type": "expense",
+      "date": "2026-10-08",
+      "amount": 3000,
+      "category": "labour",
+      "crop": "Soybeans / सोयाबीन",
+      "paidBy": "भावड्या दादा",
+      "note": "मजुरांना आणण्यासाठी तीन हजार रुपये तीन दिवसाची टेम्पो वाडी",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1791460985494,
       "type": "expense",
       "date": "2026-10-08",
