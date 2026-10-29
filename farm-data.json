@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1792328249693,
       "type": "expense",
       "date": "2026-10-18",
@@ -8,8 +9,7 @@
       "category": "labour",
       "crop": "Soybeans / सोयाबीन",
       "paidBy": "बाळू",
-      "note": "अडीच एकर सोयाबीन मजुरी 15000 व एक हजार रुपये टेम्पो भाडे अदा केले",
-      "splitWithBhavdya": true
+      "note": "अडीच एकर सोयाबीन मजुरी 15000 व एक हजार रुपये टेम्पो भाडे अदा केले"
     },
     {
       "splitWithBhavdya": true,
@@ -1392,6 +1392,13 @@
       "person": "भाऊ",
       "amount": 21635.4,
       "date": "2026-10-14"
+    },
+    {
+      "id": 1793265919809,
+      "type": "expense",
+      "person": "श्याम",
+      "amount": 10000,
+      "date": "2026-10-29"
     }
   ],
   "settings": {
