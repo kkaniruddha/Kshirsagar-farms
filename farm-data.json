@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1793352117429,
+      "type": "income",
+      "date": "2026-10-30",
+      "amount": 38475,
+      "category": "crop_sale",
+      "crop": "Corn / मका",
+      "paidBy": "",
+      "note": "",
+      "splitWithBhavdya": true
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1792328249693,
       "type": "expense",
