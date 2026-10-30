@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1793352117429,
       "type": "income",
       "date": "2026-10-30",
@@ -8,8 +9,7 @@
       "category": "crop_sale",
       "crop": "Corn / मका",
       "paidBy": "",
-      "note": "",
-      "splitWithBhavdya": true
+      "note": ""
     },
     {
       "splitWithBhavdya": true,
@@ -1444,6 +1444,13 @@
       "type": "expense",
       "person": "कैलास",
       "amount": 3848,
+      "date": "2026-10-30"
+    },
+    {
+      "id": 1793352560459,
+      "type": "income",
+      "person": "भावड्या दादा",
+      "amount": 19238,
       "date": "2026-10-30"
     }
   ],
