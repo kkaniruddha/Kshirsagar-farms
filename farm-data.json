@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1793624831883,
+      "type": "expense",
+      "date": "2026-10-24",
+      "amount": 1200,
+      "category": "labour",
+      "crop": "Other / इतर",
+      "paidBy": "भावड्या दादा",
+      "note": "लसुन लावण्यासाठी दोन बाया दोन दिवस कामाला होत्या त्यांची मजुरी बाराशे रुपये दिली",
+      "splitWithBhavdya": true
+    },
+    {
       "id": 1793624760972,
       "type": "expense",
       "date": "2026-10-24",
