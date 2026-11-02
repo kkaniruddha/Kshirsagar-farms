@@ -1,6 +1,18 @@
 {
   "records": [
     {
+      "id": 1793625088954,
+      "type": "expense",
+      "date": "2026-11-02",
+      "amount": 5000,
+      "category": "seeds",
+      "crop": "Gram / हरभरा",
+      "paidBy": "बाळू",
+      "note": "दोन बॅग बी हरभऱ्याची आज आणली.",
+      "splitWithBhavdya": true
+    },
+    {
+      "splitWithBhavdya": false,
       "id": 1793624901825,
       "type": "expense",
       "date": "2026-10-30",
@@ -8,10 +20,10 @@
       "category": "other_e",
       "crop": "Other / इतर",
       "paidBy": "बाळू",
-      "note": "भावड्या दादाला दिवाळी सणासाठी दहा हजार रुपये ऑनलाईन दिली पाच जणांकडून",
-      "splitWithBhavdya": false
+      "note": "भावड्या दादाला दिवाळी सणासाठी दहा हजार रुपये ऑनलाईन दिली पाच जणांकडून"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1793624831883,
       "type": "expense",
       "date": "2026-10-24",
@@ -19,10 +31,10 @@
       "category": "labour",
       "crop": "Other / इतर",
       "paidBy": "भावड्या दादा",
-      "note": "लसुन लावण्यासाठी दोन बाया दोन दिवस कामाला होत्या त्यांची मजुरी बाराशे रुपये दिली",
-      "splitWithBhavdya": true
+      "note": "लसुन लावण्यासाठी दोन बाया दोन दिवस कामाला होत्या त्यांची मजुरी बाराशे रुपये दिली"
     },
     {
+      "splitWithBhavdya": true,
       "id": 1793624760972,
       "type": "expense",
       "date": "2026-10-24",
@@ -30,8 +42,7 @@
       "category": "seeds",
       "crop": "Jowar / ज्वारी",
       "paidBy": "भावड्या दादा",
-      "note": "ज्वारीचे बी पेरण्यासाठी दहा-पन्नास नंबरचे खरेदी केले",
-      "splitWithBhavdya": true
+      "note": "ज्वारीचे बी पेरण्यासाठी दहा-पन्नास नंबरचे खरेदी केले"
     },
     {
       "splitWithBhavdya": true,
