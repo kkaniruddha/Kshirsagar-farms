@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1793624760972,
+      "type": "expense",
+      "date": "2026-10-24",
+      "amount": 1150,
+      "category": "seeds",
+      "crop": "Jowar / ज्वारी",
+      "paidBy": "भावड्या दादा",
+      "note": "ज्वारीचे बी पेरण्यासाठी दहा-पन्नास नंबरचे खरेदी केले",
+      "splitWithBhavdya": true
+    },
+    {
       "splitWithBhavdya": true,
       "id": 1793352117429,
       "type": "income",
