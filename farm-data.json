@@ -1,6 +1,7 @@
 {
   "records": [
     {
+      "splitWithBhavdya": true,
       "id": 1793625088954,
       "type": "expense",
       "date": "2026-11-02",
@@ -8,8 +9,7 @@
       "category": "seeds",
       "crop": "Gram / हरभरा",
       "paidBy": "बाळू",
-      "note": "दोन बॅग बी हरभऱ्याची आज आणली.",
-      "splitWithBhavdya": true
+      "note": "दोन बॅग बी हरभऱ्याची आज आणली."
     },
     {
       "splitWithBhavdya": false,
@@ -1496,6 +1496,13 @@
       "person": "भावड्या दादा",
       "amount": 19238,
       "date": "2026-10-30"
+    },
+    {
+      "id": 1793625255115,
+      "type": "expense",
+      "person": "भावड्या दादा",
+      "amount": 2350,
+      "date": "2026-11-02"
     }
   ],
   "settings": {
