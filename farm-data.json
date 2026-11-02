@@ -1,6 +1,17 @@
 {
   "records": [
     {
+      "id": 1793624901825,
+      "type": "expense",
+      "date": "2026-10-30",
+      "amount": 10000,
+      "category": "other_e",
+      "crop": "Other / इतर",
+      "paidBy": "बाळू",
+      "note": "भावड्या दादाला दिवाळी सणासाठी दहा हजार रुपये ऑनलाईन दिली पाच जणांकडून",
+      "splitWithBhavdya": false
+    },
+    {
       "id": 1793624831883,
       "type": "expense",
       "date": "2026-10-24",
